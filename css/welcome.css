@@ -1,9 +1,3 @@
-:root {
-    --green_dark_background: #034225;
-    --white_perfisio: #F7F3F3;
-
-}
-
 body {
     background-color: var(--green_dark_background);
 }
