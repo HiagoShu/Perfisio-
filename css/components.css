@@ -14,3 +14,139 @@
 .welcome-section__button:hover {
   transform: scale(1.1);
 }
+
+/* Trail wrapper - creates positioning context for overlay */
+.container-lessons__trail-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container-lessons__trail {
+  width: 100%;
+  max-width: 300px;
+}
+
+.trail-svg {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 150px;
+}
+
+/* Buttons overlay on trail */
+.container-lessons__buttons {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.container-lessons__buttons a {
+  text-decoration: none;
+  position: absolute;
+  pointer-events: auto;
+}
+
+/* Position each button on the trail */
+.container-lessons__buttons__item--1 {
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container-lessons__buttons__item--2 {
+  top: 38%;
+  left: 30%;
+  transform: translateX(-50%);
+}
+
+.container-lessons__buttons__item--3 {
+  top: 58%;
+  left: 55%;
+  transform: translateX(-50%);
+}
+
+.container-lessons__buttons__item--4 {
+  top: 78%;
+  left: 40%;
+  transform: translateX(-50%);
+}
+
+.container-lessons__buttons__button {
+  font-size: 50px;
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.container-lessons__buttons__button:hover {
+  transform: scale(1.1);
+}
+
+.container-lessons__buttons__button:active {
+  transform: scale(0.95);
+}
+
+/* Individual button colors */
+.container-lessons__buttons__item--1 .container-lessons__buttons__button {
+  background-color: var(--lighter_green__buttons);
+  color: var(--green_dark_background);
+  border: 5px solid var(--green_dark_background);
+}
+
+.container-lessons__buttons__item--2 .container-lessons__buttons__button {
+  background-color: var(--yellow_text_cards);
+  color: var(--dark_yellow_text_cards);
+  border: 5px solid var(--dark_yellow_text_cards);
+}
+
+.container-lessons__buttons__item--3 .container-lessons__buttons__button {
+  background-color: var(--yellow_text_cards);
+  color: var(--dark_yellow_text_cards);
+  border: 5px solid var(--dark_yellow_text_cards);
+}
+
+.container-lessons__buttons__item--4 .container-lessons__buttons__button {
+  background-color: var(--light_purple_final_level);
+  color: var(--medium_purple_final_level);
+  border: 5px solid var(--medium_purple_final_level);
+}
+
+.container-lessons__challenge__trail a {
+  text-decoration: none;
+}
+
+.container-lessons__challenge__trail__button {
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: var(--medium_purple_final_level);
+  background-color: var(--light_purple_final_level);
+  border: 5px solid var(--medium_purple_final_level);
+}
+
+.container-lessons__challenge__trail__button:hover {
+  transform: scale(1.1);
+}
+
+.container-lessons__challenge__trail__button:active {
+  transform: scale(0.95);
+}

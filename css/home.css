@@ -1,0 +1,74 @@
+body {
+  background-color: var(--green_dark_background);
+}
+
+.container-lessons {
+  margin-top: 65px;
+  background-color: var(--white_perfisio);
+  border-radius: 50px 50px 0 0;
+  height: 100%;
+  text-align: center;
+}
+
+.container-lessons__lesson__content:nth-of-type(1) {
+  padding-top: 79px;
+  border-radius: 50px 50px 0 0;
+}
+
+.container-lessons__lesson__content {
+  padding-top: 60px;
+  padding-bottom: 89px;
+  height: 178px;
+  background-color: var(--gray_content_difficult);
+}
+
+.container-lessons__lesson__content__difficult {
+  font-size: 15px;
+  color: var(--green_dark_background);
+  font-weight: 500;
+}
+
+.container-lessons__lesson__content__title {
+  font-size: 24px;
+  color: var(--green_dark_background);
+  font-weight: 700;
+}
+
+.container-lessons__lesson__content__challenge {
+  padding-top: 27px;
+  height: 126px;
+  background-color: var(--medium_purple_final_level);
+}
+
+.container-lessons__lesson__content__difficult__challenge {
+  font-size: 15px;
+  color: var(--yellow_text_cards);
+  font-weight: 500;
+}
+
+.container-lessons__lesson__content__title__challenge {
+  font-size: 24px;
+  color: var(--yellow_text_cards);
+  font-weight: 700;
+}
+
+.container-lessons__challenge__trail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--dark_purple_final_level);
+  padding-bottom: 194px;
+  padding-top: 57px;
+}
+
+.container-lessons__challenge__trail a {
+  text-decoration: none;
+  margin-bottom: 57px;
+}
+
+.container-lessons__challenge__trail__paragraph {
+  font-size: 24px;
+  color: var(--yellow_text_cards);
+  font-weight: 400;
+  line-height: 23px;
+}
