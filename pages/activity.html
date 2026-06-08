@@ -1,19 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade - Perfisio</title>
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/components.css">
+  <meta charset="UTF-8">
+  <title>Atividades</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/atividades.css">
 </head>
+
 <body>
-    <header class="header">
-        <img src="../assets/images/logo_perfisio.png" alt="Logotipo do Perfisio" class="header__logo">
-    </header>
-    <main class="activity-page">
-        <div id="activity-root" class="activity-root"></div>
-    </main>
-    <script src="../js/activity.js"></script>
+
+  <header class="header">
+    <img src="../assets/images/logo_perfisio.png" alt="Logo" class="logo">
+    <h1>Atividades</h1>
+  </header>
+
+  <main class="container-atividades">
+
+    <div class="atividade-card">
+      <!-- AGORA CONTROLADO PELO JS -->
+      <h2 id="titulo"></h2>
+      <p id="texto"></p>
+
+      <div class="opcoes">
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- JAVASCRIPT -->
+  <script src="../js/atividades.js"></script>
 </body>
 </html>
