@@ -54,6 +54,15 @@
   text-decoration: none;
   position: absolute;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-lessons__buttons__subtitle {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--green_dark_background);
 }
 
 /* Position each button on the trail */
