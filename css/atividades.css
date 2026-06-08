@@ -1,0 +1,94 @@
+/* RESET GLOBAL (corrige esse espaço branco chato) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --verde-principal: #034225;
+  --verde-escuro: #081810;
+  --branco: #FFFFFF;
+  --branco-suave: #F7F3F3;
+  --cinza: #828282;
+  --cinza-claro: #E0D9D9;
+}
+
+/* BODY */
+body {
+  background: var(--branco-suave);
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* HEADER */
+.header {
+  background: var(--verde-principal);
+  color: var(--branco);
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+}
+
+.logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+/* CONTAINER */
+.container-atividades {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+/* CARD */
+.atividade-card {
+  background: var(--branco);
+  padding: 30px;
+  border-radius: 16px;
+  width: 420px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid var(--cinza-claro);
+}
+
+.atividade-card:hover {
+  transform: translateY(-6px);
+}
+
+/* TÍTULO */
+.atividade-card h2 {
+  color: var(--verde-escuro);
+  margin-bottom: 10px;
+}
+
+/* TEXTO */
+.atividade-card p {
+  color: var(--cinza);
+}
+
+/* OPÇÕES */
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.opcoes button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: var(--verde-principal);
+  color: var(--branco);
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.opcoes button:hover {
+  background: var(--verde-escuro);
+  transform: scale(1.03);
+}
