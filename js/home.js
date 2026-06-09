@@ -7,6 +7,30 @@ function splitIntoNGroups(items, n) {
   return groups;
 }
 
+function formatActivityLabel(section, groupIndex) {
+  return `Atividade ${groupIndex} — ${section.moduleTitle}`;
+}
+
+function buildActivityButton(section, groupIndex, groupItems) {
+  const buttonIndex = groupIndex + 1;
+  const itemClass = `container-lessons__buttons__item--${(buttonIndex % 4) + 1}`;
+  const sectionTitle = section.moduleTitle;
+  const activityTitle = `Atividade ${buttonIndex} do ${sectionTitle}`;
+
+  return `
+    <a
+      href="activity.html?section=${encodeURIComponent(section.sectionId)}&group=${buttonIndex}"
+      class="container-lessons__buttons__item ${itemClass}"
+      aria-label="${activityTitle}"
+      title="${activityTitle}"
+      data-section="${section.sectionId}"
+      data-group="${buttonIndex}"
+    >
+      <button class="container-lessons__buttons__button">${buttonIndex}</button>
+      <span class="container-lessons__buttons__subtitle">${groupItems.length} perguntas</span>
+    </a>`;
+}
+
 function buildLessonSection(section) {
   const groups = splitIntoNGroups(section.items, 4);
 
@@ -29,19 +53,33 @@ function buildLessonSection(section) {
         </svg>
       </div>
       <div class="container-lessons__buttons">
-        ${groups
-          .map((group, index) => {
-            const buttonLabel = index + 1;
-            const itemClass = `container-lessons__buttons__item--${(index % 4) + 1}`;
-            const questionCount = group.length;
-            return `
-              <a href="activity.html?section=${section.sectionId}&group=${index + 1}" class="container-lessons__buttons__item ${itemClass}">
-                <button class="container-lessons__buttons__button">${buttonLabel}</button>
-                <span class="container-lessons__buttons__subtitle">${questionCount} perguntas</span>
-              </a>`;
-          })
-          .join("")}
+        ${groups.map((group, index) => buildActivityButton(section, index, group)).join("")}
       </div>
+    </div>
+  `;
+}
+
+function buildChallengeSection() {
+  return `
+    <div class="container-lessons__lesson__content__challenge">
+      <h5 class="container-lessons__lesson__content__difficult__challenge">
+        -Nível Doutor-
+      </h5>
+      <h3 class="container-lessons__lesson__content__title__challenge">
+        O Último<br />Challenge
+      </h3>
+    </div>
+
+    <div class="container-lessons__challenge__trail">
+      <a href="/">
+        <button class="container-lessons__challenge__trail__button">
+          Cuida
+        </button>
+      </a>
+      <p class="container-lessons__challenge__trail__paragraph">
+        Desafie-se no Último Challenge<br />respondendo perguntas<br />de todos os assuntos vistos,<br />
+        porém, com menos tempo<br />para as resposta e menos dicas.
+      </p>
     </div>
   `;
 }
@@ -49,7 +87,20 @@ function buildLessonSection(section) {
 function renderHome() {
   const lessonList = document.getElementById("lesson-list");
   if (!lessonList) return;
-  lessonList.innerHTML = getLessonSections().map(buildLessonSection).join("");
+
+  const sections =
+    typeof getLessonSections === "function" ? getLessonSections() : [];
+  if (!sections.length) {
+    lessonList.innerHTML = `
+      <div class="container-lessons__empty">
+        <p>Não foi possível carregar as atividades no momento.</p>
+      </div>
+    `;
+    return;
+  }
+
+  lessonList.innerHTML =
+    sections.map(buildLessonSection).join("") + buildChallengeSection();
 }
 
 window.addEventListener("DOMContentLoaded", renderHome);
