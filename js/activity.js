@@ -2395,16 +2395,16 @@ function renderActivity(activity) {
         <h2 class="quiz-question-title">${escapeHtml(activity.title)}</h2>
         <p class="quiz-question-instruction">${escapeHtml(activity.description)}</p>
 
-        <div class="quiz-options">
-          ${optionsHtml}
-        </div>
-
         <div class="quiz-hints-container">
           <div class="quiz-hints-title">Dicas</div>
           <div class="quiz-hint-buttons">
             ${hintButtonsHtml}
           </div>
           <div class="quiz-hint-modal" id="hint-modal"></div>
+        </div>
+
+        <div class="quiz-options">
+          ${optionsHtml}
         </div>
 
         <button type="button" class="quiz-submit-btn" id="submit-answer" disabled>Responder</button>
@@ -2416,11 +2416,13 @@ function renderActivity(activity) {
   `;
 
   const keyBadge = root.querySelector("#key-badge");
+  const keyBadgeContainer = root.querySelector(".quiz-badge");
   const hintModal = root.querySelector("#hint-modal");
   const feedback = root.querySelector("#feedback");
   const submitButton = root.querySelector("#submit-answer");
   const optionInputs = root.querySelectorAll("input[name='quiz-option']");
   const hintButtons = root.querySelectorAll(".quiz-hint-btn");
+  const keyWarningState = { active: false, timeoutId: null };
 
   function updateKeyDisplay() {
     if (keyBadge) {
@@ -2465,36 +2467,137 @@ function renderActivity(activity) {
     hintModal.textContent = "";
   }
 
+  const HINT_HOLD_DURATION = 2000;
+  const activeHintTimers = new Map();
+
   function handleHintClick(event) {
     const button = event.target.closest(".quiz-hint-btn");
     if (!button) return;
     const index = Number(button.dataset.hintIndex);
     const hintState = activityState.hints[index];
     if (!hintState) return;
-
-    if (hintState.unlocked || index === 0) {
+    if (hintState.unlocked) {
       showHintContent(index);
+    }
+  }
+
+  function setKeyGlow(progress) {
+    if (!keyBadgeContainer) return;
+    keyBadgeContainer.style.setProperty("--key-glow", String(progress));
+  }
+
+  function resetKeyGlow() {
+    if (!keyBadgeContainer) return;
+    keyBadgeContainer.style.setProperty("--key-glow", "0");
+  }
+
+  function triggerKeyWarning() {
+    if (!keyBadgeContainer || keyWarningState.active) return;
+    keyWarningState.active = true;
+    keyBadgeContainer.classList.add("key-warning");
+    if (keyWarningState.timeoutId) {
+      clearTimeout(keyWarningState.timeoutId);
+    }
+    keyWarningState.timeoutId = window.setTimeout(() => {
+      keyBadgeContainer.classList.remove("key-warning");
+      keyWarningState.active = false;
+      keyWarningState.timeoutId = null;
+    }, 700);
+  }
+
+  function completeHintHold(button, index) {
+    const hintState = activityState.hints[index];
+    if (!hintState || hintState.unlocked) return;
+    if (activityState.keyBalance <= 0) {
+      button.classList.remove("hint-holding");
+      button.style.setProperty("--hint-progress", "0%");
+      resetKeyGlow();
       return;
     }
 
-    showConfirmModal(
-      `Deseja gastar 1 chave para desbloquear a dica ${index + 1}?`,
-      () => {
-        if (activityState.keyBalance <= 0) {
-          showInfoModal(
-            "Sem chaves",
-            "Você não tem chaves suficientes para desbloquear essa dica.",
-          );
-          return;
-        }
-        activityState.keyBalance -= 1;
-        setStoredKeyBalance(sectionId, activityState.keyBalance);
-        hintState.unlocked = true;
-        setHintButtonState(index, true);
-        updateKeyDisplay();
-        showHintContent(index);
-      },
-    );
+    hintState.unlocked = true;
+    activityState.keyBalance -= 1;
+    setStoredKeyBalance(sectionId, activityState.keyBalance);
+    setHintButtonState(index, true);
+    updateKeyDisplay();
+    showHintContent(index);
+    button.classList.remove("hint-holding");
+    button.classList.add("hint-success");
+    button.style.setProperty("--hint-progress", "100%");
+    setKeyGlow(1);
+    window.setTimeout(() => {
+      button.classList.remove("hint-success");
+      button.style.setProperty("--hint-progress", "0%");
+      resetKeyGlow();
+    }, 300);
+  }
+
+  function cancelHintHold(button) {
+    if (!button) return;
+    const hintTimer = activeHintTimers.get(button);
+    if (!hintTimer) return;
+    cancelAnimationFrame(hintTimer.rafId);
+    clearTimeout(hintTimer.timeoutId);
+    activeHintTimers.delete(button);
+    button.classList.remove("hint-holding");
+    button.style.setProperty("--hint-progress", "0%");
+  }
+
+  function startHintHold(button, index, event) {
+    const hintState = activityState.hints[index];
+    if (!hintState || hintState.unlocked) return;
+    if (activityState.keyBalance <= 0) {
+      return;
+    }
+
+    button.classList.add("hint-holding");
+    let startTime = performance.now();
+    const timer = { rafId: null, timeoutId: null };
+
+    function animate(progressTime) {
+      const elapsed = progressTime - startTime;
+      const progress = Math.min(elapsed / HINT_HOLD_DURATION, 1);
+      button.style.setProperty("--hint-progress", `${progress * 100}%`);
+      setKeyGlow(progress);
+      if (progress < 1) {
+        timer.rafId = requestAnimationFrame(animate);
+      }
+    }
+
+    timer.rafId = requestAnimationFrame(animate);
+    timer.timeoutId = window.setTimeout(() => {
+      activeHintTimers.delete(button);
+      completeHintHold(button, index);
+    }, HINT_HOLD_DURATION);
+
+    activeHintTimers.set(button, timer);
+    if (event && event.pointerId !== undefined) {
+      button.setPointerCapture(event.pointerId);
+    }
+  }
+
+  function handleHintPointerDown(event) {
+    const button = event.currentTarget;
+    const index = Number(button.dataset.hintIndex);
+    if (!button || Number.isNaN(index)) return;
+    const hintState = activityState.hints[index];
+    if (!hintState || hintState.unlocked) return;
+    if (activityState.keyBalance <= 0) {
+      event.preventDefault();
+      triggerKeyWarning();
+      return;
+    }
+    event.preventDefault();
+    startHintHold(button, index, event);
+  }
+
+  function handleHintPointerUp(event) {
+    const button = event.currentTarget;
+    const index = Number(button.dataset.hintIndex);
+    const hintState = activityState.hints[index];
+    if (!button || Number.isNaN(index) || !hintState || hintState.unlocked) return;
+    cancelHintHold(button);
+    resetKeyGlow();
   }
 
   function calculateReward() {
@@ -2600,6 +2703,11 @@ function renderActivity(activity) {
   });
 
   hintButtons.forEach((button) => {
+    button.addEventListener("mousedown", (event) => event.preventDefault());
+    button.addEventListener("pointerdown", handleHintPointerDown);
+    button.addEventListener("pointerup", handleHintPointerUp);
+    button.addEventListener("pointercancel", handleHintPointerUp);
+    button.addEventListener("pointerleave", handleHintPointerUp);
     button.addEventListener("click", handleHintClick);
   });
 
