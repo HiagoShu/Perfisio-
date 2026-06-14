@@ -16,6 +16,8 @@ function buildActivityButton(section, groupIndex, groupItems) {
   const itemClass = `container-lessons__buttons__item--${(buttonIndex % 4) + 1}`;
   const sectionTitle = section.moduleTitle;
   const activityTitle = `Atividade ${buttonIndex} do ${sectionTitle}`;
+  const buttonIcon = (buttonIndex === 3 ? "Titan.png" : "Play.png");
+  const buttonIconAlt = (buttonIndex === 3 ? "Titan" : "Play");
 
   return `
     <a
@@ -26,7 +28,13 @@ function buildActivityButton(section, groupIndex, groupItems) {
       data-section="${section.sectionId}"
       data-group="${buttonIndex}"
     >
-      <button class="container-lessons__buttons__button">${buttonIndex}</button>
+      <button class="container-lessons__buttons__button" aria-label="${buttonIconAlt} button">
+        <img
+          class="container-lessons__buttons__icon"
+          src="../assets/images/${buttonIcon}"
+          alt="${buttonIconAlt}"
+        />
+      </button>
       <span class="container-lessons__buttons__subtitle">${groupItems.length} perguntas</span>
     </a>`;
 }
