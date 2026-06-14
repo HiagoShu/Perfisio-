@@ -7,7 +7,7 @@ const activityData = [
     items: [
       {
         id: "calouro-70",
-        title: "Pergunta 70",
+        title: "Responda a pergunta com base nas dicas abaixo!",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -26,7 +26,7 @@ const activityData = [
       },
       {
         id: "calouro-71",
-        title: "Pergunta 71",
+        title: "Responda a pergunta com base nas dicas abaixo!",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -45,7 +45,7 @@ const activityData = [
       },
       {
         id: "calouro-72",
-        title: "Pergunta 72",
+        title: "Responda a pergunta com base nas dicas abaixo!",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -64,7 +64,7 @@ const activityData = [
       },
       {
         id: "calouro-73",
-        title: "Pergunta 73",
+        title: "Responda a pergunta com base nas dicas abaixo!",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -83,7 +83,7 @@ const activityData = [
       },
       {
         id: "calouro-74",
-        title: "Pergunta 74",
+        title: "Responda a pergunta com base nas dicas abaixo!",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -102,7 +102,7 @@ const activityData = [
       },
       {
         id: "calouro-75",
-        title: "Pergunta 75",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -121,7 +121,7 @@ const activityData = [
       },
       {
         id: "calouro-76",
-        title: "Pergunta 76",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -130,7 +130,7 @@ const activityData = [
           "UM DOS TERMOS RESPONDE A ESTÍMULOS QUÍMICOS,",
           "SÃO PROPRIEDADES DO MÚSCULO;",
           "SÃO DOIS TERMOS DIFERENTES, MAS RELACIONADOS;",
-          "UM DOS TERMOS ESTÁ RELACIONADO À INTERAÇÃO NEURÔNIO\u0002FIBRA MUSCULAR;",
+          "UM DOS TERMOS ESTÁ RELACIONADO À INTERAÇÃO NEURÔNIO u0002FIBRA MUSCULAR;",
           "O 1° TERMO TEM 14 LETRAS;",
           "UM DOS TERMOS PODE SER DEFINIDO COMO CONTRAÇÃO;",
           "O SEGUNDO TERMO TEM 32 LETRAS, POIS SÃO 4 PALAVRAS;",
@@ -140,7 +140,7 @@ const activityData = [
       },
       {
         id: "calouro-77",
-        title: "Pergunta 77",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -159,7 +159,7 @@ const activityData = [
       },
       {
         id: "calouro-78",
-        title: "Pergunta 78",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -178,7 +178,7 @@ const activityData = [
       },
       {
         id: "calouro-79",
-        title: "Pergunta 79",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -197,7 +197,7 @@ const activityData = [
       },
       {
         id: "calouro-80",
-        title: "Pergunta 80",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -216,7 +216,7 @@ const activityData = [
       },
       {
         id: "calouro-81",
-        title: "Pergunta 81",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -235,7 +235,7 @@ const activityData = [
       },
       {
         id: "calouro-82",
-        title: "Pergunta 82",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -254,7 +254,7 @@ const activityData = [
       },
       {
         id: "calouro-83",
-        title: "Pergunta 83",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -273,7 +273,7 @@ const activityData = [
       },
       {
         id: "calouro-84",
-        title: "Pergunta 84",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -292,7 +292,7 @@ const activityData = [
       },
       {
         id: "calouro-85",
-        title: "Pergunta 85",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -311,7 +311,7 @@ const activityData = [
       },
       {
         id: "calouro-86",
-        title: "Pergunta 86",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -330,7 +330,7 @@ const activityData = [
       },
       {
         id: "calouro-87",
-        title: "Pergunta 87",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -349,7 +349,7 @@ const activityData = [
       },
       {
         id: "calouro-88",
-        title: "Pergunta 88",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -368,7 +368,7 @@ const activityData = [
       },
       {
         id: "calouro-89",
-        title: "Pergunta 89",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -387,7 +387,7 @@ const activityData = [
       },
       {
         id: "calouro-90",
-        title: "Pergunta 90",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -406,7 +406,7 @@ const activityData = [
       },
       {
         id: "calouro-91",
-        title: "Pergunta 91",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -425,7 +425,7 @@ const activityData = [
       },
       {
         id: "calouro-92",
-        title: "Pergunta 92",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -444,7 +444,7 @@ const activityData = [
       },
       {
         id: "calouro-93",
-        title: "Pergunta 93",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -463,7 +463,7 @@ const activityData = [
       },
       {
         id: "calouro-94",
-        title: "Pergunta 94",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -482,7 +482,7 @@ const activityData = [
       },
       {
         id: "calouro-95",
-        title: "Pergunta 95",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -501,7 +501,7 @@ const activityData = [
       },
       {
         id: "calouro-96",
-        title: "Pergunta 96",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -521,13 +521,13 @@ const activityData = [
       },
       {
         id: "calouro-97",
-        title: "Pergunta 97",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
           "EM CASO DE DÚVIDA, OS MOVIMENTOS DE PRONO E SUPINO",
           "O BRAÇO DO PACIENTE DEVE ESTAR EM ABDUÇÃO A CERCA DE",
-          "OS DEDOS DO FISIOTERAPEUTA ESTARÃO EM PINÇA “POLEGAR\u0002INDICADOR”;",
+          "OS DEDOS DO FISIOTERAPEUTA ESTARÃO EM PINÇA “POLEGAR u0002INDICADOR”;",
           "PERCA A VEZ;",
           "PACIENTE SENTADO OU EM PÉ;",
           "O FISIOTERAPEUTA NÃO TEM POSIÇÃO ESPECÍFICA;",
@@ -540,7 +540,7 @@ const activityData = [
       },
       {
         id: "calouro-98",
-        title: "Pergunta 98",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -559,7 +559,7 @@ const activityData = [
       },
       {
         id: "calouro-99",
-        title: "Pergunta 99",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -578,7 +578,7 @@ const activityData = [
       },
       {
         id: "calouro-100",
-        title: "Pergunta 100",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -597,7 +597,7 @@ const activityData = [
       },
       {
         id: "calouro-101",
-        title: "Pergunta 101",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -616,7 +616,7 @@ const activityData = [
       },
       {
         id: "calouro-102",
-        title: "Pergunta 102",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -635,7 +635,7 @@ const activityData = [
       },
       {
         id: "calouro-103",
-        title: "Pergunta 103",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -654,7 +654,7 @@ const activityData = [
       },
       {
         id: "calouro-104",
-        title: "Pergunta 104",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -673,7 +673,7 @@ const activityData = [
       },
       {
         id: "calouro-105",
-        title: "Pergunta 105",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -693,7 +693,7 @@ const activityData = [
       },
       {
         id: "calouro-106",
-        title: "Pergunta 106",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -712,7 +712,7 @@ const activityData = [
       },
       {
         id: "calouro-107",
-        title: "Pergunta 107",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -731,7 +731,7 @@ const activityData = [
       },
       {
         id: "calouro-108",
-        title: "Pergunta 108",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -751,7 +751,7 @@ const activityData = [
       },
       {
         id: "calouro-109",
-        title: "Pergunta 109",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Conceitos",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -778,7 +778,7 @@ const activityData = [
     items: [
       {
         id: "veterano-1",
-        title: "Pergunta 1",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -797,7 +797,7 @@ const activityData = [
       },
       {
         id: "veterano-2",
-        title: "Pergunta 2",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -816,7 +816,7 @@ const activityData = [
       },
       {
         id: "veterano-3",
-        title: "Pergunta 3",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -835,7 +835,7 @@ const activityData = [
       },
       {
         id: "veterano-4",
-        title: "Pergunta 4",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -854,7 +854,7 @@ const activityData = [
       },
       {
         id: "veterano-5",
-        title: "Pergunta 5",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -874,7 +874,7 @@ const activityData = [
       },
       {
         id: "veterano-6",
-        title: "Pergunta 6",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -892,7 +892,7 @@ const activityData = [
       },
       {
         id: "veterano-7",
-        title: "Pergunta 7",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -911,7 +911,7 @@ const activityData = [
       },
       {
         id: "veterano-8",
-        title: "Pergunta 8",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -930,7 +930,7 @@ const activityData = [
       },
       {
         id: "veterano-9",
-        title: "Pergunta 9",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -949,7 +949,7 @@ const activityData = [
       },
       {
         id: "veterano-10",
-        title: "Pergunta 10",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -968,7 +968,7 @@ const activityData = [
       },
       {
         id: "veterano-11",
-        title: "Pergunta 11",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -987,7 +987,7 @@ const activityData = [
       },
       {
         id: "veterano-12",
-        title: "Pergunta 12",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1006,7 +1006,7 @@ const activityData = [
       },
       {
         id: "veterano-13",
-        title: "Pergunta 13",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1025,7 +1025,7 @@ const activityData = [
       },
       {
         id: "veterano-14",
-        title: "Pergunta 14",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1044,7 +1044,7 @@ const activityData = [
       },
       {
         id: "veterano-15",
-        title: "Pergunta 15",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1063,7 +1063,7 @@ const activityData = [
       },
       {
         id: "veterano-16",
-        title: "Pergunta 16",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1082,7 +1082,7 @@ const activityData = [
       },
       {
         id: "veterano-17",
-        title: "Pergunta 17",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1101,7 +1101,7 @@ const activityData = [
       },
       {
         id: "veterano-18",
-        title: "Pergunta 18",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1120,7 +1120,7 @@ const activityData = [
       },
       {
         id: "veterano-19",
-        title: "Pergunta 19",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1139,7 +1139,7 @@ const activityData = [
       },
       {
         id: "veterano-20",
-        title: "Pergunta 20",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1158,7 +1158,7 @@ const activityData = [
       },
       {
         id: "veterano-21",
-        title: "Pergunta 21",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1177,7 +1177,7 @@ const activityData = [
       },
       {
         id: "veterano-22",
-        title: "Pergunta 22",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1196,7 +1196,7 @@ const activityData = [
       },
       {
         id: "veterano-23",
-        title: "Pergunta 23",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1215,7 +1215,7 @@ const activityData = [
       },
       {
         id: "veterano-24",
-        title: "Pergunta 24",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1234,7 +1234,7 @@ const activityData = [
       },
       {
         id: "veterano-25",
-        title: "Pergunta 25",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1253,7 +1253,7 @@ const activityData = [
       },
       {
         id: "veterano-26",
-        title: "Pergunta 26",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1272,7 +1272,7 @@ const activityData = [
       },
       {
         id: "veterano-27",
-        title: "Pergunta 27",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1292,7 +1292,7 @@ const activityData = [
       },
       {
         id: "veterano-28",
-        title: "Pergunta 28",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1311,7 +1311,7 @@ const activityData = [
       },
       {
         id: "veterano-29",
-        title: "Pergunta 29",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1330,7 +1330,7 @@ const activityData = [
       },
       {
         id: "veterano-30",
-        title: "Pergunta 30",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1349,7 +1349,7 @@ const activityData = [
       },
       {
         id: "veterano-31",
-        title: "Pergunta 31",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1368,7 +1368,7 @@ const activityData = [
       },
       {
         id: "veterano-32",
-        title: "Pergunta 32",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1388,7 +1388,7 @@ const activityData = [
       },
       {
         id: "veterano-33",
-        title: "Pergunta 33",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1408,7 +1408,7 @@ const activityData = [
       },
       {
         id: "veterano-34",
-        title: "Pergunta 34",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1427,7 +1427,7 @@ const activityData = [
       },
       {
         id: "veterano-35",
-        title: "Pergunta 35",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1446,7 +1446,7 @@ const activityData = [
       },
       {
         id: "veterano-36",
-        title: "Pergunta 36",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1465,7 +1465,7 @@ const activityData = [
       },
       {
         id: "veterano-37",
-        title: "Pergunta 37",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1484,7 +1484,7 @@ const activityData = [
       },
       {
         id: "veterano-38",
-        title: "Pergunta 38",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1503,7 +1503,7 @@ const activityData = [
       },
       {
         id: "veterano-39",
-        title: "Pergunta 39",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1522,7 +1522,7 @@ const activityData = [
       },
       {
         id: "veterano-40",
-        title: "Pergunta 40",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1541,7 +1541,7 @@ const activityData = [
       },
       {
         id: "veterano-41",
-        title: "Pergunta 41",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Muscular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1569,7 +1569,7 @@ const activityData = [
     items: [
       {
         id: "perfisio-42",
-        title: "Pergunta 42",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1588,7 +1588,7 @@ const activityData = [
       },
       {
         id: "perfisio-43",
-        title: "Pergunta 43",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1607,7 +1607,7 @@ const activityData = [
       },
       {
         id: "perfisio-44",
-        title: "Pergunta 44",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1626,7 +1626,7 @@ const activityData = [
       },
       {
         id: "perfisio-45",
-        title: "Pergunta 45",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1646,7 +1646,7 @@ const activityData = [
       },
       {
         id: "perfisio-46",
-        title: "Pergunta 46",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1665,7 +1665,7 @@ const activityData = [
       },
       {
         id: "perfisio-47",
-        title: "Pergunta 47",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1685,7 +1685,7 @@ const activityData = [
       },
       {
         id: "perfisio-48",
-        title: "Pergunta 48",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1705,7 +1705,7 @@ const activityData = [
       },
       {
         id: "perfisio-49",
-        title: "Pergunta 49",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1724,7 +1724,7 @@ const activityData = [
       },
       {
         id: "perfisio-50",
-        title: "Pergunta 50",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1743,7 +1743,7 @@ const activityData = [
       },
       {
         id: "perfisio-51",
-        title: "Pergunta 51",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1762,7 +1762,7 @@ const activityData = [
       },
       {
         id: "perfisio-52",
-        title: "Pergunta 52",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1781,7 +1781,7 @@ const activityData = [
       },
       {
         id: "perfisio-53",
-        title: "Pergunta 53",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1800,7 +1800,7 @@ const activityData = [
       },
       {
         id: "perfisio-54",
-        title: "Pergunta 54",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1819,7 +1819,7 @@ const activityData = [
       },
       {
         id: "perfisio-55",
-        title: "Pergunta 55",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1838,7 +1838,7 @@ const activityData = [
       },
       {
         id: "perfisio-56",
-        title: "Pergunta 56",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1857,7 +1857,7 @@ const activityData = [
       },
       {
         id: "perfisio-57",
-        title: "Pergunta 57",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1876,7 +1876,7 @@ const activityData = [
       },
       {
         id: "perfisio-58",
-        title: "Pergunta 58",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1895,7 +1895,7 @@ const activityData = [
       },
       {
         id: "perfisio-59",
-        title: "Pergunta 59",
+        title: "Responda a pergunta com base nas dicas abaixo!",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1914,7 +1914,7 @@ const activityData = [
       },
       {
         id: "perfisio-60",
-        title: "Pergunta 60",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1933,7 +1933,7 @@ const activityData = [
       },
       {
         id: "perfisio-61",
-        title: "Pergunta 61",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1952,7 +1952,7 @@ const activityData = [
       },
       {
         id: "perfisio-62",
-        title: "Pergunta 62",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1971,7 +1971,7 @@ const activityData = [
       },
       {
         id: "perfisio-63",
-        title: "Pergunta 63",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -1990,7 +1990,7 @@ const activityData = [
       },
       {
         id: "perfisio-64",
-        title: "Pergunta 64",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -2009,7 +2009,7 @@ const activityData = [
       },
       {
         id: "perfisio-65",
-        title: "Pergunta 65",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -2028,7 +2028,7 @@ const activityData = [
       },
       {
         id: "perfisio-66",
-        title: "Pergunta 66",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -2047,7 +2047,7 @@ const activityData = [
       },
       {
         id: "perfisio-67",
-        title: "Pergunta 67",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -2066,7 +2066,7 @@ const activityData = [
       },
       {
         id: "perfisio-68",
-        title: "Pergunta 68",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -2085,7 +2085,7 @@ const activityData = [
       },
       {
         id: "perfisio-69",
-        title: "Pergunta 69",
+        title:  "Responda a pergunta com base nas dicas abaixo! ",
         description: "Categoria: Sistema Articular",
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: [
@@ -2411,7 +2411,7 @@ function renderActivity(activity) {
         <div class="quiz-feedback" id="feedback"></div>
       </div>
 
-      <a class="activity-back-link" href="${listHref}">Voltar para a lista</a>
+      <a class="activity-back-link" href="home.html">Voltar para o início</a>
     </div>
   `;
 
@@ -2569,9 +2569,9 @@ function renderActivity(activity) {
         createModal({
           title: "🎉 Parabéns!",
           message: `Você ganhou ${reward} ${reward === 1 ? "chave" : "chaves"}! Todas as questões foram concluídas.`,
-          confirmText: "Voltar para a lista",
+          confirmText: "Voltar para o início",
           onConfirm: () => {
-            window.location.href = listHref;
+            window.location.href = "home.html";
           },
         });
       }

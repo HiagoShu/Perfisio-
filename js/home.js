@@ -19,7 +19,7 @@ function buildActivityButton(section, groupIndex, groupItems) {
 
   return `
     <a
-      href="activity.html?section=${encodeURIComponent(section.sectionId)}&group=${buttonIndex}"
+      href="activity.html?id=${groupItems[0].id}&section=${encodeURIComponent(section.sectionId)}&group=${buttonIndex}"
       class="container-lessons__buttons__item ${itemClass}"
       aria-label="${activityTitle}"
       title="${activityTitle}"
@@ -73,7 +73,7 @@ function buildChallengeSection() {
     <div class="container-lessons__challenge__trail">
       <a href="/">
         <button class="container-lessons__challenge__trail__button">
-          Cuida
+          IR
         </button>
       </a>
       <p class="container-lessons__challenge__trail__paragraph">

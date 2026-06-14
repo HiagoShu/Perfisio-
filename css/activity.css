@@ -510,38 +510,7 @@ body {
       background-color: #ccc;
     }
 
-    /* ===== ANIMAÇÃO DA QUESTÃO ATUAL NA LISTA ===== */
-    @keyframes light-sweep {
-  0%   { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
 
-.activity-card--group-item.current-question {
-  border: 2px solid var(--yellow_text_cards);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 35%,
-    rgba(255,255,255,0.45) 50%,
-    transparent 65%,
-    transparent 100%
-  );
-  background-size: 300% 100%;  /* gradiente 3x maior que o card */
-  animation:
-    pulse-border 2s infinite,
-    light-sweep 2.5s infinite linear;
-}
-
-    .activity-card--group-item.locked {
-      opacity: 0.5;
-      background-color: #ccc;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    .activity-card--group-item.locked .activity-question-link {
-      display: none;
-    }
 
     @media (max-width: 640px) {
       .quiz-topbar {
