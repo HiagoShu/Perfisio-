@@ -91,14 +91,17 @@
 }
 
 .container-lessons__buttons__button {
-  font-size: 50px;
   width: 94px;
   height: 94px;
   border-radius: 50%;
-  font-weight: 900;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
 }
 
 .container-lessons__buttons__button:hover {
@@ -109,29 +112,21 @@
   transform: scale(0.95);
 }
 
+.container-lessons__buttons__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
 /* Individual button colors */
-.container-lessons__buttons__item--1 .container-lessons__buttons__button {
-  background-color: var(--lighter_green__buttons);
-  color: var(--green_dark_background);
-  border: 5px solid var(--green_dark_background);
-}
-
-.container-lessons__buttons__item--2 .container-lessons__buttons__button {
-  background-color: var(--yellow_text_cards);
-  color: var(--dark_yellow_text_cards);
-  border: 5px solid var(--dark_yellow_text_cards);
-}
-
-.container-lessons__buttons__item--3 .container-lessons__buttons__button {
-  background-color: var(--yellow_text_cards);
-  color: var(--dark_yellow_text_cards);
-  border: 5px solid var(--dark_yellow_text_cards);
-}
-
+.container-lessons__buttons__item--1 .container-lessons__buttons__button,
+.container-lessons__buttons__item--2 .container-lessons__buttons__button,
+.container-lessons__buttons__item--3 .container-lessons__buttons__button,
 .container-lessons__buttons__item--4 .container-lessons__buttons__button {
-  background-color: var(--light_purple_final_level);
-  color: var(--medium_purple_final_level);
-  border: 5px solid var(--medium_purple_final_level);
+  border: none;
+  background: transparent;
+  color: inherit;
 }
 
 .container-lessons__challenge__trail a {

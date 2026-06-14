@@ -205,10 +205,52 @@ body {
       color: var(--yellow_text_cards);
       font-weight: 700;
       font-size: 14px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      --key-glow: 0;
+      box-shadow: 0 0 16px rgba(255, 214, 0, calc(var(--key-glow, 0) * 0.12));
+    }
+
+    .quiz-badge.key-warning {
+      animation: key-badge-warning 0.7s ease;
     }
 
     .quiz-badge-icon {
       font-size: 24px;
+    }
+
+    @keyframes key-badge-warning {
+      0%, 100% {
+        transform: translateX(0);
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0);
+      }
+      10% {
+        transform: translateX(-1px);
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.28);
+      }
+      20% {
+        transform: translateX(1px);
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+      }
+      30% {
+        transform: translateX(-1px);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.32);
+      }
+      40% {
+        transform: translateX(1px);
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+      }
+      50% {
+        transform: translateX(-1px);
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.34);
+      }
+      60% {
+        transform: translateX(1px);
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+      }
+      70% {
+        transform: translateX(-1px);
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.28);
+      }
     }
 
     /* ===== QUESTION PILL (Transição) ===== */
@@ -318,6 +360,8 @@ body {
     }
 
     .quiz-hint-btn {
+      position: relative;
+      overflow: hidden;
       width: 100%;
       aspect-ratio: 1;
       border-radius: 12px;
@@ -328,9 +372,48 @@ body {
       justify-content: center;
       gap: 4px;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
       font-size: 11px;
       font-weight: 600;
+      touch-action: manipulation;
+    }
+
+    .quiz-hint-btn::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: var(--hint-progress, 0%);
+      background: rgba(255, 221, 85, 0.28);
+      transition: height 0.12s linear;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .quiz-hint-btn > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .quiz-hint-btn.hint-holding {
+      transform: scale(0.98);
+    }
+
+    .quiz-hint-btn.hint-success {
+      animation: hint-success 0.28s ease forwards;
+    }
+
+    @keyframes hint-success {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
 
     .quiz-hint-btn.unlocked {
@@ -356,6 +439,8 @@ body {
     }
 
     .quiz-hint-modal {
+      width: 100%;
+      box-sizing: border-box;
       background-color: #fff8e1;
       border: 1.5px solid var(--dark_yellow_text_cards);
       border-radius: 12px;
@@ -363,6 +448,9 @@ body {
       font-size: 14px;
       color: var(--dark_yellow_text_cards);
       line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
       display: none;
     }
 
