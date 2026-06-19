@@ -16,7 +16,7 @@ body {
 }
 
 .container-lessons__lesson__content {
-  padding-top: 60px;
+  padding-top: 70px;
   padding-bottom: 89px;
   height: 178px;
   background-color: var(--gray_content_difficult);

@@ -46,7 +46,6 @@ function buildLessonSection(section) {
     <div class="container-lessons__lesson__content">
       <h5 class="container-lessons__lesson__content__difficult">-${section.level}-</h5>
       <h3 class="container-lessons__lesson__content__title">${section.moduleTitle}</h3>
-      <p class="container-lessons__lesson__content__description">${section.description}</p>
     </div>
     <div class="container-lessons__trail-wrapper">
       <div class="container-lessons__trail">
