@@ -2308,6 +2308,102 @@ function showInfoModal(title, message) {
   });
 }
 
+// ─── Progresso de grupo ──────────────────────────────────────────────────────
+
+/**
+ * Salva todas as questões do grupo como resolvidas e registra o grupo como
+ * concluído no localStorage. Também desbloqueia o próximo grupo, se existir.
+ */
+function markGroupCompleted(sectionId, groupIndex, groupItems) {
+  // Marcar cada questão individualmente (idempotente)
+  groupItems.forEach((item) => markQuestionSolved(item.id));
+
+  // Registrar grupo concluído
+  const completedKey = `perfisio-group-completed-${sectionId}-${groupIndex}`;
+  localStorage.setItem(completedKey, "true");
+
+  // Desbloquear próximo grupo
+  // const nextGroupIndex = Number(groupIndex) + 1;
+  // const unlockedKey = `perfisio-group-unlocked-${sectionId}-${nextGroupIndex}`;
+  // localStorage.setItem(unlockedKey, "true");
+}
+
+/** Verifica se um grupo específico já foi concluído. */
+function isGroupCompleted(sectionId, groupIndex) {
+  const key = `perfisio-group-completed-${sectionId}-${groupIndex}`;
+  return localStorage.getItem(key) === "true";
+}
+
+/** Verifica se um grupo está desbloqueado (grupo 1 sempre está). */
+function isGroupUnlocked(sectionId, groupIndex) {
+  if (Number(groupIndex) === 1) return true;
+  const key = `perfisio-group-unlocked-${sectionId}-${groupIndex}`;
+  return localStorage.getItem(key) === "true";
+}
+
+/**
+ * Conta quantas questões do grupo o usuário já acertou.
+ * Usado apenas na tela de conclusão.
+ */
+function countGroupCorrect(groupItems) {
+  return groupItems.filter((item) => hasSolvedQuestion(item.id)).length;
+}
+
+/**
+ * Exibe o modal de "Atividade Concluída!" ao terminar a última questão do grupo.
+ * Redireciona para home.html ao confirmar.
+ */
+function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
+  const total = groupItems.length;
+  const correct = countGroupCorrect(groupItems);
+  const percentual = Math.round((correct / total) * 100);
+
+  const encouragements = [
+    "Continue assim e chegará ao topo! 💪",
+    "Você está evoluindo a cada questão! 🚀",
+    "Excelente desempenho! O conhecimento é seu melhor instrumento. 🏆",
+    "Mais um grupo vencido! Siga em frente! ⚡",
+  ];
+  const message =
+    encouragements[Math.floor(Math.random() * encouragements.length)];
+
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+  overlay.innerHTML = `
+    <div class="modal completion-modal" role="dialog" aria-modal="true">
+      <div class="completion-emoji">🎉</div>
+      <h3 class="completion-title">Atividade Concluída!</h3>
+      <p class="completion-encouragement">${escapeHtml(message)}</p>
+      <div class="completion-stats">
+        <div class="completion-stat">
+          <span class="completion-stat__value">${total}</span>
+          <span class="completion-stat__label">Questões respondidas</span>
+        </div>
+        <div class="completion-stat">
+          <span class="completion-stat__value">${correct}</span>
+          <span class="completion-stat__label">Acertos</span>
+        </div>
+        <div class="completion-stat">
+          <span class="completion-stat__value">${percentual}%</span>
+          <span class="completion-stat__label">Aproveitamento</span>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="modal-btn confirm completion-cta" id="completion-continue">
+          Continuar
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+
+  overlay.querySelector("#completion-continue").addEventListener("click", () => {
+    overlay.remove();
+    window.location.href = "home.html";
+  });
+}
+
 function renderActivity(activity) {
   const groupFromQuery = getQueryParam("group");
   const currentGroupIndex =
@@ -2599,7 +2695,7 @@ function renderActivity(activity) {
     if (!feedback) return;
     feedback.className = `quiz-feedback visible ${isCorrect ? "success" : "error"}`;
     if (isCorrect) {
-      feedback.textContent = `✓ Resposta correta! Você ganhou ${reward} ${reward === 1 ? "chave" : "chaves"}.`;
+      feedback.textContent = `✓ Resposta correta!`;
     } else {
       feedback.textContent =
         "✗ Resposta incorreta. Tente novamente ou reveja as dicas.";
@@ -2625,41 +2721,42 @@ function renderActivity(activity) {
         activityState.solved = true;
       }
 
-      showFeedback(true, 0); // No keys rewarded
+      showFeedback(true, 0);
       submitButton.disabled = true;
       optionInputs.forEach((input) => {
         input.disabled = true;
       });
 
-      // Mostrar modal com próxima questão
-      const section = getLessonSection(sectionId);
-      const nextActivity = section
-        ? section.items[section.items.indexOf(activity) + 1]
-        : null;
+      // Navegar apenas dentro do grupo atual — nunca sair do grupo
+      const group = getGroupBySection(sectionId, currentGroupIndex);
+      const groupItems = group ? group.items : [];
+      const currentIndexInGroup = groupItems.findIndex(
+        (item) => item.id === activity.id,
+      );
+      const nextItem =
+        currentIndexInGroup >= 0
+          ? groupItems[currentIndexInGroup + 1]
+          : null;
 
-      if (nextActivity) {
+      if (nextItem) {
+        // Ainda há questões neste grupo
         createModal({
           title: "🎉 Parabéns!",
-          message: `Resposta correta!`,
+          message: `Resposta correta! Questão ${currentIndexInGroup + 1} de ${groupItems.length} concluída.`,
           confirmText: "Próxima questão",
           onConfirm: () => {
-            window.location.href = `activity.html?id=${nextActivity.id}&section=${listSectionId}&group=${currentGroupIndex}`;
+            window.location.href = `activity.html?id=${nextItem.id}&section=${listSectionId}&group=${currentGroupIndex}`;
           },
         });
       } else {
-        createModal({
-          title: "🎉 Parabéns!",
-          message: `Todas as questões deste grupo foram concluídas.`,
-          confirmText: "Voltar para o início",
-          onConfirm: () => {
-            window.location.href = "home.html";
-          },
-        });
+        // Última questão do grupo — salvar progresso e exibir tela de conclusão
+        markGroupCompleted(sectionId, currentGroupIndex, groupItems);
+        showGroupCompletionModal(groupItems, sectionId, currentGroupIndex);
       }
     } else {
       showInfoModal(
         "Resposta incorreta",
-        `A resposta correta é: ${activity.answer}`,
+        `Tente novamente! Dica: ${activity.hints[0]}"}`,
       );
       showFeedback(false, 0);
     }
