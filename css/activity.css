@@ -1,7 +1,3 @@
-:root {
-  /* O design system é herdado de global.css */
-}
-
 body {
   background-color: var(--green_dark_background);
   margin: 0;
