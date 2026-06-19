@@ -11,32 +11,94 @@ function formatActivityLabel(section, groupIndex) {
   return `Atividade ${groupIndex} — ${section.moduleTitle}`;
 }
 
+// ─── Progresso (leitura do localStorage) ─────────────────────────────────────
+
+function isGroupCompleted(sectionId, groupIndex) {
+  return (
+    localStorage.getItem(
+      `perfisio-group-completed-${sectionId}-${groupIndex}`
+    ) === "true"
+  );
+}
+
+function isGroupUnlocked(sectionId, groupIndex) {
+  return true
+  
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 function buildActivityButton(section, groupIndex, groupItems) {
   const buttonIndex = groupIndex + 1;
   const itemClass = `container-lessons__buttons__item--${(buttonIndex % 4) + 1}`;
   const sectionTitle = section.moduleTitle;
   const activityTitle = `Atividade ${buttonIndex} do ${sectionTitle}`;
-  const buttonIcon = (buttonIndex === 3 ? "Titan.png" : "Play.png");
-  const buttonIconAlt = (buttonIndex === 3 ? "Titan" : "Play");
 
-  return `
+  const completed = isGroupCompleted(section.sectionId, buttonIndex);
+  const unlocked = isGroupUnlocked(section.sectionId, buttonIndex);
+
+  const buttonIcon = buttonIndex === 3 ? "Titan.png" : "Play.png";
+  const buttonIconAlt = completed
+    ? "Concluído"
+    : !unlocked
+    ? "Bloqueado"
+    : buttonIndex === 3
+    ? "Titan"
+    : "Play";
+
+  const statusLabel = completed
+    ? "✓ Concluída"
+    : !unlocked
+    ? "🔒 Bloqueada"
+    : `${groupItems.length} perguntas`;
+
+  const href = unlocked
+    ? `activity.html?id=${groupItems[0].id}&section=${encodeURIComponent(
+        section.sectionId
+      )}&group=${buttonIndex}`
+    : null;
+
+  const completedClass = completed ? " group--completed" : "";
+  const lockedClass = !unlocked ? " group--locked" : "";
+
+  if (href) {
+    return `
     <a
-      href="activity.html?id=${groupItems[0].id}&section=${encodeURIComponent(section.sectionId)}&group=${buttonIndex}"
-      class="container-lessons__buttons__item ${itemClass}"
+      href="${href}"
+      class="container-lessons__buttons__item ${itemClass}${completedClass}"
       aria-label="${activityTitle}"
       title="${activityTitle}"
       data-section="${section.sectionId}"
       data-group="${buttonIndex}"
     >
-      <button class="container-lessons__buttons__button" aria-label="${buttonIconAlt} button">
+      <button class="container-lessons__buttons__button${completed ? " button--completed" : ""}" aria-label="${buttonIconAlt} button">
         <img
           class="container-lessons__buttons__icon"
           src="../assets/images/${buttonIcon}"
           alt="${buttonIconAlt}"
         />
       </button>
-      <span class="container-lessons__buttons__subtitle">${groupItems.length} perguntas</span>
+      <span class="container-lessons__buttons__subtitle">${statusLabel}</span>
     </a>`;
+  }
+
+  return `
+    <span
+      class="container-lessons__buttons__item ${itemClass}${lockedClass}"
+      aria-disabled="true"
+      aria-label="${activityTitle} (bloqueada)"
+      data-section="${section.sectionId}"
+      data-group="${buttonIndex}"
+    >
+      <button class="container-lessons__buttons__button button--locked" aria-label="Bloqueado" disabled>
+        <img
+          class="container-lessons__buttons__icon"
+          src="../assets/images/${buttonIcon}"
+          alt="${buttonIconAlt}"
+        />
+      </button>
+      <span class="container-lessons__buttons__subtitle">${statusLabel}</span>
+    </span>`;
 }
 
 function buildLessonSection(section) {
