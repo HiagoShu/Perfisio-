@@ -2349,6 +2349,23 @@ function countGroupCorrect(groupItems) {
   return groupItems.filter((item) => hasSolvedQuestion(item.id)).length;
 }
 
+function registerQuestionError(activityId) {
+  const key = `perfisio-errors-${activityId}`;
+  const current = Number(localStorage.getItem(key) || 0);
+
+  localStorage.setItem(key, String(current + 1));
+}
+
+function getQuestionErrors(activityId) {
+  return Number(localStorage.getItem(`perfisio-errors-${activityId}`) || 0);
+}
+
+function countGroupErrors(groupItems) {
+  return groupItems.reduce((total, item) => {
+    return total + getQuestionErrors(item.id);
+  }, 0);
+}
+
 /**
  * Exibe o modal de "Atividade Concluída!" ao terminar a última questão do grupo.
  * Redireciona para home.html ao confirmar.
@@ -2356,7 +2373,13 @@ function countGroupCorrect(groupItems) {
 function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
   const total = groupItems.length;
   const correct = countGroupCorrect(groupItems);
-  const percentual = Math.round((correct / total) * 100);
+  const errors = countGroupErrors(groupItems);
+
+  const firstTryCorrect = groupItems.filter(
+    (item) => getQuestionErrors(item.id) === 0,
+  ).length;
+
+  const percentual = Math.round((firstTryCorrect / total) * 100);
 
   const encouragements = [
     "Continue assim e chegará ao topo! 💪",
@@ -2376,17 +2399,19 @@ function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
       <p class="completion-encouragement">${escapeHtml(message)}</p>
       <div class="completion-stats">
         <div class="completion-stat">
-          <span class="completion-stat__value">${total}</span>
+          <span class="completion-stat__value"><strong>${total}</strong></span>
           <span class="completion-stat__label">Questões respondidas</span>
         </div>
-        <div class="completion-stat">
-          <span class="completion-stat__value">${correct}</span>
-          <span class="completion-stat__label">Acertos</span>
-        </div>
-        <div class="completion-stat">
-          <span class="completion-stat__value">${percentual}%</span>
-          <span class="completion-stat__label">Aproveitamento</span>
-        </div>
+ 
+<div class="completion-stat">
+  <span class="completion-stat__value"><strong>${firstTryCorrect}</strong></span>
+  <span class="completion-stat__label">Acertos de primeira</span>
+</div>
+
+<div class="completion-stat">
+  <span class="completion-stat__value"><strong>${percentual}%</strong></span>
+  <span class="completion-stat__label">Precisão</span>
+</div>
       </div>
       <div class="modal-actions">
         <button type="button" class="modal-btn confirm completion-cta" id="completion-continue">
@@ -2398,10 +2423,12 @@ function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
 
   document.body.appendChild(overlay);
 
-  overlay.querySelector("#completion-continue").addEventListener("click", () => {
-    overlay.remove();
-    window.location.href = "home.html";
-  });
+  overlay
+    .querySelector("#completion-continue")
+    .addEventListener("click", () => {
+      overlay.remove();
+      window.location.href = "home.html";
+    });
 }
 
 function renderActivity(activity) {
@@ -2423,7 +2450,7 @@ function renderActivity(activity) {
 
   const hints = (activity.hints || []).slice(0, 4);
   const options = getQuizOptions(activity);
-  
+
   const sectionId = activity.sectionId;
 
   const activityState = {
@@ -2666,7 +2693,8 @@ function renderActivity(activity) {
     const button = event.currentTarget;
     const index = Number(button.dataset.hintIndex);
     const hintState = activityState.hints[index];
-    if (!button || Number.isNaN(index) || !hintState || hintState.unlocked) return;
+    if (!button || Number.isNaN(index) || !hintState || hintState.unlocked)
+      return;
     cancelHintHold(button);
     resetKeyGlow();
   }
@@ -2734,9 +2762,7 @@ function renderActivity(activity) {
         (item) => item.id === activity.id,
       );
       const nextItem =
-        currentIndexInGroup >= 0
-          ? groupItems[currentIndexInGroup + 1]
-          : null;
+        currentIndexInGroup >= 0 ? groupItems[currentIndexInGroup + 1] : null;
 
       if (nextItem) {
         // Ainda há questões neste grupo
@@ -2754,10 +2780,13 @@ function renderActivity(activity) {
         showGroupCompletionModal(groupItems, sectionId, currentGroupIndex);
       }
     } else {
+      registerQuestionError(activity.id);
+
       showInfoModal(
         "Resposta incorreta",
-        `Tente novamente! Dica: ${activity.hints[0]}"}`,
+        `Tente novamente! Dica: ${activity.hints[0]}`,
       );
+
       showFeedback(false, 0);
     }
   }
