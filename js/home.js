@@ -1,3 +1,9 @@
+// home.js — PerFisio v6
+// HTML gerado replica exatamente a estrutura do duolingo_3d_buttons.html:
+//   .trail-wrap > .row.row-offset-X > button.duo-btn.btn-NIVEL
+//   com conectores .connector-angled-* entre os rows.
+// Lógica de progresso intacta.
+
 function splitIntoNGroups(items, n) {
   const groups = Array.from({ length: n }, () => []);
   for (let i = 0; i < items.length; i++) {
@@ -7,169 +13,188 @@ function splitIntoNGroups(items, n) {
   return groups;
 }
 
-function formatActivityLabel(section, groupIndex) {
-  return `Atividade ${groupIndex} — ${section.moduleTitle}`;
+// Classe de cor por nível
+const LEVEL_BTN_CLASS = {
+  calouro:  "btn-calouro",
+  veterano: "btn-veterano",
+  perfisio: "btn-perfisio",
+  doutor:   "btn-doutor",
+};
+
+const LEVEL_ICONS = {
+  calouro:  "📚",
+  veterano: "💪",
+  perfisio: "🦴",
+  doutor:   "👑",
+};
+
+const ROW_CLASSES = [
+  "row-offset-right",
+  "row-center",
+  "row-offset-left",
+  "row-center",
+];
+
+// Conector entre item i e item i+1
+const CONNECTORS = [
+  `<div class="connector-angled-right" style="align-self:center; margin-left:80px;"></div>`,
+  `<div class="connector-angled-left"  style="align-self:center; margin-right:80px;"></div>`,
+  `<div class="connector-angled-right" style="align-self:center; margin-left:80px;"></div>`,
+];
+
+function getLevelKey(level) {
+   const value = (level || "").toLowerCase();
+
+  if (value.includes("calouro")) return "calouro";
+  if (value.includes("veterano")) return "veterano";
+  if (value.includes("perfisio")) return "perfisio";
+  if (value.includes("doutor")) return "doutor";
+
+  return "calouro";;
 }
 
-// ─── Progresso (leitura do localStorage) ─────────────────────────────────────
-
 function isGroupCompleted(sectionId, groupIndex) {
-  return (
-    localStorage.getItem(
-      `perfisio-group-completed-${sectionId}-${groupIndex}`
-    ) === "true"
-  );
+  return localStorage.getItem(`perfisio-group-completed-${sectionId}-${groupIndex}`) === "true";
 }
 
 function isGroupUnlocked(sectionId, groupIndex) {
-  return true
-  
+  return true;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 function buildActivityButton(section, groupIndex, groupItems) {
-  const buttonIndex = groupIndex + 1;
-  const itemClass = `container-lessons__buttons__item--${(buttonIndex % 4) + 1}`;
-  const sectionTitle = section.moduleTitle;
-  const activityTitle = `Atividade ${buttonIndex} do ${sectionTitle}`;
+  console.log({
+  level: section.level,
+  levelKey: getLevelKey(section.level),
+  colorClass: LEVEL_BTN_CLASS[getLevelKey(section.level)]
+});
+
+  const buttonIndex   = groupIndex + 1;
+  const activityTitle = `Atividade ${buttonIndex} — ${section.moduleTitle}`;
+  const levelKey      = getLevelKey(section.level);
 
   const completed = isGroupCompleted(section.sectionId, buttonIndex);
-  const unlocked = isGroupUnlocked(section.sectionId, buttonIndex);
+  const unlocked  = isGroupUnlocked(section.sectionId, buttonIndex);
 
-  const buttonIcon = buttonIndex === 3 ? "Titan.png" : "Play.png";
-  const buttonIconAlt = completed
-    ? "Concluído"
-    : !unlocked
-    ? "Bloqueado"
-    : buttonIndex === 3
-    ? "Titan"
-    : "Play";
+  const icon  = completed ? "✅" : !unlocked ? "🔒" : (LEVEL_ICONS[levelKey] || "📚");
+  const label = completed ? "Concluída" : !unlocked ? "Bloqueada" : `${groupItems.length} perguntas`;
 
-  const statusLabel = completed
-    ? "✓ Concluída"
+  const colorClass = completed
+    ? "btn-completed"
     : !unlocked
-    ? "🔒 Bloqueada"
-    : `${groupItems.length} perguntas`;
+    ? "btn-locked"
+    : (LEVEL_BTN_CLASS[levelKey] || "btn-calouro");
+
+  const rowClass       = ROW_CLASSES[groupIndex] || "row-center";
+  const connectorHtml  = CONNECTORS[groupIndex] || "";
 
   const href = unlocked
-    ? `activity.html?id=${groupItems[0].id}&section=${encodeURIComponent(
-        section.sectionId
-      )}&group=${buttonIndex}`
+    ? `activity.html?id=${groupItems[0].id}&section=${encodeURIComponent(section.sectionId)}&group=${buttonIndex}`
     : null;
 
-  const completedClass = completed ? " group--completed" : "";
-  const lockedClass = !unlocked ? " group--locked" : "";
+  const btnInner = `
+    <div class="shadow"></div>
+    <div class="face">
+      <span class="icon" aria-hidden="true">${icon}</span>
+      <span class="btn-label">${label}</span>
+    </div>
+  `;
 
-  if (href) {
-    return `
-    <a
-      href="${href}"
-      class="container-lessons__buttons__item ${itemClass}${completedClass}"
-      aria-label="${activityTitle}"
-      title="${activityTitle}"
-      data-section="${section.sectionId}"
-      data-group="${buttonIndex}"
-    >
-      <button class="container-lessons__buttons__button${completed ? " button--completed" : ""}" aria-label="${buttonIconAlt} button">
-        <img
-          class="container-lessons__buttons__icon"
-          src="../assets/images/${buttonIcon}"
-          alt="${buttonIconAlt}"
-        />
-      </button>
-      <span class="container-lessons__buttons__subtitle">${statusLabel}</span>
-    </a>`;
-  }
+  const btn = href
+    ? `<a href="${href}" aria-label="${activityTitle}">
+        <button class="duo-btn ${colorClass}" onclick="handleBtnClick(this,'${activityTitle}')" aria-label="${activityTitle}">
+          ${btnInner}
+        </button>
+       </a>`
+    : `<button class="duo-btn ${colorClass}" disabled aria-label="${activityTitle} (bloqueada)">
+        ${btnInner}
+       </button>`;
 
   return `
-    <span
-      class="container-lessons__buttons__item ${itemClass}${lockedClass}"
-      aria-disabled="true"
-      aria-label="${activityTitle} (bloqueada)"
-      data-section="${section.sectionId}"
-      data-group="${buttonIndex}"
-    >
-      <button class="container-lessons__buttons__button button--locked" aria-label="Bloqueado" disabled>
-        <img
-          class="container-lessons__buttons__icon"
-          src="../assets/images/${buttonIcon}"
-          alt="${buttonIconAlt}"
-        />
-      </button>
-      <span class="container-lessons__buttons__subtitle">${statusLabel}</span>
-    </span>`;
+    <div class="row ${rowClass}">${btn}</div>
+    ${connectorHtml}
+  `;
 }
 
 function buildLessonSection(section) {
-  const groups = splitIntoNGroups(section.items, 4);
+  const levelKey = getLevelKey(section.level);
+
+  const groups  = splitIntoNGroups(section.items, 4);
+  const buttons = groups.map((g, i) => buildActivityButton(section, i, g)).join("");
 
   return `
-    <div class="container-lessons__lesson__content">
+    <<div class="container-lessons__lesson__content level-${levelKey}">
       <h5 class="container-lessons__lesson__content__difficult">-${section.level}-</h5>
       <h3 class="container-lessons__lesson__content__title">${section.moduleTitle}</h3>
     </div>
-    <div class="container-lessons__trail-wrapper">
-      <div class="container-lessons__trail">
-        <svg class="trail-svg" viewBox="0 0 200 520" id="trail-svg">
-          <defs>
-            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            </marker>
-          </defs>
-          <path id="path-gray" d="M 100 60 C 160 100, 160 160, 100 200 C 40 240, 40 300, 100 340 C 160 380, 160 420, 100 460" fill="none" stroke="#B4B2A9" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round" />
-          <path id="path-green" d="M 100 60 C 160 100, 160 160, 100 200 C 40 240, 40 300, 100 340 C 160 380, 160 420, 100 460" fill="none" stroke="#639922" stroke-width="3" stroke-dasharray="8 7" stroke-linecap="round" stroke-dashoffset="0" />
-        </svg>
-      </div>
-      <div class="container-lessons__buttons">
-        ${groups.map((group, index) => buildActivityButton(section, index, group)).join("")}
-      </div>
+    
+    <div class="trail-wrap">
+      <svg class="trail-svg" viewBox="0 0 200 520" id="trail-svg">
+    <defs>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </marker>
+    </defs>
+    <!-- Gray base path (always visible) -->
+    <path id="path-gray"
+      d="M 100 60 C 160 100, 160 160, 100 200 C 40 240, 40 300, 100 340 C 160 380, 160 420, 100 460"
+      fill="none" stroke="#B4B2A9" stroke-width="3"
+      stroke-dasharray="8 7" stroke-linecap="round"/>
+    <!-- Green progress path (same coords, clipped) -->
+    <path id="path-green"
+      d="M 100 60 C 160 100, 160 160, 100 200 C 40 240, 40 300, 100 340 C 160 380, 160 420, 100 460"
+      fill="none" stroke="#639922" stroke-width="3"
+      stroke-dasharray="8 7" stroke-linecap="round"
+      stroke-dashoffset="0"/>
+  </svg>
+
+    <div class="trail-buttons">
+      ${buttons}
     </div>
+  </div>
   `;
 }
 
 function buildChallengeSection() {
   return `
     <div class="container-lessons__lesson__content__challenge">
-      <h5 class="container-lessons__lesson__content__difficult__challenge">
-        -Nível Doutor-
-      </h5>
-      <h3 class="container-lessons__lesson__content__title__challenge">
-        O Último<br />Challenge
-      </h3>
+      <h5 class="container-lessons__lesson__content__difficult__challenge">-Nível Doutor-</h5>
+      <h3 class="container-lessons__lesson__content__title__challenge">O Último<br/>Challenge</h3>
     </div>
-
     <div class="container-lessons__challenge__trail">
       <a href="/">
-        <button class="container-lessons__challenge__trail__button">
-          IR
+        <button class="duo-btn btn-doutor" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
+          <div class="shadow"></div>
+          <div class="face">
+            <span class="icon">👑</span>
+            <span class="btn-label">Desafiar</span>
+          </div>
         </button>
       </a>
       <p class="container-lessons__challenge__trail__paragraph">
-        Desafie-se no Último Challenge<br />respondendo perguntas<br />de todos os assuntos vistos,<br />
-        porém, com menos tempo<br />para as resposta e menos dicas.
+        Desafie-se no Último Challenge<br/>respondendo perguntas<br/>de todos os assuntos vistos,<br/>com menos tempo e menos dicas.
       </p>
     </div>
   `;
+}
+
+// Animação de clique (igual ao widget original)
+function handleBtnClick(btn, label) {
+  btn.classList.remove("clicked");
+  void btn.offsetWidth;
+  btn.classList.add("clicked");
 }
 
 function renderHome() {
   const lessonList = document.getElementById("lesson-list");
   if (!lessonList) return;
 
-  const sections =
-    typeof getLessonSections === "function" ? getLessonSections() : [];
+  const sections = typeof getLessonSections === "function" ? getLessonSections() : [];
   if (!sections.length) {
-    lessonList.innerHTML = `
-      <div class="container-lessons__empty">
-        <p>Não foi possível carregar as atividades no momento.</p>
-      </div>
-    `;
+    lessonList.innerHTML = `<p style="color:rgba(255,255,255,0.6);padding:40px 24px;font-size:15px;text-align:center;">Não foi possível carregar as atividades no momento.</p>`;
     return;
   }
 
-  lessonList.innerHTML =
-    sections.map(buildLessonSection).join("") + buildChallengeSection();
+  lessonList.innerHTML = sections.map(buildLessonSection).join("") + buildChallengeSection();
 }
 
 window.addEventListener("DOMContentLoaded", renderHome);
