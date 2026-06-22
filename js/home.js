@@ -99,15 +99,29 @@ function buildActivityButton(section, groupIndex, groupItems) {
     </div>
   `;
 
+  // Melhor pontuação para níveis concluídos
+  let scoreLabelHtml = "";
+  if (completed && typeof getBestScore === "function") {
+    const best = getBestScore(section.sectionId, buttonIndex);
+    scoreLabelHtml = best > 0
+      ? `<div class="btn-score-label">⭐ ${best} pts</div>`
+      : `<div class="btn-score-label btn-score-label--empty">Ainda não jogado</div>`;
+  }
+
   const btn = href
-    ? `<a href="${href}" aria-label="${activityTitle}">
-        <button class="duo-btn ${colorClass}" onclick="handleBtnClick(this,'${activityTitle}')" aria-label="${activityTitle}">
+    ? `<div class="btn-col">
+        <a href="${href}" aria-label="${activityTitle}">
+          <button class="duo-btn ${colorClass}" onclick="handleBtnClick(this,'${activityTitle}')" aria-label="${activityTitle}">
+            ${btnInner}
+          </button>
+        </a>
+        ${scoreLabelHtml}
+      </div>`
+    : `<div class="btn-col">
+        <button class="duo-btn ${colorClass}" disabled aria-label="${activityTitle} (bloqueada)">
           ${btnInner}
         </button>
-       </a>`
-    : `<button class="duo-btn ${colorClass}" disabled aria-label="${activityTitle} (bloqueada)">
-        ${btnInner}
-       </button>`;
+      </div>`;
 
   return `
     <div class="row ${rowClass}">${btn}</div>

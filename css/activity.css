@@ -29,7 +29,184 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 90px;
+  margin-bottom: 16px;
+  position: relative; /* needed for penalty positioning */
+}
+
+/* ── Penalidade: flash vermelho na barra ── */
+@keyframes timer-penalty-flash {
+  0%   { background-color: var(--yellow_text_cards); }
+  10%  { background-color: #e74c3c; }
+  25%  { background-color: #ff6b6b; }
+  45%  { background-color: #c0392b; }
+  65%  { background-color: #e74c3c; }
+  80%  { background-color: #ff6b6b; }
+  100% { background-color: var(--yellow_text_cards); }
+}
+
+.quiz-timer-fill.timer-penalty {
+  animation: timer-penalty-flash 0.7s ease !important;
+  /* sobrepõe a transition de cor normal */
+  transition: none !important;
+}
+
+/* ── Penalidade: shake no wrapper ── */
+@keyframes timer-shake {
+  0%,  100% { transform: translateX(0); }
+  10%        { transform: translateX(-5px); }
+  25%        { transform: translateX(5px); }
+  40%        { transform: translateX(-4px); }
+  55%        { transform: translateX(4px); }
+  70%        { transform: translateX(-2px); }
+  85%        { transform: translateX(2px); }
+}
+
+.quiz-timer-wrapper.timer-shake {
+  animation: timer-shake 0.5s ease;
+}
+
+/* ── Penalidade: toast flutuante fixo ── */
+.penalty-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(160, 30, 30, 0.96);
+  border: 1.5px solid #ff6b6b;
+  border-radius: 28px;
+  padding: 9px 20px;
+  color: #fff;
+  font-weight: 800;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 500;
+  box-shadow: 0 4px 20px rgba(200, 30, 30, 0.45);
+  animation: penalty-toast-appear 2.2s ease forwards;
+}
+
+.penalty-toast-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.penalty-toast-text {
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.penalty-toast-seconds {
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 2px 9px;
+  letter-spacing: 0.2px;
+}
+
+@keyframes penalty-toast-appear {
+  0%   { opacity: 0;   transform: translateX(-50%) translateY(-8px) scale(0.88); }
+  12%  { opacity: 1;   transform: translateX(-50%) translateY(0px)  scale(1.04); }
+  22%  { opacity: 1;   transform: translateX(-50%) translateY(0px)  scale(1); }
+  72%  { opacity: 1;   transform: translateX(-50%) translateY(0px)  scale(1); }
+  100% { opacity: 0;   transform: translateX(-50%) translateY(-6px) scale(0.94); }
+}
+
+/* ============================================================
+   SCORE DISPLAY  (segundo elemento no DOM, acima das dicas)
+   ============================================================ */
+.quiz-score-display {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 10px 28px;
+  background: linear-gradient(135deg, rgba(224, 200, 140, 0.18) 0%, rgba(224, 200, 140, 0.08) 100%);
+  border: 1.5px solid rgba(224, 200, 140, 0.35);
+  border-radius: 40px;
+  backdrop-filter: blur(4px);
+}
+
+.quiz-score-star {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.quiz-score-value {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--yellow_text_cards);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.quiz-score-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(224, 200, 140, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  align-self: flex-end;
+  margin-bottom: 2px;
+}
+
+/* Animação de pulso ao ganhar pontos */
+@keyframes score-badge-pulse {
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(224, 200, 140, 0); }
+  30%  { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(224, 200, 140, 0.25); }
+  60%  { transform: scale(1.02); box-shadow: 0 0 0 14px rgba(224, 200, 140, 0.08); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 18px rgba(224, 200, 140, 0); }
+}
+
+.quiz-score-display.score-pulse {
+  animation: score-badge-pulse 0.55s ease-out forwards;
+}
+
+/* Popup flutuante "+90  3.0×" */
+.score-popup {
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(3, 40, 20, 0.92);
+  border: 1.5px solid var(--yellow_text_cards);
+  border-radius: 24px;
+  padding: 6px 16px;
+  pointer-events: none;
+  white-space: nowrap;
+  animation: score-popup-rise 1.4s ease-out forwards;
+  z-index: 100;
+}
+
+.score-popup-points {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--yellow_text_cards);
+  font-variant-numeric: tabular-nums;
+}
+
+.score-popup-multiplier {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(224, 200, 140, 0.25);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+@keyframes score-popup-rise {
+  0%   { opacity: 0;   transform: translateX(-50%) translateY(6px)  scale(0.85); }
+  15%  { opacity: 1;   transform: translateX(-50%) translateY(0px)   scale(1.05); }
+  30%  { opacity: 1;   transform: translateX(-50%) translateY(-2px)  scale(1); }
+  70%  { opacity: 1;   transform: translateX(-50%) translateY(-10px) scale(1); }
+  100% { opacity: 0;   transform: translateX(-50%) translateY(-24px) scale(0.95); }
 }
 
 .quiz-timer-icon {
@@ -402,8 +579,19 @@ body {
 }
 
 .quiz-option.wrong {
-  background-color: #8b2a2a;
+  background-color: #7a1a1a;
   color: #fde8e8;
+  border-color: #c0392b;
+  animation: option-wrong-shake 0.45s ease;
+}
+
+@keyframes option-wrong-shake {
+  0%,  100% { transform: translateX(0); }
+  15%        { transform: translateX(-6px); }
+  30%        { transform: translateX(6px); }
+  50%        { transform: translateX(-4px); }
+  70%        { transform: translateX(4px); }
+  85%        { transform: translateX(-2px); }
 }
 
 /* ============================================================
@@ -636,6 +824,197 @@ body {
 }
 
 /* ============================================================
+   COMPLETION MODAL — SCORE SECTION
+   ============================================================ */
+.completion-modal {
+  overflow: hidden;
+}
+
+.completion-emoji {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.completion-title {
+  text-align: center;
+  font-size: 22px;
+  color: var(--green_dark_background);
+  margin-bottom: 4px;
+}
+
+.completion-encouragement {
+  text-align: center;
+  color: var(--dark_yellow_text_cards);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Seção de pontuação destacada */
+.completion-score-section {
+  background: linear-gradient(135deg, var(--green_dark_background) 0%, #034a2e 100%);
+  border-radius: 18px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+}
+
+.completion-score-row {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.completion-score-earned,
+.completion-score-multiplier {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 10px 8px;
+}
+
+.completion-score-earned__label,
+.completion-multiplier-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(224, 200, 140, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.completion-score-earned__value {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--yellow_text_cards);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+}
+
+.completion-multiplier-value {
+  font-size: 26px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.completion-multiplier-value.multiplier-high  { color: #2ecc71; }
+.completion-multiplier-value.multiplier-mid   { color: var(--yellow_text_cards); }
+.completion-multiplier-value.multiplier-low   { color: #e67e22; }
+
+/* Pontuação total — destaque extra */
+.completion-total-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: rgba(224, 200, 140, 0.12);
+  border: 1px solid rgba(224, 200, 140, 0.3);
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+
+/* Variante quando é novo recorde — borda dourada pulsante */
+.completion-total-score--record {
+  border-color: var(--yellow_text_cards);
+  background: rgba(224, 200, 140, 0.22);
+  animation: record-glow 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes record-glow {
+  from { box-shadow: 0 0 4px rgba(224, 200, 140, 0.2); }
+  to   { box-shadow: 0 0 18px rgba(224, 200, 140, 0.55); }
+}
+
+/* Banner "Novo Recorde!" */
+.completion-new-record {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #b8860b, #ffd700, #b8860b);
+  background-size: 200% auto;
+  animation: record-shimmer 1.5s linear infinite;
+  border-radius: 24px;
+  padding: 8px 20px;
+  margin-bottom: 10px;
+}
+
+@keyframes record-shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.completion-new-record__icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.completion-new-record__text {
+  font-size: 15px;
+  font-weight: 900;
+  color: #3a2800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.completion-total-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--yellow_text_cards);
+  letter-spacing: 0.3px;
+}
+
+.completion-total-value {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stats row (questões / acertos / precisão) */
+.completion-stats {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.completion-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--gray_content_difficult);
+  border-radius: 12px;
+  padding: 12px 8px;
+}
+
+.completion-stat__value {
+  font-size: 22px;
+  color: var(--green_dark_background);
+}
+
+.completion-stat__label {
+  font-size: 11px;
+  color: #555;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.completion-cta {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 16px;
+  margin-top: 4px;
+}
+
+/* ============================================================
    TABLET  ≤ 1024px
    ============================================================ */
 @media (max-width: 1024px) {
@@ -680,8 +1059,23 @@ body {
   /* Timer */
   .quiz-timer-wrapper {
     gap: 7px;
-    margin-bottom: 28px;
+    margin-bottom: 10px;
     width: 100%;
+  }
+
+  /* Penalty toast mobile */
+  .penalty-toast {
+    top: 56px;
+    padding: 7px 16px;
+    gap: 6px;
+  }
+
+  .penalty-toast-text {
+    font-size: 13px;
+  }
+
+  .penalty-toast-seconds {
+    font-size: 11px;
   }
 
   .quiz-timer-icon {
@@ -701,6 +1095,63 @@ body {
   /* Badge chaves */
   .quiz-keys-container {
     margin-bottom: 6px;
+  }
+
+  /* Score display */
+  .quiz-score-display {
+    padding: 7px 20px;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .quiz-score-star {
+    font-size: 17px;
+  }
+
+  .quiz-score-value {
+    font-size: 21px;
+  }
+
+  .quiz-score-label {
+    font-size: 11px;
+  }
+
+  .score-popup {
+    top: -46px;
+    padding: 5px 12px;
+    gap: 5px;
+  }
+
+  .score-popup-points {
+    font-size: 15px;
+  }
+
+  .score-popup-multiplier {
+    font-size: 11px;
+  }
+
+  /* Completion score section mobile */
+  .completion-score-section {
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+
+  .completion-score-row {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .completion-score-earned__value,
+  .completion-multiplier-value {
+    font-size: 20px;
+  }
+
+  .completion-total-value {
+    font-size: 20px;
+  }
+
+  .completion-stat__value {
+    font-size: 18px;
   }
 
   .quiz-badge {
