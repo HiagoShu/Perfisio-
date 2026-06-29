@@ -2611,9 +2611,6 @@ function renderActivity(activity) {
       : "home.html";
 
   root.innerHTML = `
-    <div class="quiz-question-counter">
-  Questão ${questionIndex + 1}/${totalQuestions}
-</div>
 
      <div class="quiz-timer-wrapper">
     <svg class="quiz-timer-icon" viewBox="0 0 24 24" fill="none"
@@ -2628,11 +2625,21 @@ function renderActivity(activity) {
     <span class="quiz-timer-label" id="timer-label">60</span>
   </div>
 
+  <div class="quiz-status-bar">
+
+  <div class="quiz-question-counter">
+    QUESTÃO ${questionIndex + 1}/${totalQuestions}
+  </div>
+
   <div class="quiz-score-display" id="score-display">
     <span class="quiz-score-star">⭐</span>
-    <span class="quiz-score-value" id="score-value">${getSessionScore(sectionId, currentGroupIndex)}</span>
+    <span class="quiz-score-value" id="score-value">
+      ${getSessionScore(sectionId, currentGroupIndex)}
+    </span>
     <span class="quiz-score-label">pts</span>
   </div>
+
+</div>
   
     <div class="quiz-keys-container">
       <div class="quiz-badge">
