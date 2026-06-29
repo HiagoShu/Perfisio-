@@ -1,8 +1,4 @@
-// home.js — PerFisio v6
-// HTML gerado replica exatamente a estrutura do duolingo_3d_buttons.html:
-//   .trail-wrap > .row.row-offset-X > button.duo-btn.btn-NIVEL
-//   com conectores .connector-angled-* entre os rows.
-// Lógica de progresso intacta.
+
 
 function splitIntoNGroups(items, n) {
   const groups = Array.from({ length: n }, () => []);
@@ -13,7 +9,7 @@ function splitIntoNGroups(items, n) {
   return groups;
 }
 
-// Classe de cor por nível
+
 const LEVEL_BTN_CLASS = {
   calouro:  "btn-calouro",
   veterano: "btn-veterano",
@@ -35,7 +31,7 @@ const ROW_CLASSES = [
   "row-center",
 ];
 
-// Conector entre item i e item i+1
+
 const CONNECTORS = [
   `<div class="connector-angled-right" style="align-self:center; margin-left:80px;"></div>`,
   `<div class="connector-angled-left"  style="align-self:center; margin-right:80px;"></div>`,
@@ -99,7 +95,7 @@ function buildActivityButton(section, groupIndex, groupItems) {
     </div>
   `;
 
-  // Melhor pontuação para níveis concluídos
+  
   let scoreLabelHtml = "";
   if (completed && typeof getBestScore === "function") {
     const best = getBestScore(section.sectionId, buttonIndex);
@@ -191,7 +187,7 @@ function buildChallengeSection() {
   `;
 }
 
-// Animação de clique (igual ao widget original)
+
 function handleBtnClick(btn, label) {
   btn.classList.remove("clicked");
   void btn.offsetWidth;

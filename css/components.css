@@ -15,7 +15,7 @@
   transform: scale(1.1);
 }
 
-/* Trail wrapper - creates positioning context for overlay */
+
 .container-lessons__trail-wrapper {
   position: relative;
   display: flex;
@@ -34,7 +34,7 @@
   margin-bottom: 150px;
 }
 
-/* Buttons overlay on trail */
+
 .container-lessons__buttons {
   position: absolute;
   top: 0;
@@ -65,7 +65,7 @@
   color: var(--green_dark_background);
 }
 
-/* Position each button on the trail */
+
 .container-lessons__buttons__item--1 {
   top: 15%;
   left: 50%;
@@ -119,7 +119,7 @@
   border-radius: 50%;
 }
 
-/* Individual button colors */
+
 .container-lessons__buttons__item--1 .container-lessons__buttons__button,
 .container-lessons__buttons__item--2 .container-lessons__buttons__button,
 .container-lessons__buttons__item--3 .container-lessons__buttons__button,

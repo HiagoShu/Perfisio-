@@ -1,10 +1,4 @@
-/* home.css — PerFisio v6
-   CSS dos botões: copiado literalmente do duolingo_3d_buttons.html.
-   - border-radius: 20px (quadrado arredondado, não círculo)
-   - .trail-wrap: flex column com gap e rows
-   - animações popIn e clickBounce idênticas
-   - cores adaptadas para os 4 níveis do PerFisio
-*/
+
 
 body {
   background-color: var(--green_dark_background);
@@ -18,7 +12,7 @@ body {
   justify-content: center;
 }
 
-/* ─── Card de nível ──────────────────────────────────────────────────────── */
+
 
 .container-lessons__lesson__content {
   margin: 0 20px;
@@ -40,7 +34,7 @@ body {
   margin-top: 48px;
 }
 
-/* ─── Trilha — estrutura idêntica ao widget ──────────────────────────────── */
+
 
 .row {
   display: flex;
@@ -52,7 +46,7 @@ body {
 .row-offset-left  { padding-right: 80px; }
 .row-offset-right { padding-left:  80px; }
 
-/* Conectores angulados */
+
 .connector-angled-left {
   width: 60px;
   height: 4px;
@@ -73,7 +67,7 @@ body {
   margin-left: 80px;
 }
 
-/* ─── Botão 3D — CSS literal do duolingo_3d_buttons.html ─────────────────── */
+
 
 .duo-btn {
   position: relative;
@@ -132,7 +126,7 @@ body {
   opacity: 0.5;
 }
 
-/* Pulse ring */
+
 .duo-btn::after {
   content: '';
   position: absolute;
@@ -146,7 +140,7 @@ body {
   border-color: #89E219;
 }
 
-/* ─── Animações — idênticas ao widget ───────────────────────────────────── */
+
 
 @keyframes popIn {
   0%   { transform: scale(0.6) translateY(10px); opacity: 0; }
@@ -154,7 +148,7 @@ body {
   100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
-/* animação dispara nos .duo-btn dentro do .trail-wrap */
+
 .trail-wrap .duo-btn { animation: popIn 0.4s cubic-bezier(.34,1.56,.64,1) both; }
 .trail-wrap .row:nth-child(1) .duo-btn { animation-delay: 0s; }
 .trail-wrap .row:nth-child(3) .duo-btn { animation-delay: 0.12s; }
@@ -173,21 +167,21 @@ body {
   .trail-wrap .duo-btn { animation: none; }
 }
 
-/* ─── Cores por nível ─────────────────────────────────────────────────────── */
 
-/* Calouro — verde */
+
+
 .btn-calouro .shadow { background: #14792c }
 .btn-calouro .face   { background: var(--lighter_green__buttons); color: #172c01; }
 
-/* Veterano — azul */
+
 .btn-veterano .shadow { background: var(--dark_yellow_text_cards); }
 .btn-veterano .face   { background: var(--yellow_text_cards); color: var(--dark_yellow_text_cards) }
 
-/* PerFisio — âmbar */
+
 .btn-perfisio .shadow { background: #b07c00; }
 .btn-perfisio .face   { background: #ffc200; color: #5a3d00; }
 
-/* Doutor / Challenge — roxo */
+
 .btn-doutor .shadow { background: #66616b; }
 .btn-doutor .face{
   background:#ffffff;
@@ -223,16 +217,16 @@ body {
   }
 }
 
-/* Concluído */
+
 .btn-completed .shadow { background: #58A700; }
 .btn-completed .face   { background: #89E219; color: #3a7000; }
 
-/* Bloqueado */
+
 .btn-locked { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
 .btn-locked .shadow { background: #2a2a2a; }
 .btn-locked .face   { background: #444; color: #888; }
 
-/* ─── Label de status fora do botão ─────────────────────────────────────── */
+
 
 .container-lessons__buttons__subtitle {
   font-size: 10px;
@@ -241,10 +235,10 @@ body {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   text-align: center;
-  margin-top: -16px; /* puxa pra baixo do botão no flex col do .row */
+  margin-top: -16px; 
 }
 
-/* Coluna vertical: botão + label de pontuação */
+
 .btn-col {
   display: flex;
   flex-direction: column;
@@ -252,7 +246,7 @@ body {
   gap: 8px;
 }
 
-/* Label de melhor pontuação abaixo do botão concluído */
+
 .btn-score-label {
   font-size: 11px;
   font-weight: 800;
@@ -273,7 +267,7 @@ body {
   font-size: 10px;
 }
 
-/* ─── Challenge ──────────────────────────────────────────────────────────── */
+
 
 
 .container-lessons__lesson__content__challenge {
