@@ -2250,11 +2250,10 @@ function markQuestionSolved(activityId) {
   localStorage.setItem(`perfisio-solved-${activityId}`, "true");
 }
 
- 
 function markQuestionTimedOut(activityId) {
   localStorage.setItem(`perfisio-timedout-${activityId}`, "true");
 }
- 
+
 function hasTimedOut(activityId) {
   return localStorage.getItem(`perfisio-timedout-${activityId}`) === "true";
 }
@@ -2317,18 +2316,12 @@ function showInfoModal(title, message) {
   });
 }
 
-
-
-
 function markGroupCompleted(sectionId, groupIndex, groupItems) {
-
   groupItems.forEach((item) => markQuestionSolved(item.id));
 
   const completedKey = `perfisio-group-completed-${sectionId}-${groupIndex}`;
   localStorage.setItem(completedKey, "true");
-
 }
-
 
 function isGroupCompleted(sectionId, groupIndex) {
   const key = `perfisio-group-completed-${sectionId}-${groupIndex}`;
@@ -2340,7 +2333,6 @@ function isGroupUnlocked(sectionId, groupIndex) {
   const key = `perfisio-group-unlocked-${sectionId}-${groupIndex}`;
   return localStorage.getItem(key) === "true";
 }
-
 
 function countGroupCorrect(groupItems) {
   return groupItems.filter((item) => hasSolvedQuestion(item.id)).length;
@@ -2363,19 +2355,13 @@ function countGroupErrors(groupItems) {
   }, 0);
 }
 
-
-
 const SCORE_BASE = 30;
-
-
-
 
 function getBestScore(sectionId, groupIndex) {
   return Number(
     localStorage.getItem(`perfisio-best-score-${sectionId}-${groupIndex}`) || 0,
   );
 }
-
 
 function saveBestScore(sectionId, groupIndex, score) {
   localStorage.setItem(
@@ -2397,12 +2383,10 @@ function updateBestScore(sectionId, groupIndex, sessionScore) {
   return { newBest: previous, isRecord: false };
 }
 
-
 function getSessionScore(sectionId, groupIndex) {
   const key = `perfisio-session-score-${sectionId}-${groupIndex}`;
   return Number(localStorage.getItem(key) || 0);
 }
-
 
 function addToSessionScore(sectionId, groupIndex, points) {
   const key = `perfisio-session-score-${sectionId}-${groupIndex}`;
@@ -2410,7 +2394,6 @@ function addToSessionScore(sectionId, groupIndex, points) {
   localStorage.setItem(key, String(newScore));
   return newScore;
 }
-
 
 function getSessionMultipliers(sectionId, groupIndex) {
   const key = `perfisio-session-multipliers-${sectionId}-${groupIndex}`;
@@ -2421,14 +2404,12 @@ function getSessionMultipliers(sectionId, groupIndex) {
   }
 }
 
-
 function addSessionMultiplier(sectionId, groupIndex, multiplier) {
   const key = `perfisio-session-multipliers-${sectionId}-${groupIndex}`;
   const arr = getSessionMultipliers(sectionId, groupIndex);
   arr.push(multiplier);
   localStorage.setItem(key, JSON.stringify(arr));
 }
-
 
 function clearSessionData(sectionId, groupIndex) {
   localStorage.removeItem(`perfisio-session-score-${sectionId}-${groupIndex}`);
@@ -2437,11 +2418,9 @@ function clearSessionData(sectionId, groupIndex) {
   );
 }
 
-
 function calculateMultiplier(timerRatio) {
   return 1 + timerRatio * 2;
 }
-
 
 function calculateScore(timerRatio) {
   const clampedRatio = Math.max(0, Math.min(1, timerRatio));
@@ -2450,32 +2429,31 @@ function calculateScore(timerRatio) {
   return { points, multiplier };
 }
 
-
- 
 function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
   const total = groupItems.length;
 
-  
   const firstTryCorrect = groupItems.filter(
     (item) => getQuestionErrors(item.id) === 0 && !hasTimedOut(item.id),
   ).length;
 
   const percentual = Math.round((firstTryCorrect / total) * 100);
 
-  
   const sessionScore = getSessionScore(sectionId, groupIndex);
   const sessionMultipliers = getSessionMultipliers(sectionId, groupIndex);
   const avgMultiplier =
     sessionMultipliers.length > 0
-      ? sessionMultipliers.reduce((a, b) => a + b, 0) / sessionMultipliers.length
+      ? sessionMultipliers.reduce((a, b) => a + b, 0) /
+        sessionMultipliers.length
       : 1;
 
-  const { newBest, isRecord } = updateBestScore(sectionId, groupIndex, sessionScore);
+  const { newBest, isRecord } = updateBestScore(
+    sectionId,
+    groupIndex,
+    sessionScore,
+  );
 
-  
   clearSessionData(sectionId, groupIndex);
 
-  
   let multiplierClass = "multiplier-low";
   if (avgMultiplier >= 2.5) multiplierClass = "multiplier-high";
   else if (avgMultiplier >= 1.5) multiplierClass = "multiplier-mid";
@@ -2489,7 +2467,6 @@ function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
   const message =
     encouragements[Math.floor(Math.random() * encouragements.length)];
 
-  
   const newRecordBannerHtml = isRecord
     ? `<div class="completion-new-record">
         <span class="completion-new-record__icon">🏆</span>
@@ -2613,6 +2590,20 @@ function renderActivity(activity) {
     )
     .join("");
 
+  const section = getLessonSection(activity.sectionId);
+
+  const groups = splitIntoNGroups(section.items, 4);
+
+  const groupItems = groups[Number(currentGroupIndex) - 1];
+
+  const questionIndex = groupItems.findIndex((item) => item.id === activity.id);
+
+  const totalQuestions = groupItems.length;
+
+  const progressPercent = Math.round(
+    ((questionIndex + 1) / totalQuestions) * 100,
+  );
+
   const listSectionId = getQueryParam("section") || activity.sectionId;
   const listHref =
     listSectionId && currentGroupIndex
@@ -2620,6 +2611,7 @@ function renderActivity(activity) {
       : "home.html";
 
   root.innerHTML = `
+
      <div class="quiz-timer-wrapper">
     <svg class="quiz-timer-icon" viewBox="0 0 24 24" fill="none"
          stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -2633,11 +2625,21 @@ function renderActivity(activity) {
     <span class="quiz-timer-label" id="timer-label">60</span>
   </div>
 
+  <div class="quiz-status-bar">
+
+  <div class="quiz-question-counter">
+    QUESTÃO ${questionIndex + 1}/${totalQuestions}
+  </div>
+
   <div class="quiz-score-display" id="score-display">
     <span class="quiz-score-star">⭐</span>
-    <span class="quiz-score-value" id="score-value">${getSessionScore(sectionId, currentGroupIndex)}</span>
+    <span class="quiz-score-value" id="score-value">
+      ${getSessionScore(sectionId, currentGroupIndex)}
+    </span>
     <span class="quiz-score-label">pts</span>
   </div>
+
+</div>
   
     <div class="quiz-keys-container">
       <div class="quiz-badge">
@@ -2700,7 +2702,6 @@ function renderActivity(activity) {
     const scoreDisplayEl = document.getElementById("score-display");
     if (!scoreValueEl || !scoreDisplayEl) return;
 
-    
     const previous = Number(scoreValueEl.textContent.replace(/\D/g, "")) || 0;
     const duration = 600;
     const startTs = performance.now();
@@ -2708,7 +2709,7 @@ function renderActivity(activity) {
     function animateCount(now) {
       const elapsed = now - startTs;
       const progress = Math.min(elapsed / duration, 1);
-      
+
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(previous + (totalScore - previous) * eased);
       scoreValueEl.textContent = current;
@@ -2716,12 +2717,10 @@ function renderActivity(activity) {
     }
     requestAnimationFrame(animateCount);
 
-    
     scoreDisplayEl.classList.remove("score-pulse");
-    void scoreDisplayEl.offsetWidth; 
+    void scoreDisplayEl.offsetWidth;
     scoreDisplayEl.classList.add("score-pulse");
 
-    
     const popup = document.createElement("div");
     popup.className = "score-popup";
     const roundedMult = Math.round(multiplier * 10) / 10;
@@ -2730,148 +2729,137 @@ function renderActivity(activity) {
       <span class="score-popup-multiplier">${roundedMult.toFixed(1)}×</span>
     `;
     scoreDisplayEl.appendChild(popup);
-    
+
     setTimeout(() => popup.remove(), 1400);
   }
 
   (function setupTimer() {
-  const DURATION = 60; 
-  const fillEl   = document.getElementById("timer-fill");
-  const labelEl  = document.getElementById("timer-label");
- 
-  if (!fillEl || !labelEl) return;
- 
-  let startTime   = performance.now();
-  let rafId       = null;
-  let finished    = false;
-  let currentRatio = 1; 
- 
-  function updateTimer(now) {
-    if (finished) return;
- 
-    const elapsed  = (now - startTime) / 1000;          
-    const remaining = Math.max(0, DURATION - elapsed);
-    const ratio     = remaining / DURATION;              
-    currentRatio = ratio;
- 
-    
-    fillEl.style.width = `${ratio * 100}%`;
- 
-    
-    labelEl.textContent = String(Math.ceil(remaining));
- 
-    
-    fillEl.classList.toggle("timer-warning", ratio <= 0.4 && ratio > 0.15);
-    fillEl.classList.toggle("timer-danger",  ratio <= 0.15);
- 
-    if (remaining <= 0) {
-      finished = true;
-      onTimerExpired();
-      return;
-    }
- 
-    rafId = requestAnimationFrame(updateTimer);
-  }
- 
-  function stopTimer() {
-    finished = true;
-    if (rafId) cancelAnimationFrame(rafId);
-  }
- 
- 
-  function applyPenalty(penaltySeconds) {
-    if (finished) return;
+    const DURATION = 60;
+    const fillEl = document.getElementById("timer-fill");
+    const labelEl = document.getElementById("timer-label");
 
-    
-    startTime -= penaltySeconds * 1000;
+    if (!fillEl || !labelEl) return;
 
-    
-    fillEl.classList.remove("timer-penalty");
-    void fillEl.offsetWidth; 
-    fillEl.classList.add("timer-penalty");
-    setTimeout(() => fillEl.classList.remove("timer-penalty"), 700);
+    let startTime = performance.now();
+    let rafId = null;
+    let finished = false;
+    let currentRatio = 1;
 
-    
-    const timerWrapper = fillEl.closest(".quiz-timer-wrapper");
-    if (timerWrapper) {
-      timerWrapper.classList.remove("timer-shake");
-      void timerWrapper.offsetWidth;
-      timerWrapper.classList.add("timer-shake");
-      setTimeout(() => timerWrapper.classList.remove("timer-shake"), 500);
+    function updateTimer(now) {
+      if (finished) return;
+
+      const elapsed = (now - startTime) / 1000;
+      const remaining = Math.max(0, DURATION - elapsed);
+      const ratio = remaining / DURATION;
+      currentRatio = ratio;
+
+      fillEl.style.width = `${ratio * 100}%`;
+
+      labelEl.textContent = String(Math.ceil(remaining));
+
+      fillEl.classList.toggle("timer-warning", ratio <= 0.4 && ratio > 0.15);
+      fillEl.classList.toggle("timer-danger", ratio <= 0.15);
+
+      if (remaining <= 0) {
+        finished = true;
+        onTimerExpired();
+        return;
+      }
+
+      rafId = requestAnimationFrame(updateTimer);
     }
 
-    
-    const now = performance.now();
-    const elapsed = (now - startTime) / 1000;
-    const remaining = DURATION - elapsed;
-
-    if (remaining <= 0 && !finished) {
+    function stopTimer() {
       finished = true;
       if (rafId) cancelAnimationFrame(rafId);
-      fillEl.style.width = "0%";
-      labelEl.textContent = "0";
-      onTimerExpired();
     }
-  }
 
-  
-  window.__quizDuration = DURATION;
-  window.__quizStopTimer = stopTimer;
-  window.__quizGetTimerRatio = () => currentRatio;
-  window.__quizApplyPenalty = applyPenalty;
- 
-  function onTimerExpired() {
-    
-    markQuestionTimedOut(activity.id);
- 
-    
-    const submitBtn = document.getElementById("submit-answer");
-    if (submitBtn) submitBtn.disabled = true;
-    document.querySelectorAll("input[name='quiz-option']").forEach((i) => {
-      i.disabled = true;
-    });
- 
-    
-    const group = getGroupBySection(activity.sectionId, currentGroupIndex);
-    const groupItems = group ? group.items : [];
-    const currentIndexInGroup = groupItems.findIndex((i) => i.id === activity.id);
-    const nextItem = currentIndexInGroup >= 0
-      ? groupItems[currentIndexInGroup + 1]
-      : null;
- 
-    const listSectionId = activity.sectionId;
- 
-    if (nextItem) {
-      
-      const feedback = document.getElementById("feedback");
-      if (feedback) {
-        feedback.className = "quiz-feedback visible error";
-        feedback.textContent = "⏰ Tempo esgotado! Passando para a próxima questão...";
+    function applyPenalty(penaltySeconds) {
+      if (finished) return;
+
+      startTime -= penaltySeconds * 1000;
+
+      fillEl.classList.remove("timer-penalty");
+      void fillEl.offsetWidth;
+      fillEl.classList.add("timer-penalty");
+      setTimeout(() => fillEl.classList.remove("timer-penalty"), 700);
+
+      const timerWrapper = fillEl.closest(".quiz-timer-wrapper");
+      if (timerWrapper) {
+        timerWrapper.classList.remove("timer-shake");
+        void timerWrapper.offsetWidth;
+        timerWrapper.classList.add("timer-shake");
+        setTimeout(() => timerWrapper.classList.remove("timer-shake"), 500);
       }
-      setTimeout(() => {
-        window.location.href = `activity.html?id=${nextItem.id}&section=${listSectionId}&group=${currentGroupIndex}`;
-      }, 1800);
-    } else {
-      
-      markGroupCompleted(activity.sectionId, currentGroupIndex, groupItems);
-      showGroupCompletionModal(groupItems, activity.sectionId, currentGroupIndex);
+
+      const now = performance.now();
+      const elapsed = (now - startTime) / 1000;
+      const remaining = DURATION - elapsed;
+
+      if (remaining <= 0 && !finished) {
+        finished = true;
+        if (rafId) cancelAnimationFrame(rafId);
+        fillEl.style.width = "0%";
+        labelEl.textContent = "0";
+        onTimerExpired();
+      }
     }
-  }
- 
-  
-  rafId = requestAnimationFrame(updateTimer);
- 
-  
-})();
+
+    window.__quizDuration = DURATION;
+    window.__quizStopTimer = stopTimer;
+    window.__quizGetTimerRatio = () => currentRatio;
+    window.__quizApplyPenalty = applyPenalty;
+
+    function onTimerExpired() {
+      markQuestionTimedOut(activity.id);
+
+      const submitBtn = document.getElementById("submit-answer");
+      if (submitBtn) submitBtn.disabled = true;
+      document.querySelectorAll("input[name='quiz-option']").forEach((i) => {
+        i.disabled = true;
+      });
+
+      const group = getGroupBySection(activity.sectionId, currentGroupIndex);
+      const groupItems = group ? group.items : [];
+      const currentIndexInGroup = groupItems.findIndex(
+        (i) => i.id === activity.id,
+      );
+      const nextItem =
+        currentIndexInGroup >= 0 ? groupItems[currentIndexInGroup + 1] : null;
+
+      const listSectionId = activity.sectionId;
+
+      if (nextItem) {
+        const feedback = document.getElementById("feedback");
+        if (feedback) {
+          feedback.className = "quiz-feedback visible error";
+          feedback.textContent =
+            "⏰ Tempo esgotado! Passando para a próxima questão...";
+        }
+        setTimeout(() => {
+          window.location.href = `activity.html?id=${nextItem.id}&section=${listSectionId}&group=${currentGroupIndex}`;
+        }, 1800);
+      } else {
+        markGroupCompleted(activity.sectionId, currentGroupIndex, groupItems);
+        showGroupCompletionModal(
+          groupItems,
+          activity.sectionId,
+          currentGroupIndex,
+        );
+      }
+    }
+
+    rafId = requestAnimationFrame(updateTimer);
+  })();
 
   function handleOptionChange() {
     submitButton.disabled = false;
-    
+
     root.querySelectorAll(".quiz-option").forEach((opt) => {
       opt.classList.remove("selected");
       opt.classList.remove("wrong");
     });
-    
+
     const checked = root.querySelector("input[name='quiz-option']:checked");
     if (checked) {
       checked.closest(".quiz-option").classList.add("selected");
@@ -3039,16 +3027,16 @@ function renderActivity(activity) {
     return Math.max(0, 3 - usedHints);
   }
 
-  function showFeedback(isCorrect, reward = 0) {
-    if (!feedback) return;
-    feedback.className = `quiz-feedback visible ${isCorrect ? "success" : "error"}`;
-    if (isCorrect) {
-      feedback.textContent = `✓ Resposta correta!`;
-    } else {
-      feedback.textContent =
-        "✗ Resposta incorreta. Tente novamente ou reveja as dicas.";
-    }
-  }
+  // function showFeedback(isCorrect, reward = 0) {
+  //   if (!feedback) return;
+  //   feedback.className = `quiz-feedback visible ${isCorrect ? "success" : "error"}`;
+  //   if (isCorrect) {
+  //     feedback.textContent = `✓ Resposta correta!`;
+  //   } else {
+  //     feedback.textContent =
+  //       "✗ Resposta incorreta. Tente novamente ou reveja as dicas.";
+  //   }
+  // }
 
   function handleSubmit() {
     const selected = root.querySelector("input[name='quiz-option']:checked");
@@ -3064,16 +3052,13 @@ function renderActivity(activity) {
     const correct = answer === activity.answer;
 
     if (correct) {
-      
       if (window.__quizStopTimer) window.__quizStopTimer();
 
-      
       if (!activityState.solved) {
         markQuestionSolved(activity.id);
         activityState.solved = true;
       }
 
-      
       const timerRatio =
         typeof window.__quizGetTimerRatio === "function"
           ? window.__quizGetTimerRatio()
@@ -3083,16 +3068,14 @@ function renderActivity(activity) {
       addSessionMultiplier(sectionId, currentGroupIndex, multiplier);
       const sessionTotal = getSessionScore(sectionId, currentGroupIndex);
 
-      
       updateScoreDisplay(sessionTotal, points, multiplier);
 
-      showFeedback(true, 0);
-      submitButton.disabled = true;
-      optionInputs.forEach((input) => {
-        input.disabled = true;
-      });
+      // showFeedback(true, 0);
+      // submitButton.disabled = true;
+      // optionInputs.forEach((input) => {
+      //   input.disabled = true;
+      // });
 
-      
       const group = getGroupBySection(sectionId, currentGroupIndex);
       const groupItems = group ? group.items : [];
       const currentIndexInGroup = groupItems.findIndex(
@@ -3102,7 +3085,6 @@ function renderActivity(activity) {
         currentIndexInGroup >= 0 ? groupItems[currentIndexInGroup + 1] : null;
 
       if (nextItem) {
-        
         createModal({
           title: "🎉 Parabéns!",
           message: `Resposta correta! Questão ${currentIndexInGroup + 1} de ${groupItems.length} concluída.`,
@@ -3112,21 +3094,18 @@ function renderActivity(activity) {
           },
         });
       } else {
-        
         markGroupCompleted(sectionId, currentGroupIndex, groupItems);
         showGroupCompletionModal(groupItems, sectionId, currentGroupIndex);
       }
     } else {
       registerQuestionError(activity.id);
 
-      
       const wrongLabel = selected.closest(".quiz-option");
       if (wrongLabel) {
         wrongLabel.classList.remove("selected");
         wrongLabel.classList.add("wrong");
       }
 
-      
       const PENALTY_RATIO = 0.35;
       const totalDuration = window.__quizDuration || 60;
       const penaltySeconds = Math.round(totalDuration * PENALTY_RATIO); // 21s
@@ -3135,9 +3114,7 @@ function renderActivity(activity) {
         window.__quizApplyPenalty(penaltySeconds);
       }
 
-      
       (function showPenaltyToast() {
-        
         const existing = document.querySelector(".penalty-toast");
         if (existing) existing.remove();
 
@@ -3157,7 +3134,7 @@ function renderActivity(activity) {
         `Tente novamente! Dica: ${activity.hints[0]}`,
       );
 
-      showFeedback(false, 0);
+      // showFeedback(false, 0);
     }
   }
 
@@ -3165,7 +3142,6 @@ function renderActivity(activity) {
     input.addEventListener("change", handleOptionChange);
   });
 
-  
   root.querySelectorAll(".quiz-option").forEach((label) => {
     label.addEventListener("click", () => {
       const input = label.querySelector("input[type='radio']");

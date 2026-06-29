@@ -1,5 +1,3 @@
-
-
 function splitIntoNGroups(items, n) {
   const groups = Array.from({ length: n }, () => []);
   for (let i = 0; i < items.length; i++) {
@@ -46,7 +44,7 @@ function getLevelKey(level) {
   if (value.includes("perfisio")) return "perfisio";
   if (value.includes("doutor")) return "doutor";
 
-  return "calouro";;
+  return "calouro";
 }
 
 function isGroupCompleted(sectionId, groupIndex) {
@@ -106,8 +104,8 @@ function buildActivityButton(section, groupIndex, groupItems) {
 
   const btn = href
     ? `<div class="btn-col">
-        <a href="${href}" aria-label="${activityTitle}">
-          <button class="duo-btn ${colorClass}" onclick="handleBtnClick(this,'${activityTitle}')" aria-label="${activityTitle}">
+        <a href="${href}" onclick="return handleBtnClick(event, this)" aria-label="${activityTitle}">
+  <button class="duo-btn ${colorClass}">
             ${btnInner}
           </button>
         </a>
@@ -132,7 +130,7 @@ function buildLessonSection(section) {
   const buttons = groups.map((g, i) => buildActivityButton(section, i, g)).join("");
 
   return `
-    <<div class="container-lessons__lesson__content level-${levelKey}">
+    <div class="container-lessons__lesson__content level-${levelKey}">
       <h5 class="container-lessons__lesson__content__difficult">-${section.level}-</h5>
       <h3 class="container-lessons__lesson__content__title">${section.moduleTitle}</h3>
     </div>
@@ -171,7 +169,7 @@ function buildChallengeSection() {
       <h3 class="container-lessons__lesson__content__title__challenge">O Último<br/>Challenge</h3>
     </div>
     <div class="container-lessons__challenge__trail">
-      <a href="/">
+      <a href="challenge.html">
         <button class="duo-btn btn-doutor" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
           <div class="shadow"></div>
           <div class="face">
