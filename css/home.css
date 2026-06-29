@@ -432,3 +432,36 @@ body {
   background:#ffffff;
   box-shadow:0 5px 0 #d0d0d0;
 }
+
+@media (max-width: 600px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container-lessons__lesson__content {
+    width: calc(100% - 40px);
+    margin: 0 20px;
+    height: auto;
+    min-height: 100px;
+  }
+
+  .row-offset-left  { padding-right: 40px; }
+  .row-offset-right { padding-left:  40px; }
+
+  .connector-angled-left  { margin-right: 40px; }
+  .connector-angled-right { margin-left:  40px; }
+
+  .trail-svg {
+    width: min(320px, 90vw);
+  }
+
+
+  .trail-buttons {
+    padding: 80px 16px;
+  }
+
+  .container-lessons__lesson__content__challenge {
+    margin: 48px 16px 0;
+  }
+}
