@@ -34,3 +34,14 @@ body {
   width: 59px;
   height: 100px;
 }
+
+html,
+body {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE/Edge antigo */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;              /* Chrome, Edge, Safari */
+}
