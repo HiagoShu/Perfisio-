@@ -1,9 +1,3 @@
-// home.js — PerFisio v6
-// HTML gerado replica exatamente a estrutura do duolingo_3d_buttons.html:
-//   .trail-wrap > .row.row-offset-X > button.duo-btn.btn-NIVEL
-//   com conectores .connector-angled-* entre os rows.
-// Lógica de progresso intacta.
-
 function splitIntoNGroups(items, n) {
   const groups = Array.from({ length: n }, () => []);
   for (let i = 0; i < items.length; i++) {
@@ -13,7 +7,7 @@ function splitIntoNGroups(items, n) {
   return groups;
 }
 
-// Classe de cor por nível
+
 const LEVEL_BTN_CLASS = {
   calouro:  "btn-calouro",
   veterano: "btn-veterano",
@@ -35,7 +29,7 @@ const ROW_CLASSES = [
   "row-center",
 ];
 
-// Conector entre item i e item i+1
+
 const CONNECTORS = [
   `<div class="connector-angled-right" style="align-self:center; margin-left:80px;"></div>`,
   `<div class="connector-angled-left"  style="align-self:center; margin-right:80px;"></div>`,
@@ -50,7 +44,7 @@ function getLevelKey(level) {
   if (value.includes("perfisio")) return "perfisio";
   if (value.includes("doutor")) return "doutor";
 
-  return "calouro";;
+  return "calouro";
 }
 
 function isGroupCompleted(sectionId, groupIndex) {
@@ -99,7 +93,7 @@ function buildActivityButton(section, groupIndex, groupItems) {
     </div>
   `;
 
-  // Melhor pontuação para níveis concluídos
+  
   let scoreLabelHtml = "";
   if (completed && typeof getBestScore === "function") {
     const best = getBestScore(section.sectionId, buttonIndex);
@@ -110,8 +104,8 @@ function buildActivityButton(section, groupIndex, groupItems) {
 
   const btn = href
     ? `<div class="btn-col">
-        <a href="${href}" aria-label="${activityTitle}">
-          <button class="duo-btn ${colorClass}" onclick="handleBtnClick(this,'${activityTitle}')" aria-label="${activityTitle}">
+        <a href="${href}" onclick="return handleBtnClick(event, this)" aria-label="${activityTitle}">
+  <button class="duo-btn ${colorClass}">
             ${btnInner}
           </button>
         </a>
@@ -136,7 +130,7 @@ function buildLessonSection(section) {
   const buttons = groups.map((g, i) => buildActivityButton(section, i, g)).join("");
 
   return `
-    <<div class="container-lessons__lesson__content level-${levelKey}">
+    <div class="container-lessons__lesson__content level-${levelKey}">
       <h5 class="container-lessons__lesson__content__difficult">-${section.level}-</h5>
       <h3 class="container-lessons__lesson__content__title">${section.moduleTitle}</h3>
     </div>
@@ -175,7 +169,7 @@ function buildChallengeSection() {
       <h3 class="container-lessons__lesson__content__title__challenge">O Último<br/>Challenge</h3>
     </div>
     <div class="container-lessons__challenge__trail">
-      <a href="/">
+      <a href="challenge.html">
         <button class="duo-btn btn-doutor" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
           <div class="shadow"></div>
           <div class="face">
@@ -191,7 +185,7 @@ function buildChallengeSection() {
   `;
 }
 
-// Animação de clique (igual ao widget original)
+
 function handleBtnClick(btn, label) {
   btn.classList.remove("clicked");
   void btn.offsetWidth;

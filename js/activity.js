@@ -2250,11 +2250,10 @@ function markQuestionSolved(activityId) {
   localStorage.setItem(`perfisio-solved-${activityId}`, "true");
 }
 
- 
 function markQuestionTimedOut(activityId) {
   localStorage.setItem(`perfisio-timedout-${activityId}`, "true");
 }
- 
+
 function hasTimedOut(activityId) {
   return localStorage.getItem(`perfisio-timedout-${activityId}`) === "true";
 }
@@ -2317,43 +2316,24 @@ function showInfoModal(title, message) {
   });
 }
 
-// ─── Progresso de grupo ──────────────────────────────────────────────────────
-
-/**
- * Salva todas as questões do grupo como resolvidas e registra o grupo como
- * concluído no localStorage. Também desbloqueia o próximo grupo, se existir.
- */
 function markGroupCompleted(sectionId, groupIndex, groupItems) {
-  // Marcar cada questão individualmente (idempotente)
   groupItems.forEach((item) => markQuestionSolved(item.id));
 
-  // Registrar grupo concluído
   const completedKey = `perfisio-group-completed-${sectionId}-${groupIndex}`;
   localStorage.setItem(completedKey, "true");
-
-  // Desbloquear próximo grupo
-  // const nextGroupIndex = Number(groupIndex) + 1;
-  // const unlockedKey = `perfisio-group-unlocked-${sectionId}-${nextGroupIndex}`;
-  // localStorage.setItem(unlockedKey, "true");
 }
 
-/** Verifica se um grupo específico já foi concluído. */
 function isGroupCompleted(sectionId, groupIndex) {
   const key = `perfisio-group-completed-${sectionId}-${groupIndex}`;
   return localStorage.getItem(key) === "true";
 }
 
-/** Verifica se um grupo está desbloqueado (grupo 1 sempre está). */
 function isGroupUnlocked(sectionId, groupIndex) {
   if (Number(groupIndex) === 1) return true;
   const key = `perfisio-group-unlocked-${sectionId}-${groupIndex}`;
   return localStorage.getItem(key) === "true";
 }
 
-/**
- * Conta quantas questões do grupo o usuário já acertou.
- * Usado apenas na tela de conclusão.
- */
 function countGroupCorrect(groupItems) {
   return groupItems.filter((item) => hasSolvedQuestion(item.id)).length;
 }
@@ -2375,23 +2355,14 @@ function countGroupErrors(groupItems) {
   }, 0);
 }
 
-// ─── Sistema de Pontuação por Nível ──────────────────────────────────────────
-
 const SCORE_BASE = 30;
 
-// ── Recorde por nível (sectionId + groupIndex) ────────────────────────────────
-
-/**
- * Retorna o melhor score já registrado para um grupo específico.
- * Retorna 0 se o grupo nunca foi concluído.
- */
 function getBestScore(sectionId, groupIndex) {
   return Number(
     localStorage.getItem(`perfisio-best-score-${sectionId}-${groupIndex}`) || 0,
   );
 }
 
-/** Persiste o melhor score de um grupo. */
 function saveBestScore(sectionId, groupIndex, score) {
   localStorage.setItem(
     `perfisio-best-score-${sectionId}-${groupIndex}`,
@@ -2400,9 +2371,8 @@ function saveBestScore(sectionId, groupIndex, score) {
 }
 
 /**
- * Compara o score da sessão com o recorde anterior.
- * Atualiza o recorde apenas se o novo score for maior.
- * @returns {{ newBest: number, isRecord: boolean }}
+ 
+   @returns {{ newBest: number, isRecord: boolean }}
  */
 function updateBestScore(sectionId, groupIndex, sessionScore) {
   const previous = getBestScore(sectionId, groupIndex);
@@ -2413,15 +2383,11 @@ function updateBestScore(sectionId, groupIndex, sessionScore) {
   return { newBest: previous, isRecord: false };
 }
 
-// ── Pontuação de sessão (acumulada durante a tentativa atual) ─────────────────
-
-/** Retorna a pontuação acumulada na tentativa atual do grupo. */
 function getSessionScore(sectionId, groupIndex) {
   const key = `perfisio-session-score-${sectionId}-${groupIndex}`;
   return Number(localStorage.getItem(key) || 0);
 }
 
-/** Adiciona pontos à sessão atual e retorna o novo total da sessão. */
 function addToSessionScore(sectionId, groupIndex, points) {
   const key = `perfisio-session-score-${sectionId}-${groupIndex}`;
   const newScore = getSessionScore(sectionId, groupIndex) + points;
@@ -2429,7 +2395,6 @@ function addToSessionScore(sectionId, groupIndex, points) {
   return newScore;
 }
 
-/** Retorna o array de multiplicadores usados nesta sessão. */
 function getSessionMultipliers(sectionId, groupIndex) {
   const key = `perfisio-session-multipliers-${sectionId}-${groupIndex}`;
   try {
@@ -2439,7 +2404,6 @@ function getSessionMultipliers(sectionId, groupIndex) {
   }
 }
 
-/** Registra um multiplicador usado nesta sessão. */
 function addSessionMultiplier(sectionId, groupIndex, multiplier) {
   const key = `perfisio-session-multipliers-${sectionId}-${groupIndex}`;
   const arr = getSessionMultipliers(sectionId, groupIndex);
@@ -2447,10 +2411,6 @@ function addSessionMultiplier(sectionId, groupIndex, multiplier) {
   localStorage.setItem(key, JSON.stringify(arr));
 }
 
-/**
- * Limpa dados de sessão após a conclusão do grupo.
- * Chamado DEPOIS de capturar os dados para o modal de conclusão.
- */
 function clearSessionData(sectionId, groupIndex) {
   localStorage.removeItem(`perfisio-session-score-${sectionId}-${groupIndex}`);
   localStorage.removeItem(
@@ -2458,17 +2418,10 @@ function clearSessionData(sectionId, groupIndex) {
   );
 }
 
-// ── Cálculo de pontuação ──────────────────────────────────────────────────────
-
-/**
- * Calcula o multiplicador com base no ratio de tempo restante.
- * ratio 1 → 3x | ratio 0.5 → 2x | ratio 0 → 1x
- */
 function calculateMultiplier(timerRatio) {
   return 1 + timerRatio * 2;
 }
 
-/** Retorna { points, multiplier } para uma resposta correta. */
 function calculateScore(timerRatio) {
   const clampedRatio = Math.max(0, Math.min(1, timerRatio));
   const multiplier = calculateMultiplier(clampedRatio);
@@ -2476,36 +2429,31 @@ function calculateScore(timerRatio) {
   return { points, multiplier };
 }
 
-/**
- * Exibe o modal de "Atividade Concluída!" ao terminar a última questão do grupo.
- * Redireciona para home.html ao confirmar.
- */
- 
 function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
   const total = groupItems.length;
 
-  // Acerto de primeira = sem erros manuais E sem timeout
   const firstTryCorrect = groupItems.filter(
     (item) => getQuestionErrors(item.id) === 0 && !hasTimedOut(item.id),
   ).length;
 
   const percentual = Math.round((firstTryCorrect / total) * 100);
 
-  // ── Pontuação da sessão ────────────────────────────────────────────────────
   const sessionScore = getSessionScore(sectionId, groupIndex);
   const sessionMultipliers = getSessionMultipliers(sectionId, groupIndex);
   const avgMultiplier =
     sessionMultipliers.length > 0
-      ? sessionMultipliers.reduce((a, b) => a + b, 0) / sessionMultipliers.length
+      ? sessionMultipliers.reduce((a, b) => a + b, 0) /
+        sessionMultipliers.length
       : 1;
 
-  // Compara com recorde e atualiza se necessário
-  const { newBest, isRecord } = updateBestScore(sectionId, groupIndex, sessionScore);
+  const { newBest, isRecord } = updateBestScore(
+    sectionId,
+    groupIndex,
+    sessionScore,
+  );
 
-  // Limpa dados de sessão APÓS capturar
   clearSessionData(sectionId, groupIndex);
 
-  // ── Classes visuais ────────────────────────────────────────────────────────
   let multiplierClass = "multiplier-low";
   if (avgMultiplier >= 2.5) multiplierClass = "multiplier-high";
   else if (avgMultiplier >= 1.5) multiplierClass = "multiplier-mid";
@@ -2519,7 +2467,6 @@ function showGroupCompletionModal(groupItems, sectionId, groupIndex) {
   const message =
     encouragements[Math.floor(Math.random() * encouragements.length)];
 
-  // ── HTML do modal ──────────────────────────────────────────────────────────
   const newRecordBannerHtml = isRecord
     ? `<div class="completion-new-record">
         <span class="completion-new-record__icon">🏆</span>
@@ -2643,6 +2590,20 @@ function renderActivity(activity) {
     )
     .join("");
 
+  const section = getLessonSection(activity.sectionId);
+
+  const groups = splitIntoNGroups(section.items, 4);
+
+  const groupItems = groups[Number(currentGroupIndex) - 1];
+
+  const questionIndex = groupItems.findIndex((item) => item.id === activity.id);
+
+  const totalQuestions = groupItems.length;
+
+  const progressPercent = Math.round(
+    ((questionIndex + 1) / totalQuestions) * 100,
+  );
+
   const listSectionId = getQueryParam("section") || activity.sectionId;
   const listHref =
     listSectionId && currentGroupIndex
@@ -2650,6 +2611,7 @@ function renderActivity(activity) {
       : "home.html";
 
   root.innerHTML = `
+
      <div class="quiz-timer-wrapper">
     <svg class="quiz-timer-icon" viewBox="0 0 24 24" fill="none"
          stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -2663,11 +2625,21 @@ function renderActivity(activity) {
     <span class="quiz-timer-label" id="timer-label">60</span>
   </div>
 
+  <div class="quiz-status-bar">
+
+  <div class="quiz-question-counter">
+    QUESTÃO ${questionIndex + 1}/${totalQuestions}
+  </div>
+
   <div class="quiz-score-display" id="score-display">
     <span class="quiz-score-star">⭐</span>
-    <span class="quiz-score-value" id="score-value">${getSessionScore(sectionId, currentGroupIndex)}</span>
+    <span class="quiz-score-value" id="score-value">
+      ${getSessionScore(sectionId, currentGroupIndex)}
+    </span>
     <span class="quiz-score-label">pts</span>
   </div>
+
+</div>
   
     <div class="quiz-keys-container">
       <div class="quiz-badge">
@@ -2720,17 +2692,16 @@ function renderActivity(activity) {
   }
 
   /**
-   * Atualiza o contador de pontuação na tela e exibe animação de ganho.
-   * @param {number} totalScore - nova pontuação total
-   * @param {number} gained - pontos ganhos nesta resposta
-   * @param {number} multiplier - multiplicador aplicado (ex: 2.5)
+   
+   * @param {number} totalScore 
+   * @param {number} gained 
+   * @param {number} multiplier 
    */
   function updateScoreDisplay(totalScore, gained, multiplier) {
     const scoreValueEl = document.getElementById("score-value");
     const scoreDisplayEl = document.getElementById("score-display");
     if (!scoreValueEl || !scoreDisplayEl) return;
 
-    // Anima contagem do valor anterior até o novo total
     const previous = Number(scoreValueEl.textContent.replace(/\D/g, "")) || 0;
     const duration = 600;
     const startTs = performance.now();
@@ -2738,7 +2709,7 @@ function renderActivity(activity) {
     function animateCount(now) {
       const elapsed = now - startTs;
       const progress = Math.min(elapsed / duration, 1);
-      // ease-out
+
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(previous + (totalScore - previous) * eased);
       scoreValueEl.textContent = current;
@@ -2746,12 +2717,10 @@ function renderActivity(activity) {
     }
     requestAnimationFrame(animateCount);
 
-    // Pulso no badge
     scoreDisplayEl.classList.remove("score-pulse");
-    void scoreDisplayEl.offsetWidth; // force reflow
+    void scoreDisplayEl.offsetWidth;
     scoreDisplayEl.classList.add("score-pulse");
 
-    // Popup flutuante  "+90  3.0×"
     const popup = document.createElement("div");
     popup.className = "score-popup";
     const roundedMult = Math.round(multiplier * 10) / 10;
@@ -2760,155 +2729,137 @@ function renderActivity(activity) {
       <span class="score-popup-multiplier">${roundedMult.toFixed(1)}×</span>
     `;
     scoreDisplayEl.appendChild(popup);
-    // Remove ao fim da animação CSS (1.2 s)
+
     setTimeout(() => popup.remove(), 1400);
   }
 
   (function setupTimer() {
-  const DURATION = 60; // segundos
-  const fillEl   = document.getElementById("timer-fill");
-  const labelEl  = document.getElementById("timer-label");
- 
-  if (!fillEl || !labelEl) return;
- 
-  let startTime   = performance.now();
-  let rafId       = null;
-  let finished    = false;
-  let currentRatio = 1; // exposto para cálculo de pontuação
- 
-  function updateTimer(now) {
-    if (finished) return;
- 
-    const elapsed  = (now - startTime) / 1000;          // segundos
-    const remaining = Math.max(0, DURATION - elapsed);
-    const ratio     = remaining / DURATION;              // 1 → 0
-    currentRatio = ratio;
- 
-    // Atualiza barra
-    fillEl.style.width = `${ratio * 100}%`;
- 
-    // Atualiza label (arredonda pra cima para não mostrar 0 antes de expirar)
-    labelEl.textContent = String(Math.ceil(remaining));
- 
-    // Muda cor conforme urgência
-    fillEl.classList.toggle("timer-warning", ratio <= 0.4 && ratio > 0.15);
-    fillEl.classList.toggle("timer-danger",  ratio <= 0.15);
- 
-    if (remaining <= 0) {
-      finished = true;
-      onTimerExpired();
-      return;
-    }
- 
-    rafId = requestAnimationFrame(updateTimer);
-  }
- 
-  function stopTimer() {
-    finished = true;
-    if (rafId) cancelAnimationFrame(rafId);
-  }
- 
-  /**
-   * Aplica penalidade de tempo: reduz o tempo restante em `penaltySeconds`.
-   * Calcula com base no tempo máximo (DURATION), nunca desce abaixo de zero.
-   * Dispara os efeitos visuais na barra e verifica se o tempo expirou.
-   */
-  function applyPenalty(penaltySeconds) {
-    if (finished) return;
+    const DURATION = 60;
+    const fillEl = document.getElementById("timer-fill");
+    const labelEl = document.getElementById("timer-label");
 
-    // Desloca startTime para "consumir" os segundos de penalidade
-    startTime -= penaltySeconds * 1000;
+    if (!fillEl || !labelEl) return;
 
-    // Flash vermelho na barra
-    fillEl.classList.remove("timer-penalty");
-    void fillEl.offsetWidth; // reflow para reiniciar a animation
-    fillEl.classList.add("timer-penalty");
-    setTimeout(() => fillEl.classList.remove("timer-penalty"), 700);
+    let startTime = performance.now();
+    let rafId = null;
+    let finished = false;
+    let currentRatio = 1;
 
-    // Shake no wrapper do timer
-    const timerWrapper = fillEl.closest(".quiz-timer-wrapper");
-    if (timerWrapper) {
-      timerWrapper.classList.remove("timer-shake");
-      void timerWrapper.offsetWidth;
-      timerWrapper.classList.add("timer-shake");
-      setTimeout(() => timerWrapper.classList.remove("timer-shake"), 500);
+    function updateTimer(now) {
+      if (finished) return;
+
+      const elapsed = (now - startTime) / 1000;
+      const remaining = Math.max(0, DURATION - elapsed);
+      const ratio = remaining / DURATION;
+      currentRatio = ratio;
+
+      fillEl.style.width = `${ratio * 100}%`;
+
+      labelEl.textContent = String(Math.ceil(remaining));
+
+      fillEl.classList.toggle("timer-warning", ratio <= 0.4 && ratio > 0.15);
+      fillEl.classList.toggle("timer-danger", ratio <= 0.15);
+
+      if (remaining <= 0) {
+        finished = true;
+        onTimerExpired();
+        return;
+      }
+
+      rafId = requestAnimationFrame(updateTimer);
     }
 
-    // Verifica se a penalidade esgotou o tempo
-    const now = performance.now();
-    const elapsed = (now - startTime) / 1000;
-    const remaining = DURATION - elapsed;
-
-    if (remaining <= 0 && !finished) {
+    function stopTimer() {
       finished = true;
       if (rafId) cancelAnimationFrame(rafId);
-      fillEl.style.width = "0%";
-      labelEl.textContent = "0";
-      onTimerExpired();
     }
-  }
 
-  // Expõe API do timer globalmente
-  window.__quizDuration = DURATION;
-  window.__quizStopTimer = stopTimer;
-  window.__quizGetTimerRatio = () => currentRatio;
-  window.__quizApplyPenalty = applyPenalty;
- 
-  function onTimerExpired() {
-    // Marca como expirada (conta como errada no modal final)
-    markQuestionTimedOut(activity.id);
- 
-    // Desabilita interação
-    const submitBtn = document.getElementById("submit-answer");
-    if (submitBtn) submitBtn.disabled = true;
-    document.querySelectorAll("input[name='quiz-option']").forEach((i) => {
-      i.disabled = true;
-    });
- 
-    // Descobre próxima questão
-    const group = getGroupBySection(activity.sectionId, currentGroupIndex);
-    const groupItems = group ? group.items : [];
-    const currentIndexInGroup = groupItems.findIndex((i) => i.id === activity.id);
-    const nextItem = currentIndexInGroup >= 0
-      ? groupItems[currentIndexInGroup + 1]
-      : null;
- 
-    const listSectionId = activity.sectionId;
- 
-    if (nextItem) {
-      // Mostra feedback rápido e redireciona
-      const feedback = document.getElementById("feedback");
-      if (feedback) {
-        feedback.className = "quiz-feedback visible error";
-        feedback.textContent = "⏰ Tempo esgotado! Passando para a próxima questão...";
+    function applyPenalty(penaltySeconds) {
+      if (finished) return;
+
+      startTime -= penaltySeconds * 1000;
+
+      fillEl.classList.remove("timer-penalty");
+      void fillEl.offsetWidth;
+      fillEl.classList.add("timer-penalty");
+      setTimeout(() => fillEl.classList.remove("timer-penalty"), 700);
+
+      const timerWrapper = fillEl.closest(".quiz-timer-wrapper");
+      if (timerWrapper) {
+        timerWrapper.classList.remove("timer-shake");
+        void timerWrapper.offsetWidth;
+        timerWrapper.classList.add("timer-shake");
+        setTimeout(() => timerWrapper.classList.remove("timer-shake"), 500);
       }
-      setTimeout(() => {
-        window.location.href = `activity.html?id=${nextItem.id}&section=${listSectionId}&group=${currentGroupIndex}`;
-      }, 1800);
-    } else {
-      // Última questão do grupo — conclui mesmo sem resposta
-      markGroupCompleted(activity.sectionId, currentGroupIndex, groupItems);
-      showGroupCompletionModal(groupItems, activity.sectionId, currentGroupIndex);
+
+      const now = performance.now();
+      const elapsed = (now - startTime) / 1000;
+      const remaining = DURATION - elapsed;
+
+      if (remaining <= 0 && !finished) {
+        finished = true;
+        if (rafId) cancelAnimationFrame(rafId);
+        fillEl.style.width = "0%";
+        labelEl.textContent = "0";
+        onTimerExpired();
+      }
     }
-  }
- 
-  // Inicia
-  rafId = requestAnimationFrame(updateTimer);
- 
-  // Para o timer quando o usuário acerta (chame stopTimer no handleSubmit correto)
-  // O handleSubmit original chama createModal ao acertar — precisamos parar antes.
-  // A forma mais simples: monitorar o submit button.
-  // Ver nota no PASSO 6 abaixo.
-})();
+
+    window.__quizDuration = DURATION;
+    window.__quizStopTimer = stopTimer;
+    window.__quizGetTimerRatio = () => currentRatio;
+    window.__quizApplyPenalty = applyPenalty;
+
+    function onTimerExpired() {
+      markQuestionTimedOut(activity.id);
+
+      const submitBtn = document.getElementById("submit-answer");
+      if (submitBtn) submitBtn.disabled = true;
+      document.querySelectorAll("input[name='quiz-option']").forEach((i) => {
+        i.disabled = true;
+      });
+
+      const group = getGroupBySection(activity.sectionId, currentGroupIndex);
+      const groupItems = group ? group.items : [];
+      const currentIndexInGroup = groupItems.findIndex(
+        (i) => i.id === activity.id,
+      );
+      const nextItem =
+        currentIndexInGroup >= 0 ? groupItems[currentIndexInGroup + 1] : null;
+
+      const listSectionId = activity.sectionId;
+
+      if (nextItem) {
+        const feedback = document.getElementById("feedback");
+        if (feedback) {
+          feedback.className = "quiz-feedback visible error";
+          feedback.textContent =
+            "⏰ Tempo esgotado! Passando para a próxima questão...";
+        }
+        setTimeout(() => {
+          window.location.href = `activity.html?id=${nextItem.id}&section=${listSectionId}&group=${currentGroupIndex}`;
+        }, 1800);
+      } else {
+        markGroupCompleted(activity.sectionId, currentGroupIndex, groupItems);
+        showGroupCompletionModal(
+          groupItems,
+          activity.sectionId,
+          currentGroupIndex,
+        );
+      }
+    }
+
+    rafId = requestAnimationFrame(updateTimer);
+  })();
 
   function handleOptionChange() {
     submitButton.disabled = false;
-    // Remove selected/wrong class from all options
+
     root.querySelectorAll(".quiz-option").forEach((opt) => {
       opt.classList.remove("selected");
       opt.classList.remove("wrong");
     });
-    // Add selected class to the checked option's label
+
     const checked = root.querySelector("input[name='quiz-option']:checked");
     if (checked) {
       checked.closest(".quiz-option").classList.add("selected");
@@ -3076,16 +3027,16 @@ function renderActivity(activity) {
     return Math.max(0, 3 - usedHints);
   }
 
-  function showFeedback(isCorrect, reward = 0) {
-    if (!feedback) return;
-    feedback.className = `quiz-feedback visible ${isCorrect ? "success" : "error"}`;
-    if (isCorrect) {
-      feedback.textContent = `✓ Resposta correta!`;
-    } else {
-      feedback.textContent =
-        "✗ Resposta incorreta. Tente novamente ou reveja as dicas.";
-    }
-  }
+  // function showFeedback(isCorrect, reward = 0) {
+  //   if (!feedback) return;
+  //   feedback.className = `quiz-feedback visible ${isCorrect ? "success" : "error"}`;
+  //   if (isCorrect) {
+  //     feedback.textContent = `✓ Resposta correta!`;
+  //   } else {
+  //     feedback.textContent =
+  //       "✗ Resposta incorreta. Tente novamente ou reveja as dicas.";
+  //   }
+  // }
 
   function handleSubmit() {
     const selected = root.querySelector("input[name='quiz-option']:checked");
@@ -3101,16 +3052,13 @@ function renderActivity(activity) {
     const correct = answer === activity.answer;
 
     if (correct) {
-      // Para o timer imediatamente ao acertar
       if (window.__quizStopTimer) window.__quizStopTimer();
 
-      // Marca como resolvida (para controle de progresso/desbloqueio)
       if (!activityState.solved) {
         markQuestionSolved(activity.id);
         activityState.solved = true;
       }
 
-      // Pontua em TODA tentativa correta (sistema de recorde por sessão)
       const timerRatio =
         typeof window.__quizGetTimerRatio === "function"
           ? window.__quizGetTimerRatio()
@@ -3120,16 +3068,14 @@ function renderActivity(activity) {
       addSessionMultiplier(sectionId, currentGroupIndex, multiplier);
       const sessionTotal = getSessionScore(sectionId, currentGroupIndex);
 
-      // Animação e feedback visual de pontuação
       updateScoreDisplay(sessionTotal, points, multiplier);
 
-      showFeedback(true, 0);
-      submitButton.disabled = true;
-      optionInputs.forEach((input) => {
-        input.disabled = true;
-      });
+      // showFeedback(true, 0);
+      // submitButton.disabled = true;
+      // optionInputs.forEach((input) => {
+      //   input.disabled = true;
+      // });
 
-      // Navegar apenas dentro do grupo atual — nunca sair do grupo
       const group = getGroupBySection(sectionId, currentGroupIndex);
       const groupItems = group ? group.items : [];
       const currentIndexInGroup = groupItems.findIndex(
@@ -3139,7 +3085,6 @@ function renderActivity(activity) {
         currentIndexInGroup >= 0 ? groupItems[currentIndexInGroup + 1] : null;
 
       if (nextItem) {
-        // Ainda há questões neste grupo
         createModal({
           title: "🎉 Parabéns!",
           message: `Resposta correta! Questão ${currentIndexInGroup + 1} de ${groupItems.length} concluída.`,
@@ -3149,21 +3094,18 @@ function renderActivity(activity) {
           },
         });
       } else {
-        // Última questão do grupo — salvar progresso e exibir tela de conclusão
         markGroupCompleted(sectionId, currentGroupIndex, groupItems);
         showGroupCompletionModal(groupItems, sectionId, currentGroupIndex);
       }
     } else {
       registerQuestionError(activity.id);
 
-      // ── Destaque da alternativa errada ──────────────────────────────────
       const wrongLabel = selected.closest(".quiz-option");
       if (wrongLabel) {
         wrongLabel.classList.remove("selected");
         wrongLabel.classList.add("wrong");
       }
 
-      // ── Penalidade de tempo: 35% do tempo total ─────────────────────────
       const PENALTY_RATIO = 0.35;
       const totalDuration = window.__quizDuration || 60;
       const penaltySeconds = Math.round(totalDuration * PENALTY_RATIO); // 21s
@@ -3172,9 +3114,7 @@ function renderActivity(activity) {
         window.__quizApplyPenalty(penaltySeconds);
       }
 
-      // ── Toast de penalidade (não bloqueia a UI) ─────────────────────────
       (function showPenaltyToast() {
-        // Remove toast anterior se ainda estiver visível
         const existing = document.querySelector(".penalty-toast");
         if (existing) existing.remove();
 
@@ -3194,7 +3134,7 @@ function renderActivity(activity) {
         `Tente novamente! Dica: ${activity.hints[0]}`,
       );
 
-      showFeedback(false, 0);
+      // showFeedback(false, 0);
     }
   }
 
@@ -3202,7 +3142,6 @@ function renderActivity(activity) {
     input.addEventListener("change", handleOptionChange);
   });
 
-  // Add click listeners to labels for better UX
   root.querySelectorAll(".quiz-option").forEach((label) => {
     label.addEventListener("click", () => {
       const input = label.querySelector("input[type='radio']");
