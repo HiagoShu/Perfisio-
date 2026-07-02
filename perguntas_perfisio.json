@@ -5,7 +5,7 @@
     {
       "id": 1,
       "categoria": "Sistema Muscular",
-      "resposta": "SUPERIOR DO ACRÔMIO E ESPINHA DA ESCÁPULA; Músculo Deltóide Anterior",
+      "resposta": "Músculo Deltóide Anterior",
       "dicas": [
         "MEU NOME FAZ REFERÊNCIA A UM SÍMBOLO MATEMÁTICO;",
         "SOU UMA DAS PORÇÕES DE UM MÚSCULO;",
@@ -22,7 +22,7 @@
     {
       "id": 2,
       "categoria": "Sistema Muscular",
-      "resposta": "SUPERIOR DO ACRÔMIO E ESPINHA DA ESCÁPULA; Músculo Deltóide Médio",
+      "resposta": "Músculo Deltóide Médio",
       "dicas": [
         "FAÇO ABDUÇÃO;",
         "FIQUE UMA RODADA SEM JOGAR;",
@@ -39,7 +39,7 @@
     {
       "id": 3,
       "categoria": "Sistema Muscular",
-      "resposta": "SUPERIOR DO ACRÔMIO E ESPINHA DA ESCÁPULA; Músculo Deltóide Posterior",
+      "resposta": "Músculo Deltóide Posterior",
       "dicas": [
         "PAREÇO UM TRIÂNGULO INVERTIDO;",
         "INSERÇÃO DISTAL: TUBEROSIDADE DELTOIDE DO ÚMERO;",
@@ -56,7 +56,7 @@
     {
       "id": 4,
       "categoria": "Sistema Muscular",
-      "resposta": "ESCAPULAR; Músculo Peitoral Maior Porção Clavicular",
+      "resposta": "Músculo Peitoral Maior Porção Clavicular",
       "dicas": [
         "SE ERRAR TERÁ MAIS UMA CHANCE DE ACERTAR;",
         "A PORÇÃO ONDE ESTOU INSERIDO FAZ PARTE DO CÍNGULO",
@@ -73,7 +73,7 @@
     {
       "id": 5,
       "categoria": "Sistema Muscular",
-      "resposta": "AXIAL; INERVAÇÃO; DAS 6 PRIMEIRAS COSTELAS. Músculo Peitoral Maior Porção Esternal",
+      "resposta": "Músculo Peitoral Maior Porção Esternal",
       "dicas": [
         "FAÇO TAMBÉM ADUÇÃO;",
         "A PORÇÃO ONDE ESTOU INSERIDO FAZ PARTE DO ESQUELETO",
@@ -90,7 +90,7 @@
     {
       "id": 6,
       "categoria": "Sistema Muscular",
-      "resposta": "PROCESSOS PATOLÓGICOS; NO CORPO; Músculo Supraespinhal",
+      "resposta": "Músculo Supraespinhal",
       "dicas": [
         "INSERÇÃO PROXIMAL: FOSSA SUPRAESPINHAL;",
         "MEU NERVO PARTE DOS RAMOS C5, C6;",
@@ -123,7 +123,7 @@
     {
       "id": 8,
       "categoria": "Sistema Muscular",
-      "resposta": "OMBRO; SACRO POSTERIOR, CRISTA ILÍACA; INTERTUBERCULAR. Músculo Latíssimo do Dorso ou Grande Dorsal",
+      "resposta": "Músculo Latíssimo do Dorso ou Grande Dorsal",
       "dicas": [
         "SOU UM MÚSCULO DE TOPOGRAFIA GRANDE;",
         "MEU NERVO É O TORACODORSAL (C6-C8);",
@@ -140,7 +140,7 @@
     {
       "id": 9,
       "categoria": "Sistema Muscular",
-      "resposta": "DDORSAL; POSTERIOR DO CORPO. Músculo Redondo Maior",
+      "resposta": "Músculo Redondo Maior",
       "dicas": [
         "TENHO UMA INSERÇÃO NA ESCÁPULA;",
         "SOU UM MÚSCULO DE TOPOGRAFIA PEQUENA;",
@@ -157,7 +157,7 @@
     {
       "id": 10,
       "categoria": "Sistema Muscular",
-      "resposta": "MÚSCULOS; CORPO; Músculo Infraespinhal",
+      "resposta": "Músculo Infraespinhal",
       "dicas": [
         "INSERÇÃO DISTAL: TUBÉRCULO MAIOR DO ÚMERO;",
         "TENHO UMA INSERÇÃO NA ESCÁPULA;",
@@ -174,7 +174,7 @@
     {
       "id": 11,
       "categoria": "Sistema Muscular",
-      "resposta": "ESCÁPULA; FUNÇÃO; Músculo Redondo Menor",
+      "resposta": "Músculo Redondo Menor",
       "dicas": [
         "QUEM ESTÁ LENDO ANDA AGORA UMA CASA;",
         "REALIZO A ROTAÇÃO EXTERNA;",
@@ -191,7 +191,7 @@
     {
       "id": 12,
       "categoria": "Sistema Muscular",
-      "resposta": "DA ESCÁPULA; Músculo Subescapular",
+      "resposta": "Músculo Subescapular",
       "dicas": [
         "TOPOGRAFICAMENTE ME ENCONTRO ABAIXO DE UM OSSO;",
         "MEU NERVO É O SUBESCAPULAR;",
@@ -208,7 +208,7 @@
     {
       "id": 13,
       "categoria": "Sistema Muscular",
-      "resposta": "NOS ÔNIBUS E ETC.; CAVIDADE GLENÓIDE; DA ESCÁPULA; Músculo Bíceps Braquial",
+      "resposta": "Músculo Bíceps Braquial",
       "dicas": [
         "TENHO DUAS CABEÇAS;",
         "INSERÇÃO DISTAL: TUBEROSIDADE DO RÁDIO;",
@@ -225,7 +225,7 @@
     {
       "id": 14,
       "categoria": "Sistema Muscular",
-      "resposta": "MINHA CONTRAÇÃO; ÚMERO POSTERIOR; CAVIDADE GLENÓIDE INFERIORES DO ÚMERO POSTERIOR; Músculo Tríceps Braquial",
+      "resposta": "Músculo Tríceps Braquial",
       "dicas": [
         "O NERVO RADIAL É QUEM MANDA POTENCIAIS DE AÇÃO PARA",
         "INSERÇÃO PROXIMAL PORÇÃO LATERAL: METADE SUPERIOR DO",
@@ -242,7 +242,7 @@
     {
       "id": 15,
       "categoria": "Sistema Muscular",
-      "resposta": "ANTEBRAÇO; SUPRACONDILAR LATERAL DO ÚMERO; Músculo Braquiorradial",
+      "resposta": "Músculo Braquiorradial",
       "dicas": [
         "DE C5 E C6 PARTE O NERVO QUE ME INERVA;",
         "MEU NOME FAZ REFERÊNCIA ÀS MINHAS INSERÇÕES;",
@@ -259,7 +259,7 @@
     {
       "id": 16,
       "categoria": "Sistema Muscular",
-      "resposta": "ÚMERO; ATIVAÇÃO; GÍNGLIMO; Músculo Braquial",
+      "resposta": "Músculo Braquial",
       "dicas": [
         "INSERÇÃO PROXIMAL: METADE ANTERIOR E INFERIOR DO",
         "O NERVO MUSCULOCUTÂNEO É O RESPONSÁVEL PELA MINHA",
@@ -276,7 +276,7 @@
     {
       "id": 17,
       "categoria": "Sistema Muscular",
-      "resposta": "ULNA; SOBRENOME “QUADRADO”; Músculo Pronador Redondo",
+      "resposta": "Músculo Pronador Redondo",
       "dicas": [
         "TENHO DUAS PORÇÕES;",
         "UMA DAS MINHAS PORÇÕES ESTÁ NO ÚMERO E OUTRA NA",
@@ -293,7 +293,7 @@
     {
       "id": 18,
       "categoria": "Sistema Muscular",
-      "resposta": "ANTERIOR; NESSA MINHA ARTICULAÇÃO; DISTAL; ANTERIOR. Músculo Pronador Quadrado",
+      "resposta": "Músculo Pronador Quadrado",
       "dicas": [
         "PASSE SUA VEZ;",
         "QUEM ESTÁ LENDO ANDA AGORA UMA CASA;",
@@ -310,7 +310,7 @@
     {
       "id": 19,
       "categoria": "Sistema Muscular",
-      "resposta": "ARTICULAÇÃO; ÚMERO. Músculo Ancôneo",
+      "resposta": "Músculo Ancôneo",
       "dicas": [
         "AUXILIO O TRÍCEPS;",
         "MINHA INERVAÇÃO É FEITA PELO RADIAL (C7, C8);",
@@ -327,7 +327,7 @@
     {
       "id": 20,
       "categoria": "Sistema Muscular",
-      "resposta": "C6); BRAQUIAL E BRAQUIORRADIAL; DESTRANCAR UM CADEADO OU LIGAR UM CARRO; ULNA ADJACENTE; Músculo Supinador",
+      "resposta": "Músculo Supinador",
       "dicas": [
         "MEU NOME FAZ REFERÊNCIA AO GESTO DE PEDIR, SUPLICAR;",
         "MINHA INERVAÇÃO É FEITA PELO INTERÓSSEO POSTERIOR (C5,",
@@ -344,7 +344,7 @@
     {
       "id": 21,
       "categoria": "Sistema Muscular",
-      "resposta": "POLEGAR; DEDOS ESTÃO FLEXIONADOS; ANTEBRAÇO; TAMÉM LONGO; Músculo Extensor Longo do Polegar",
+      "resposta": "Músculo Extensor Longo do Polegar",
       "dicas": [
         "SOU UM MÚSCULO EXTRÍNSECO;",
         "INSERÇÃO DISTAL: FACE DISTAL DA FALANGE DISTAL DO",
@@ -361,7 +361,7 @@
     {
       "id": 22,
       "categoria": "Sistema Muscular",
-      "resposta": "COXA. TÍBIA; Músculo Sartório",
+      "resposta": "Músculo Sartório",
       "dicas": [
         "EU CRUZO OBLIQUAMENTE NO SENTIDO LATEROMEDIAL DA",
         "SOU INERVADO PELO NERVO FEMORAL;",
@@ -378,7 +378,7 @@
     {
       "id": 23,
       "categoria": "Sistema Muscular",
-      "resposta": "TRONCO; FLEXIONO O TRONCO; TRANSVERSOS, CORPOS E DISCOS INTERVERTEBRAIS DAS VÉRTEBRAS LOMBARES; Músculo Íliopsoas",
+      "resposta": "Músculo Íliopsoas",
       "dicas": [
         "SOU UM MÚSCULO DE DUAS PORÇÕES;",
         "POSSO ATUAR TANTO NO MEMBRO INFERIOR COMO NO",
@@ -395,7 +395,7 @@
     {
       "id": 24,
       "categoria": "Sistema Muscular",
-      "resposta": "JOELHO; MEMBROS INFERIORES; Músculo Quadríceps",
+      "resposta": "Músculo Quadríceps",
       "dicas": [
         "SOU COMPOSTO POR 4 MÚSCULOS/VENTRES MUSCULARES;",
         "UM DOS MEUS COMPONENTES TEM AÇÃO NO QUADRIL E NO",
@@ -412,7 +412,7 @@
     {
       "id": 25,
       "categoria": "Sistema Muscular",
-      "resposta": "FÊMUR; Músculo Adutor Longo",
+      "resposta": "Músculo Adutor Longo",
       "dicas": [
         "TENHO ORIGEM NO CORPO DO PÚBIS;",
         "TENHO INSERÇÃO NA REGIÃO MEDIAL DA LINHA ÁSPERA DO",
@@ -429,7 +429,7 @@
     {
       "id": 26,
       "categoria": "Sistema Muscular",
-      "resposta": "CORPO DA TÍBIA; Músculo Grácil",
+      "resposta": "Músculo Grácil",
       "dicas": [
         "TENHO ORIGEM NO CORPO E RAMO INFERIOR DO PÚBIS;",
         "TENHO INSERÇÃO NA FACE MEDIAL DA PORÇÃO PROXIMAL DO",
@@ -446,7 +446,7 @@
     {
       "id": 27,
       "categoria": "Sistema Muscular",
-      "resposta": "INFERIORES; FECHADA, EU PARTICIPO NA EXTENSÃO DO TRONCO. Músculo Glúteo Máximo",
+      "resposta": "Músculo Glúteo Máximo",
       "dicas": [
         "ESTOU SITUADO NA REGIÃO POSTERIOR DOS MEMBROS",
         "SOU UM MÚSCULO VOLUMOSO;",
@@ -463,7 +463,7 @@
     {
       "id": 28,
       "categoria": "Sistema Muscular",
-      "resposta": "ESTABILIZAÇÃO DO QUADRIL; ANTERIOR. Músculo Glúteo Médio",
+      "resposta": "Músculo Glúteo Médio",
       "dicas": [
         "SOU COBERTO PELO M. GLÚTEO MÁXIMO;",
         "PASSE SUA VEZ;",
@@ -480,7 +480,7 @@
     {
       "id": 29,
       "categoria": "Sistema Muscular",
-      "resposta": "E INFERIOR. Músculo Glúteo Mínimo",
+      "resposta": "Músculo Glúteo Mínimo",
       "dicas": [
         "O M. GLÚTEO MÁXIMO ESTÁ ME COBRINDO;",
         "SOU INERVADO PELO NERVO GLÚTEO SUPERIOR;",
@@ -497,7 +497,7 @@
     {
       "id": 30,
       "categoria": "Sistema Muscular",
-      "resposta": "VÉRTEBRAS SACRAIS); GLÚTEA; Músculo Piriforme",
+      "resposta": "Músculo Piriforme",
       "dicas": [
         "TENHO ORIGEM NA FACE PÉLVICA DO SACRO (2ª À 4ª",
         "REALIZO ROTAÇÃO EXTERNA DO QUADRIL;",
@@ -514,7 +514,7 @@
     {
       "id": 31,
       "categoria": "Sistema Muscular",
-      "resposta": "COXA; EXTERNO DA CRISTA ILÍACA; Músculo Tensor da Fáscia Lata",
+      "resposta": "Músculo Tensor da Fáscia Lata",
       "dicas": [
         "ESTOU SITUADO NA PARTE ÂNTERO-LATERAL E PROXIMAL DA",
         "SOU INERVADO PELO NERVO GLÚTEO SUPERIOR;",
@@ -531,7 +531,7 @@
     {
       "id": 32,
       "categoria": "Sistema Muscular",
-      "resposta": "PORÇÃO CURTA); ISQUIÁTICA; FÊMUR; EXTENSÃO; FLEXÃO; QUANDO O JOELHO E O QUADRIL ESTÃO FIXADOS. Músculo Bíceps Femoral",
+      "resposta": "Músculo Bíceps Femoral",
       "dicas": [
         "SOU COMPOSTO POR DUAS PORÇÕES (PORÇÃO LONGA E",
         "MINHA PORÇÃO LONGA TEM ORIGEM NA TUBEROSIDADE",
@@ -548,7 +548,7 @@
     {
       "id": 33,
       "categoria": "Sistema Muscular",
-      "resposta": "PROXIMAL DO CORPO DA TÍBIA; EXTENSÃO; FLEXÃO; POSTEROMEDIAL DA TÍBIA. Músculos Semitendinoso e Semimembranoso",
+      "resposta": "Músculos Semitendinoso e Semimembranoso",
       "dicas": [
         "SOMOS DOIS MÚSCULOS QUE ATUAMOS JUNTOS;",
         "MINHAS ORIGENS ESTÃO NA TUBEROSIDADE ISQUIÁTICA;",
@@ -565,7 +565,7 @@
     {
       "id": 34,
       "categoria": "Sistema Muscular",
-      "resposta": "DESLOCO O TRONCO ANTERIORMENTE; MEDIAL DO OSSO CUNEIFORME MEDIAL; DESVIA-SE MEDIALMENTE. Músculo Tibial Anterior",
+      "resposta": "Músculo Tibial Anterior",
       "dicas": [
         "EU OCUPO UMA POSIÇÃO LATERAL E PARALELA À TÍBIA;",
         "ATUO NO TORNOZELO, MAS QUANDO ESTE ESTÁ FIXO, EU",
@@ -582,7 +582,7 @@
     {
       "id": 35,
       "categoria": "Sistema Muscular",
-      "resposta": "DO FÊMUR; CÔNDILO MEDIAL DO FÊMUR; FLEXÃO, PORÉM SÓ CONSIGO FAZER ISSO QUANDO O JOELHO NÃO ESTIVER SUPORTANDO PESO; TUBEROSIDADE DO CALCÂNEO; SURAL. Músculo Gastrocnêmio",
+      "resposta": "Músculo Gastrocnêmio",
       "dicas": [
         "ESTOU SITUADO NA REGIÃO POSTERIOR DA PERNA;",
         "POSSUO 2 (DOIS) VENTRES, UM LATERAL E UM MEDIAL;",
@@ -599,7 +599,7 @@
     {
       "id": 36,
       "categoria": "Sistema Muscular",
-      "resposta": "FÍBULA E REGIÃO POSTERIOR E MEDIAL DA TÍBIA; PRENDE À TUBEROSIDADE DO CALCÂNEO; Músculo Sóleo",
+      "resposta": "Músculo Sóleo",
       "dicas": [
         "VOCÊ RECEBERÁ AS 5 PRIMEIRAS DICAS DE UMA SÓ VEZ;",
         "ESTOU NA REGIÃO POSTERIOR DA PERNA;",
@@ -616,7 +616,7 @@
     {
       "id": 37,
       "categoria": "Sistema Muscular",
-      "resposta": "TÍBIA E DA FÍBULA, MEMBRANA INTERÓSSEA; FACE POSTERIOR DA PERNA, SENDO RECOBERTO PELO TRÍCEPS SURAL; FASCIAL, O RETINACULO FLEXOR, QUE SE ESTENDE DO MALÉOLO MEDIAL AO CALCÂNEO; OS CUNEIFORMES E BASES DO II, III E IV METATÁRSICOS; Músculo Tibial Posterior",
+      "resposta": "Músculo Tibial Posterior",
       "dicas": [
         "TENHO ORIGEM NO 2/3 PROXIMAIS DA FACE POSTERIOR DA",
         "VOLTE 3 (TRÊS) CASAS;",
@@ -633,7 +633,7 @@
     {
       "id": 38,
       "categoria": "Sistema Muscular",
-      "resposta": "CÔNDILO LATERAL DA TÍBIA E MEMBRANA INTERÓSSEA; TERCEIRO; LATERAIS, NA BASE DAS FALANGES MÉDIA E DISTAL; Músculo Extensor Longo dos Dedos",
+      "resposta": "Músculo Extensor Longo dos Dedos",
       "dicas": [
         "MINHA ORIGEM ESTÁ NA REGIÃO PROXIMAL DA FÍBULA,",
         "ANDE 2 (DUAS) CASAS;",
@@ -650,7 +650,7 @@
     {
       "id": 39,
       "categoria": "Sistema Muscular",
-      "resposta": "FÍBULA; ESPESSAMENTOS FASCIAIS, OS RETINÁCULOS DOS FIBULARES; SUPERFICIAL; Músculos Fibular Longo e Curto",
+      "resposta": "Músculos Fibular Longo e Curto",
       "dicas": [
         "SOMOS DOIS MÚSCULOS DE MESMA AÇÃO;",
         "TENHO ORIGEM NA CABEÇA DA FÍBULA E NOS 2/3 PROXIMAIS DA",
@@ -667,7 +667,7 @@
     {
       "id": 40,
       "categoria": "Sistema Muscular",
-      "resposta": "FACE POSTERIOR DA PERNA, SENDO RECOBERTO PELO TRÍCEPS SURAL; DA FÍBULA; DISTAL DO HÁLUX; Músculo Flexor Longo do Hálux",
+      "resposta": "Músculo Flexor Longo do Hálux",
       "dicas": [
         "ANDE 1 (UMA) CASA;",
         "ESTOU SITUADO NA CAMADA PROFUNDA DOS MÚSCULOS DA",
@@ -684,7 +684,7 @@
     {
       "id": 41,
       "categoria": "Sistema Muscular",
-      "resposta": "EXTENSOR LONGO DOS DEDOS; DO PÉ. MEMBRANA INTERÓSSEA; DISTAL DO HÁLUX; Músculo Extensor Longo do Hálux",
+      "resposta": "Músculo Extensor Longo do Hálux",
       "dicas": [
         "ESTOU SITUADO ENTRE OS MÚSCULOS TIBIAL ANTERIOR E",
         "MEU TENDÃO DE INSERÇÃO CRUZA MEDIALMENTE O DORSO",
@@ -701,7 +701,7 @@
     {
       "id": 42,
       "categoria": "Sistema Articular",
-      "resposta": "DO CORPO; SAGITAL, FRONTAL E TRANSVERSAL; PLANOS ANATÔMICOS; QUE FORMO; COMPLEXO QUE FORMO; “MÚSCULOS REDONDOS”. Articulação do Ombro",
+      "resposta": "Articulação do Ombro",
       "dicas": [
         "SOU UMA ARTICULAÇÃO DO TIPO ESFERÓIDE;",
         "SOU UMA DAS MAIORES E MAIS COMPLEXAS ARTICULAÇÕES",
@@ -718,7 +718,7 @@
     {
       "id": 43,
       "categoria": "Sistema Articular",
-      "resposta": "ESQUELETO AXIAL; REFERÊNCIA ÀS SEGUINTES ESTRUTURAS ÓSSEAS: ACRÔMIO E ÚMERO; DO QUE POSTERIORMENTE; GRAUS DE LIBERDADE; PROTRAÇÃO, RETRAÇÃO E ROTAÇÃO; Articulação Esternoclavicular",
+      "resposta": "Articulação Esternoclavicular",
       "dicas": [
         "SOU FUNDAMENTAL NA LIGAÇÃO DO MEMBRO SUPERIOR AO",
         "SOU UMA ARTICULAÇÃO DO TIPO SELAR;",
@@ -735,7 +735,7 @@
     {
       "id": 44,
       "categoria": "Sistema Articular",
-      "resposta": "ESCAPULARES; PROTRAÇÃO, RETRAÇÃO E ROTAÇÃO; (DOIS) DELES LIGAM-SE AO PROCESSO CORACÓIDE; FAZ REFERÊNCIA AO ÚMERO; Articulação Acromioclavicular",
+      "resposta": "Articulação Acromioclavicular",
       "dicas": [
         "SOU UMA ARTICULAÇÃO ARTRODIAL, “DESLIZANTE”;",
         "ESTOU ENVOLVIDA NA MAIOR PARTE DE MOVIMENTOS",
@@ -752,7 +752,7 @@
     {
       "id": 45,
       "categoria": "Sistema Articular",
-      "resposta": "NÃO FAZ REFERÊNCIA AO ÚMERO OU AO ESTERNO; MÚSCULOS PRÓXIMOS A ESTE; FUNCIONAL; ARTICULAÇÕES; “DESLIZAMENTO” DE UM OSSO NUMA ÁREA MAIOR; POSICIONAMENTO DE UMA DE SUAS OUTRAS ARTICULAÇÕES. Articulação Escapulotorácica",
+      "resposta": "Articulação Escapulotorácica",
       "dicas": [
         "FAÇO PARTE DO COMPLEXO ARTICULAR DO OMBRO E MEU NOME",
         "SOU FORMADA POR UM SÓ OSSO E UM CONJUNTO DE",
@@ -769,7 +769,7 @@
     {
       "id": 46,
       "categoria": "Sistema Articular",
-      "resposta": "HUMANO; AÇÕES MUSCULARES; UMA ESTRUTURA CUJO NOME POSSUI DOIS TERMOS, COMEÇANDO POR “CAVIDADE”; ARTICULAÇÃO É DESPROPORCIONAL; ARTICULAÇÃO POSSIBILITA MOVIMENTOS DE GRANDE AMPLITUDE; QUE PODE SER CHAMADA DE “LABRUM”. Articulação Glenoumeral",
+      "resposta": "Articulação Glenoumeral",
       "dicas": [
         "SOU UMA ARTICULAÇÃO SINOVIAL DO TIPO ESFEROIDE;",
         "SOU A ARTICULAÇÃO COM MAIOR MOBILIDADE DO CORPO",
@@ -786,7 +786,7 @@
     {
       "id": 47,
       "categoria": "Sistema Articular",
-      "resposta": "DE LIBERDADE; INTERLIGADOS POR UMA SINDESMOSE; NÃO CHEGA A 180º DEVIDO À RELATIVAMENTE GRANDE MASSA DE UM MÚSCULO; DENTRO DA MINHA ESTRUTURA CHAMADO DE “EPICONDILITE LATERAL.” Articulação do Cotovelo",
+      "resposta": "Articulação do Cotovelo",
       "dicas": [
         "SOU UMA ARTICULAÇÃO FORMADA POR TRÊS OSSOS LONGOS;",
         "SOU UMA ARTICULAÇÃO DO TIPO GÍNGLIMO COM 1 (UM) GRAU",
@@ -803,7 +803,7 @@
     {
       "id": 48,
       "categoria": "Sistema Articular",
-      "resposta": "FLEXÃO/EXTENSÃO E ABDUÇÃO/ADUÇÃO; TAMBÉM SER CHAMADOS DE “DESVIOS”, LEVANDO OS NOMES DE DOIS OSSOS LONGOS; OSSOS LONGOS E OUTROS DE TAMANHO CONSIDERAVELMENTE MENOR; FLEXORES. SE ARTICULA SOMENTE COM OUTRO, TAMBÉM PEQUENO. Articulação do Punho",
+      "resposta": "Articulação do Punho",
       "dicas": [
         "SOU UMA ARTICULAÇÃO CONDILÓIDE/BIAXIAL;",
         "POSSUO DUAS ARTICULAÇÕES NO MEU COMPLEXO;",
@@ -820,7 +820,7 @@
     {
       "id": 49,
       "categoria": "Sistema Articular",
-      "resposta": "SELAR; SOMENTE REALIZAR MOVIMENTOS DE FLEXÃO E EXTENSÃO; MOVIMENTOS SÃO CHAMADOS DE “LUMBRICAIS”; DISTAL; Articulação da Mão",
+      "resposta": "Articulação da Mão",
       "dicas": [
         "POSSUO ESTRUTURAS CHAMADAS DE QUIRODÁCTILOS;",
         "POSSUO TRÊS PEQUENAS ARTICULAÇÕES DISTINTAS;",
@@ -837,7 +837,7 @@
     {
       "id": 50,
       "categoria": "Sistema Articular",
-      "resposta": "UM ELEMENTO QUE TEM A MESMA DENOMINAÇÃO DE UMA ESTRUTURA DO ROSTO; ESTRUTURAS DO QUAL SOU FORMADO; DISPOSTOS EM “Z”. Articulação Femoroacetabular",
+      "resposta": "Articulação Femoroacetabular",
       "dicas": [
         "TENHO BOA COAPTAÇÃO ARTICULAR;",
         "SOU SINOVIAL DO TIPO ESFERÓIDE;",
@@ -854,7 +854,7 @@
     {
       "id": 51,
       "categoria": "Sistema Articular",
-      "resposta": "EXTERNA; ARTICULARES; OS MEUS COMPONENTES; COMO UM “TRONCO DE CONE DEITADO”. Articulação Femorotibial",
+      "resposta": "Articulação Femorotibial",
       "dicas": [
         "SOU UMA ARTICULAÇÃO MÓVEL, MAS COM RESTRIÇÕES;",
         "FAÇO FLEXÃO E EXTENSÃO, PRIMARIAMENTE;",
@@ -871,7 +871,7 @@
     {
       "id": 52,
       "categoria": "Sistema Articular",
-      "resposta": "DEFINIÇÃO DE UM COMPONENTE; PRINCIPALMENTE ENTRE AS MULHERES; DE SACO”; AO PERSONAGEM “PATETA”; Articulação Patelofemoral",
+      "resposta": "Articulação Patelofemoral",
       "dicas": [
         "UM DOS MEUS COMPONENTES É UM OSSO SESAMOÍDE;",
         "SOU UMA ARTICULAÇÃO SINOVIAL DO TIPO PLANA;",
@@ -888,7 +888,7 @@
     {
       "id": 53,
       "categoria": "Sistema Articular",
-      "resposta": "OSSOS DO QUAL SOU FORMADO; UMA DAS MINHAS ARTICULAÇÕES (PROXIMAL OU DISTAL); TERMINA DISTALMENTE EM MALÉOLOS; Articulação Tibiofibular",
+      "resposta": "Articulação Tibiofibular",
       "dicas": [
         "PEÇA MAIS DUAS DICAS;",
         "TENHO UMA ARTICULAÇÃO PROXIMAL E UMA DISTAL;",
@@ -905,7 +905,7 @@
     {
       "id": 54,
       "categoria": "Sistema Articular",
-      "resposta": "COM OUTROS NOMES ESPECIFICAMENTE PARA MIM; MÚSCULO DO MEMBRO SUPERIOR; ANTERIOR, TALOFIBULAR POSTERIOR E CALCANEOFIBULAR; Articulação Talocrural",
+      "resposta": "Articulação Talocrural",
       "dicas": [
         "SOU A ARTICULAÇÃO DO TORNOZELO, PROPRIAMENTE DITA;",
         "VOLTE 2(DUAS) CASAS;",
@@ -922,7 +922,7 @@
     {
       "id": 55,
       "categoria": "Sistema Articular",
-      "resposta": "ÓSSEO); Articulação Subtalar",
+      "resposta": "Articulação Subtalar",
       "dicas": [
         "SOU COMPOSTO PELO TÁLUS E O CALCÂNEO;",
         "SOU UNIAXIAL;",
@@ -939,7 +939,7 @@
     {
       "id": 56,
       "categoria": "Sistema Articular",
-      "resposta": "DO TARSO; JOGAR; SUPERFÍCIE DISTAL DOS TRÊS CUNEIFORMES E CUBOIDE; LATERAL. Articulação Tarsometatarsal",
+      "resposta": "Articulação Tarsometatarsal",
       "dicas": [
         "SOU SINOVIAL DO TIPO PLANA;",
         "POSSUO UMA FORMA DENTEADA;",
@@ -990,7 +990,7 @@
     {
       "id": 59,
       "categoria": "Sistema Articular",
-      "resposta": "PROTUSÃO, RETRAÇÃO E LATERALIZAÇÃO; DO OSSO TEMPORAL; MINHA ESTABILIZAÇÃO; MINHA CÁPSULA; BICONDILAR; Articulação Temporomandibular",
+      "resposta": "Articulação Temporomandibular",
       "dicas": [
         "PASSE SUA VEZ;",
         "PERMITO OS MOVIMENTOS DE ABAIXAMENTO, ELEVAÇÃO,",
@@ -1007,7 +1007,7 @@
     {
       "id": 60,
       "categoria": "Sistema Articular",
-      "resposta": "POSTERIOS ME ESTABILIZAM; ANEL FIBROSO; IDÊNTICAS A MIM PROPORCIONAMOS UMA ROTAÇÃO CONSIDERÁVEL; QUE ESTÁ TENSIONADO MESMO QUANDO ESTOU NA POSIÇÃO ANATÔMICA; TECIDO NERVOSO; DISTRIBUIÇÃO DE CARGAS; Articulação Intercorpos Vertebrais",
+      "resposta": "Articulação Intercorpos Vertebrais",
       "dicas": [
         "OS LIGAMENTOS LONGITUDINAL ANTERIOR E LONGITUDINAL",
         "SOU CLASSIFICADA COMO UMA SÍNFISE DE ANFIARTROSE;",
@@ -1024,7 +1024,7 @@
     {
       "id": 61,
       "categoria": "Sistema Articular",
-      "resposta": "OU SINOVIAL PLANA; TORÁCICO, MINHA INCLINAÇÃO LATERAL É ACOMPANHADA DE ROTAÇÃO; IGUAIS A MIM; DO TÓRAX; LOMBAR. Articulação Zigoapofisária ou Interfacetária",
+      "resposta": "Articulação Zigoapofisária ou Interfacetária",
       "dicas": [
         "SOU CLASSIFICADA COMO DIARTRODIAL DO TIPO DESLIZANTE",
         "LIGO DOIS OSSOS SEMELHANTES;",
@@ -1041,7 +1041,7 @@
     {
       "id": 62,
       "categoria": "Sistema Articular",
-      "resposta": "CABEÇA INSEREM-SE NOS MESMOS OSSOS QUE EU ARTICULO; SUBOCCIPTAL; INSERE NOS OSSOS QUE EU ARTICULO; ANTERIOR E ATLANTO- OCCIPITAL POSTERIOR; ESTABILIZAM; INSERE NOS OSSOS QUE EU ARTICULO; Articulação Atlanto-occipital",
+      "resposta": "Articulação Atlanto-occipital",
       "dicas": [
         "OS MÚSCULOS RETO ANTERIOR DA CABEÇA E RETO LATERAL DA",
         "UMA DE MINHAS MEMBRANAS É PERFURADA PELO NERVO",
@@ -1058,7 +1058,7 @@
     {
       "id": 63,
       "categoria": "Sistema Articular",
-      "resposta": "NO PLANO TRANSVERSAL; EM EXTENSÃO; INSERE NOS OSSOS QUE EU ARTICULO; COMPONENTES PODE SOFRER É NO EFEITO CHICOTE; EM FLEXÃO ; ANTERIOS ME ESTABILIZAM. Articulação Atlanto-axial Mediana",
+      "resposta": "Articulação Atlanto-axial Mediana",
       "dicas": [
         "PERMITO UMA CONSIDERÁVEL AMPLITUDE DE MOVIMENTO",
         "SOU FAMOSA POR CONTER UM DENTE;",
@@ -1075,7 +1075,7 @@
     {
       "id": 64,
       "categoria": "Sistema Articular",
-      "resposta": "LIGAMENTOS PÚBICO SUPERIOR E PÚBICO ARQUEADO; CAMINHADA; AUMENTAR MINHA MOBILIDADE; INSERÇÕES. Articulação Sínfise Púbica",
+      "resposta": "Articulação Sínfise Púbica",
       "dicas": [
         "A UNIÃO DE MINHAS ESTRUTURAS É REFORÇADA PELOS",
         "TENHO POUCA MOBILIDADE;",
@@ -1092,7 +1092,7 @@
     {
       "id": 65,
       "categoria": "Sistema Articular",
-      "resposta": "O PARTO; UMA SEGURA MOVIMENTAÇÃO DOS MEMBROS INFERIORES; SACROILIACOS ANTERIORES, SACROTUBEROSO, SACROESPINHOSO E ILEOLOMBAR; MOBILIDADE; Articulação Sacroilíaca",
+      "resposta": "Articulação Sacroilíaca",
       "dicas": [
         "MINHA MOBILIDADE AUMENTA E É FUNDAMENTAL DURANTE",
         "REALIZO OS MOVIMENTOS DE NUTAÇÃO E CONTRANUTAÇÃO;",
@@ -1109,7 +1109,7 @@
     {
       "id": 66,
       "categoria": "Sistema Articular",
-      "resposta": "INFERIOR; TIPO PLANA; Articulação Condroesternal",
+      "resposta": "Articulação Condroesternal",
       "dicas": [
         "ARTICULO UM OSSO E UMA CARTILAGEM;",
         "O CORPO HUMANO POSSUI 14 PARES DE MIM;",
@@ -1143,7 +1143,7 @@
     {
       "id": 68,
       "categoria": "Sistema Articular",
-      "resposta": "OSSOS QUE EU ARTICULO; COSTOTRANSVERSO LATERAL E COSTOTRANSVERSO SUPERIOR; BOMBA; FRONTAL OU UM EIXO QUASE SAGITAL, DEPENDENDO DE ONDE ESTOU; MIM; MOVIMENTOS DO TRONCO. Articulação Costotransversal",
+      "resposta": "Articulação Costotransversal",
       "dicas": [
         "O MÚSCULO LONGUÍSSIMO DO TÓRAX SE INSERE NOS MESMOS",
         "MEUS LIGAMENTOS SÃO: COSTOTRANSVERSO,",
@@ -1160,7 +1160,7 @@
     {
       "id": 69,
       "categoria": "Sistema Articular",
-      "resposta": "INTERVERTEBRAL; OSSOS IGUAIS; FRONTAL OU UM EIXO QUASE SAGITAL, DEPENDENDO DE ONDE ESTOU; TRONCO; BOMBA. Articulação Costovertebral",
+      "resposta": "Articulação Costovertebral",
       "dicas": [
         "MEU LIGAMENTO INTRA-ARTICULAR SE INSERE EM UM DISCO",
         "O CORPO HUMANO POSSUI 24 ARTICULAÇÕES IGUAIS A MIM;",
@@ -1177,7 +1177,7 @@
     {
       "id": 70,
       "categoria": "Conceitos",
-      "resposta": "EM UM ÔNIBUS OU CARRO; LONGO DE UMA LINHA; NUM AVIÃO; (RETILÍNEO) OU CURVA (CURVILÍNIO); Movimento Linear",
+      "resposta": "Movimento Linear",
       "dicas": [
         "SIGO NA MESMA DIREÇÃO;",
         "UM EXEMPLO DESSE MOVIMENTO É O DE QUANDO ESTAMOS",
@@ -1194,7 +1194,7 @@
     {
       "id": 71,
       "categoria": "Conceitos",
-      "resposta": "EXECUTA UM CÍRCULO GIGANTE NA BARRA; DESLOCANDO CONSTANTEMENTE EM RELAÇÃO À OUTRA PARTE DO CORPO; PERPENDICULAR AO PLANO DE ROTAÇÃO E QUE PASSA ATRAVÉS DOC ENTRO DE ROTAÇÃO; SALTO ORNAMENTAL; Movimento Angular",
+      "resposta": "Movimento Angular",
       "dicas": [
         "QUASE TODOS OS MOVIMENTOS HUMANOS SÃO DESSE TIPO;",
         "QUEM ESTÁ LENDO ANDA AGORA UMA CASA;",
@@ -1211,7 +1211,7 @@
     {
       "id": 72,
       "categoria": "Conceitos",
-      "resposta": "FORÇA ATÉ SEU EIXO DE ROTAÇÃO DEVE SER CONSIDERADO EM SEU CÁLCULO; Torque",
+      "resposta": "Torque",
       "dicas": [
         "PODE SER CONSIDERADO COMO UMA FORÇA ROTATÓRIA;",
         "A DEISTÂNCIA PERPENDICLAR QUE VAI DA LINHA DE AÇÃO DA",
@@ -1228,7 +1228,7 @@
     {
       "id": 73,
       "categoria": "Conceitos",
-      "resposta": "ARTICULADAS, LIGAMENTOS, MÚSCULOS, DENTRE OUTROS; UMA ARTICULAÇÃO; DIFICULDADE NO MOVIMENTO; Flexibilidade Articular",
+      "resposta": "Flexibilidade Articular",
       "dicas": [
         "ESTÁ CONDICIONADA AO FORMATO DAS SUPERFÍCIES ÓSSEAS",
         "REPRESENTA A ADM RELATIVA DE MOVIMENTO PERMITIDA EM",
@@ -1245,7 +1245,7 @@
     {
       "id": 74,
       "categoria": "Conceitos",
-      "resposta": "MUSCULAR; MUSCULAR; PRIMEIRO; Extensibilidade",
+      "resposta": "Extensibilidade",
       "dicas": [
         "ESTOU RELACIONADA COM O ALONGAMENTO MUSCULAR;",
         "TENHO 15 LETRAS;",
@@ -1262,7 +1262,7 @@
     {
       "id": 75,
       "categoria": "Conceitos",
-      "resposta": "FLEXIBILIDADE; RETORNAR AO SEU COMPRIMENTO INICIAL; MUSCULARES) FORNECE RESISTÊNCIA EM UM ESTIRAMENTO PASSIVO E É UM DOS COMPONENTES QUE ME DETERMINA; ENERGIA ELÁSTICA APÓS TENSÃO. E É UM DOS MEUS DETERMINANTES; Elasticidade",
+      "resposta": "Elasticidade",
       "dicas": [
         "SOU UMA PROPRIEDADE MUSCULAR;",
         "FICO EVIDENTE QUANDO SE INTERROMPE UM TREINO DE",
@@ -1279,7 +1279,7 @@
     {
       "id": 76,
       "categoria": "Conceitos",
-      "resposta": "RESPONDER A ESTÍMULOS; ESPECÍFICA DO TECIDO MUSCULAR; MECÂNICOS, OU ELÉTRICOS; Irritabilidade e Capacidade de Desenvolver Tensão",
+      "resposta": "Irritabilidade e Capacidade de Desenvolver Tensão",
       "dicas": [
         "UM DOS TERMOS É DEFINIDO COMO A CAPACIDADE DE",
         "UM DOS TERMOS É UMA CARACTERÍSITCA COMPORTAMENTAL",
@@ -1296,7 +1296,7 @@
     {
       "id": 77,
       "categoria": "Conceitos",
-      "resposta": "ATIVADAS E NUTRIÇÃO; DEPENDENDO DA DIREÇÃO DE SEU VETOR RESULTANTE; ESTOU RELACIONADO; MUSCULAR GERAR TORQUE EM UMA ARTICULAÇÃO; É RELATIVO, OUTRO É ABSOLUTO E ASSIM POR DIANTE; Força Muscular",
+      "resposta": "Força Muscular",
       "dicas": [
         "DEPENDO DE MUITOS FATORES, INCLUINDO UNIDADES MOTORAS",
         "SÃO DUAS PALAVRAS;",
@@ -1313,7 +1313,7 @@
     {
       "id": 78,
       "categoria": "Conceitos",
-      "resposta": "VIGOROSA; DESSE CICLO; MIM; CONCÊNCTRICA; Ciclo Alongamento-Encurtamento",
+      "resposta": "Ciclo Alongamento-Encurtamento",
       "dicas": [
         "GRAÇAS A ESSE CICLO A CONTRAÇÃO RESULTANTE SERÁ MAIS",
         "É MUITO IMPORTANTE EM PRÁTCAS ESPORTIVAS;",
@@ -1330,7 +1330,7 @@
     {
       "id": 79,
       "categoria": "Conceitos",
-      "resposta": "NOS MOVIMENTOS CONTRÁRIOS; NA GLENOUMERAL EM ALGUNS PLANOS DE MOVIMENTO; Paradoxo de Codman",
+      "resposta": "Paradoxo de Codman",
       "dicas": [
         "APAREÇO NOS MOVIMENTOS DE ABDUÇÃO E EXTENSÃO OU",
         "FICO EVIDENTE AO SE OBSERVAR A POSIÇÃO DO POLEGAR;",
@@ -1347,7 +1347,7 @@
     {
       "id": 80,
       "categoria": "Conceitos",
-      "resposta": "ENCONTRADOS NO CORPO; Bioalavanca",
+      "resposta": "Bioalavanca",
       "dicas": [
         "MÁQUINA SIMPLES;",
         "CONSTITUI-SE DE UMA BARRA SUSPENSA E UM PONTO DE APOIO;",
@@ -1364,7 +1364,7 @@
     {
       "id": 81,
       "categoria": "Conceitos",
-      "resposta": "DISTRIBUÍDA; HUMANO; Centro de Gravidade",
+      "resposta": "Centro de Gravidade",
       "dicas": [
         "ATRAÇÃO PARA O CENTRO DA TERRA;",
         "A MASSA DE UM CORPO SIMÉTRICO FICA IGUALMENTE",
@@ -1381,7 +1381,7 @@
     {
       "id": 82,
       "categoria": "Conceitos",
-      "resposta": "MOVIMENTO; NELE; BIOMECÂNICA; Cinemática",
+      "resposta": "Cinemática",
       "dicas": [
         "ESTUDA O MOVIMENTO DO CORPO NO ESPAÇO;",
         "É UM RAMO DA DINÂMICA;",
@@ -1398,7 +1398,7 @@
     {
       "id": 83,
       "categoria": "Conceitos",
-      "resposta": "HUMANO; ENVOLVENTE; SUJEITOS; Biomecânica",
+      "resposta": "Biomecânica",
       "dicas": [
         "COMBINO MECÂNICA COM ANATOMIA, FISIOLOGIA E HISTOLOGIA;",
         "ESTUDA O MOVIMENTO DO CORPO;",
@@ -1415,7 +1415,7 @@
     {
       "id": 84,
       "categoria": "Conceitos",
-      "resposta": "E ROTAÇÃO. Articulação",
+      "resposta": "Articulação",
       "dicas": [
         "PODE SER UNIAXIAL, BIAXIAL OU TRIAXIAL;",
         "PERMITE GRAUS DE LIBERDADE AO MOVIMENTO;",
@@ -1432,7 +1432,7 @@
     {
       "id": 85,
       "categoria": "Conceitos",
-      "resposta": "MOVIMENTO; HIDRÁULICA, PNEUMÁTICA OU MECÂNICA; AGONISTA/ANTAGONISTA. Dinamometria Isocinética",
+      "resposta": "Dinamometria Isocinética",
       "dicas": [
         "VELOCIDADE CONSTANTE;",
         "OFERECE RESISTÊNCIA MÁXIMA EM TODO O ARCO DE",
@@ -1500,7 +1500,7 @@
     {
       "id": 89,
       "categoria": "Conceitos",
-      "resposta": "DE SEUS TIPOS; ARTICULAR; SINOVIAL. Diartrose Anatomia Palpatória",
+      "resposta": "Diartrose Anatomia Palpatória",
       "dicas": [
         "PERMITE MOVIMENTO;",
         "PODE SER CLASSIFICADA EM TRÊS TIPOS;",
@@ -1517,7 +1517,7 @@
     {
       "id": 90,
       "categoria": "Conceitos",
-      "resposta": "ÚMERO; DEDOS O MÁXIMO DE EXTENSÃO DESSA ESTRUTURA; Capítulo do Úmero Anatomia Palpatória",
+      "resposta": "Capítulo do Úmero Anatomia Palpatória",
       "dicas": [
         "O PACIENTE FICA SENTADO DE FRENTE;",
         "O TERAPEUTA FICA AO LADO DO PACIENTE;",
@@ -1534,7 +1534,7 @@
     {
       "id": 91,
       "categoria": "Conceitos",
-      "resposta": "ACIMA DO CAPÍTULO DO ÚMERO; EXTREMIDADE DISTAL DA CRISTA SUPRACONDILAR LATERAL; Epicôndilo Lateral do Úmero Anatomia Palpatória",
+      "resposta": "Epicôndilo Lateral do Úmero Anatomia Palpatória",
       "dicas": [
         "PACIENTE SENTADO;",
         "O TERAPEUTA FICA AO LADO DO PACIENTE;",
@@ -1551,7 +1551,7 @@
     {
       "id": 92,
       "categoria": "Conceitos",
-      "resposta": "MEDIAL; ABDUZIDO A CERCA DE 90°; DO EPICÔNDILO LATERAL; COMO UMA ARESTA VIVA E NÍTIDA; ÚMERO; Crista Supra-epicondilar Lateral Anatomia Palpatória",
+      "resposta": "Crista Supra-epicondilar Lateral Anatomia Palpatória",
       "dicas": [
         "É MUITO MAIS MARCADA QUE A CRISTA SUPRA-CONDILAR",
         "É UMA CRISTA;",
@@ -1568,7 +1568,7 @@
     {
       "id": 93,
       "categoria": "Conceitos",
-      "resposta": "POSTERIOR DO ÚMERO; DIRIGIR A PEGADA PARA TRÁS; TRÍCEPS BRAQUIAL MEDIALMENTE; DO OLECRANO; Fossa do Olécrano Anatomia Palpatória",
+      "resposta": "Fossa do Olécrano Anatomia Palpatória",
       "dicas": [
         "PACIENTE SENTADO;",
         "O COTOVELO DO PACIENTE DEVE SER FLETIDO A 130°-140°;",
@@ -1585,7 +1585,7 @@
     {
       "id": 94,
       "categoria": "Conceitos",
-      "resposta": "CORPO DO ÚMERO; NERVO ULNAR; COLATERAL ULNAR DA ARTICULAÇÃO DO COTOVELO; E MEDIALMENTE À TRÓCLEA DO ÚMERO; Epicôndilo Medial do Úmero Anatomia Palpatória",
+      "resposta": "Epicôndilo Medial do Úmero Anatomia Palpatória",
       "dicas": [
         "ESTOU PRESENTE NOS DOIS LADOS DO ÚMERO;",
         "PALPE-ME NA EXTREMIDADE DISTAL DA MARGEM MEDIAL DO",
@@ -1602,7 +1602,7 @@
     {
       "id": 95,
       "categoria": "Conceitos",
-      "resposta": "ÚMERO; DE 90°; Crista Supra-epicondilar Medial Anatomia Palpatória",
+      "resposta": "Crista Supra-epicondilar Medial Anatomia Palpatória",
       "dicas": [
         "SOU UMA CRISTA",
         "SOU UMA MARGEM MACIA DE FÁCIL ACESSO;",
@@ -1619,7 +1619,7 @@
     {
       "id": 96,
       "categoria": "Conceitos",
-      "resposta": "SOBRE O OLECRANO; “BATIDAS” COM O SEU INDICADOR; MEDIALMENTE SOBRE O EPICÔNDILO MEDIAL; SENTIR DORMÊNCIA OU “CHOQUES”. Sulco do Nervo Ulnar Anatomia Palpatória",
+      "resposta": "Sulco do Nervo Ulnar Anatomia Palpatória",
       "dicas": [
         "SOU UM SULCO;",
         "SOU VERTICAL E CORTADO NA FACE POSTERIOR DO ÚMERO;",
@@ -1636,7 +1636,7 @@
     {
       "id": 97,
       "categoria": "Conceitos",
-      "resposta": "PODEM SER FEITOS PARA SENTIR A MINHA MOVIMENTAÇÃO ; 90°; ÚMERO; ARTICULAR ÚMERO-RADIAL; FLEXÃO DE 90°. Cabeça do Rádio Anatomia Palpatória",
+      "resposta": "Cabeça do Rádio Anatomia Palpatória",
       "dicas": [
         "EM CASO DE DÚVIDA, OS MOVIMENTOS DE PRONO E SUPINO",
         "O BRAÇO DO PACIENTE DEVE ESTAR EM ABDUÇÃO A CERCA DE",
@@ -1653,7 +1653,7 @@
     {
       "id": 98,
       "categoria": "Conceitos",
-      "resposta": "90°; 90°; SEGURA A CABEÇA DO RÁDIO; RÁDIO ANTES DE ENCONTRAR-ME; DISTALMENTE, CERCA DE UM DEDO; FÊMUR; Colo do Rádio Anatomia Palpatória",
+      "resposta": "Colo do Rádio Anatomia Palpatória",
       "dicas": [
         "POSIÇÃO DO PACIENTE: SENTADO OU EM PÉ;",
         "O BRAÇO DO PACIENTE DEVE ESTAR EM ABDUÇÃO A CERCA DE",
@@ -1670,7 +1670,7 @@
     {
       "id": 99,
       "categoria": "Conceitos",
-      "resposta": "MEDIAL PROXIMAL DO FUNDO DO SULCO DA DOBRA DO COTOVELO; DEDOS DO FISIOTERAPEUTA; Tuberosidade do Rádio Anatomia Palpatória",
+      "resposta": "Tuberosidade do Rádio Anatomia Palpatória",
       "dicas": [
         "PARA ME ENCONTRAR O FISIOTERAPEUTA PALPARÁ A REGIÃO",
         "PACIENTE COM UMA LEVE ABDUÇÃO DE BRAÇO;",
@@ -1687,7 +1687,7 @@
     {
       "id": 100,
       "categoria": "Conceitos",
-      "resposta": "FLEXÃO; DISTAL DO M. BÍCEPS BRAQUIAL; MARGEM POSTERIOR DA ULNA; MEDIAL DA EXTREMIDADE PROXIMAL DA ULNA; POSTERIOR DO COTOVELO AO NÍVEL DO OLECRANO; INDIRETAMENTE; Processo Coronoide da Ulna Anatomia Palpatória",
+      "resposta": "Processo Coronoide da Ulna Anatomia Palpatória",
       "dicas": [
         "O FISIOTERAPEUTA SE LOCALIZA EM FRENTE AO PACIENTE;",
         "INICIALMENTE O COTOVELO DO PACIENTE DEVE ESTAR EM LEVE",
@@ -1704,7 +1704,7 @@
     {
       "id": 101,
       "categoria": "Conceitos",
-      "resposta": "ABDUÇÃO A 90°; PARA CIMA; FLEXÃO HORIZONTAL; FLEXIONADO A 90°; Peitoral Maior Anatomia Palpatória",
+      "resposta": "Peitoral Maior Anatomia Palpatória",
       "dicas": [
         "O PACIENTE DEVE ESTAR COM O MEMBRO SUPERIOR EM",
         "ATUO NO COMPLEXO DO OMBRO;",
@@ -1721,7 +1721,7 @@
     {
       "id": 102,
       "categoria": "Conceitos",
-      "resposta": "ABDUÇÃO A 130°; INSPIRAÇÕES BREVES, CURTAS E REPETIDAS PARA ME OBSERVAR NA REGIÃO ANTEROLATERAL DO TÓRAX; DORSAL; DIGITAÇÕES MUSCULARES; PACIENTE; COSTAL. Serrátil Anterior Anatomia Palpatória",
+      "resposta": "Serrátil Anterior Anatomia Palpatória",
       "dicas": [
         "PACIENTE SENTADO OU EM PÉ;",
         "O PACIENTE DEVE ESTAR COM O MEMBRO SUPERIOR EM",
@@ -1738,7 +1738,7 @@
     {
       "id": 103,
       "categoria": "Conceitos",
-      "resposta": "COTOVELO A 90º DE FLEXÃO; PACIENTE; SUAS MÃOS MARGEM LATERAL DA ESCÁPULA E ABAIXO DAS FIBRAS POSTERIORES DO DELTÓIDE PALPA-SE O MENOR DELES; PACIENTE; Redondo Menor e Maior Anatomia Palpatória",
+      "resposta": "Redondo Menor e Maior Anatomia Palpatória",
       "dicas": [
         "PACIENTE SENTADO EM CADEIRA SEM ENCOSTO OU EM PÉ;",
         "O OMBRO DO PACIENTE DEVE SER ABDUZIDO A 90º E O",
@@ -1755,7 +1755,7 @@
     {
       "id": 104,
       "categoria": "Conceitos",
-      "resposta": "DO DORSO, QUADRADO LOMBAR E SACROLOMBAR OU ILÍO COSTAL; SOBRETUDO NO ÁPICE DA CURVATURA ANTERIOR E NO TUBÉRCULO ILÍACO; DE MINHA ESTRUTURA; CÔNCAVA E CONVEXA PARA O ALTO; OBLÍQUO EXTERNO E INTERNO, TRANSVERSO DO ABDOMEM E TENSOR DA FÁSCIA LATA; Crista Ilíaca Anatomia Palpatória",
+      "resposta": "Crista Ilíaca Anatomia Palpatória",
       "dicas": [
         "EM MINHA PARTE POSTERIOR INSEREM-SE OS MÚSCULOS LATÍSSIMO",
         "POSIÇÃO DO FISIOTERAPEUTA: EM PÉ EM FRENTE AO PACIENTE",
@@ -1772,7 +1772,7 @@
     {
       "id": 105,
       "categoria": "Conceitos",
-      "resposta": "ÂNTERO-LATERAL DO QUADRIL E COLOCA-SE NA POSIÇÃO POLEGAR-DIGITAL NA PARTE ANTERIOR DESTA; ESTABILIZA COM O SEU QUADRIL A PELVE EXAMINADA; ARTÉRIA FEMORAL; ÂNTERO-MEDIAL DA COXA; FISIOTERAPEUTA; DO FISIOTERAPEUTA; POSTERIOR, COM O PACIENTE EM DECÚBITO VENTRAL. Cabeça do Fêmur Anatomia Palpatória",
+      "resposta": "Cabeça do Fêmur Anatomia Palpatória",
       "dicas": [
         "A MÃO PROXIMAL DO FISIOTERAPEUTA POSICIONA-SE NA PARTE",
         "O FISIOTERAPEIUTA SE POSICIONA ATRÁS DO PACIENTE E",
@@ -1789,7 +1789,7 @@
     {
       "id": 106,
       "categoria": "Conceitos",
-      "resposta": "PALPAÇÃO; DO CLACANHAR DO MEMBRO PESQUISADO; ISOMÉTRICA; CONTRAÇÃO; MEDIALMENTE NA COXA; AVALIADO. Reto Femoral Anatomia Palpatória",
+      "resposta": "Reto Femoral Anatomia Palpatória",
       "dicas": [
         "COM O INDICADOR E O DEDO MÉDIO SERÁ REALIZADA MINHA",
         "PACIENTE DEVE ESTAR EM DECÚBITO DORSAL;",
@@ -1806,7 +1806,7 @@
     {
       "id": 107,
       "categoria": "Conceitos",
-      "resposta": "PERCEPTÍVEL SOB O INDICADOR; SUPERIOR DA MARGEM MEDIAL DA TÍBIA; CALCANHAR SOBRE A MACA; INTERNA ISOMÉTRICA DO JOELHO AVALIADO; AVALIADO; MEDIAL DO PÉ DO PACIENTE; MÉDIO; “Pata de Ganso” Anatomia Palpatória",
+      "resposta": "Pata de Ganso Anatomia Palpatória",
       "dicas": [
         "O TENDÃO DO M. SEMITENDINOO É O MAIS BAIXO E É BEM",
         "OS DEDOS DO FISIOTERAPEUTA SÃO POSTOS NA EXTREMIDADE",
@@ -1823,7 +1823,7 @@
     {
       "id": 108,
       "categoria": "Conceitos",
-      "resposta": "MALÉOLO LATERAL; FALANGES; TODA A ALTURA DA PERNA E DE CIMA PARA BAIXO ENTRE OS MM FIBULAR LONGO E CURTO; UMA FLEXÃO DORSAL, ABDUÇÃO E PRONAÇÃO DO PÉ; REGIÃO ANTERIOR DO PÉ AVALIADO. Músculo Extensor Longo dos Dedos Anatomia Palpatória",
+      "resposta": "Músculo Extensor Longo dos Dedos Anatomia Palpatória",
       "dicas": [
         "A PALPAÇÃO DO MEU TENDÃO SE DARÁ ANTERIORMENTE AO",
         "AVANCE UMA CASA;",
@@ -1840,7 +1840,7 @@
     {
       "id": 109,
       "categoria": "Conceitos",
-      "resposta": "PALPAÇÃO; SOBRE O DEDO; AVALIADO; MACA; PACIENTE PARA QUE FIQUE NA POSIÇÃO VERTICAL; PERDA DE UMA CONTINUIDADE ÓSSEA; FISIOTERAPEUTA. Base do Quinto Metatarso",
+      "resposta": "Base do Quinto Metatarso",
       "dicas": [
         "O DEDO ANELAR DO FISIOTERAPEUTA DEVERÁ REALIZAR A",
         "NA PALPAÇÃO DEVERÁ SER PERCEPTÍVEL UMA REGIÃO RÍGIDA",
