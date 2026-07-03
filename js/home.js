@@ -216,7 +216,16 @@ function renderTotalScore() {
   valueEl.textContent = typeof getTotalScore === "function" ? getTotalScore() : 0;
 }
 
+const CHALLENGE_VICTORY_GLOW_KEY = "perfisio-challenge-victory-glow";
+
+function applyChallengeVictoryGlow() {
+  if (localStorage.getItem(CHALLENGE_VICTORY_GLOW_KEY) !== "true") return;
+  document.body.classList.add("challenge-victory-glow");
+  localStorage.removeItem(CHALLENGE_VICTORY_GLOW_KEY);
+}
+
 function renderHome() {
+  applyChallengeVictoryGlow();
   renderTotalScore();
 
   const lessonList = document.getElementById("lesson-list");

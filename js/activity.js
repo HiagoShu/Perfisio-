@@ -2227,6 +2227,46 @@ function getQueryParam(name) {
   return params.get(name);
 }
 
+const SOUND_FILES = {
+  keyuse: "../som/keyuse.m4a",
+  right: "../som/right.ogg",
+  wrong: "../som/wrong.m4a",
+  timeout: "../som/timeout.m4a",
+  charge: "../som/charge.mp3",
+};
+
+function playSound(name) {
+  const src = SOUND_FILES[name];
+  if (!src) return;
+  try {
+    const audio = new Audio(src);
+    audio.play().catch(() => {});
+  } catch (error) {
+    // Reprodução de áudio pode ser bloqueada pelo navegador; ignora silenciosamente.
+  }
+}
+
+let activeChargeAudio = null;
+
+function startChargeSound() {
+  stopChargeSound();
+  try {
+    const audio = new Audio(SOUND_FILES.charge);
+    audio.loop = true;
+    audio.play().catch(() => {});
+    activeChargeAudio = audio;
+  } catch (error) {
+    // Reprodução de áudio pode ser bloqueada pelo navegador; ignora silenciosamente.
+  }
+}
+
+function stopChargeSound() {
+  if (!activeChargeAudio) return;
+  activeChargeAudio.pause();
+  activeChargeAudio.currentTime = 0;
+  activeChargeAudio = null;
+}
+
 function escapeHtml(text) {
   if (typeof text !== "string") return "";
   return text
@@ -2930,6 +2970,7 @@ function renderActivity(activity) {
 
     function onTimerExpired() {
       markQuestionTimedOut(activity.id);
+      playSound("timeout");
 
       const submitBtn = document.getElementById("submit-answer");
       if (submitBtn) submitBtn.disabled = true;
@@ -3034,6 +3075,7 @@ function renderActivity(activity) {
   }
 
   function completeHintHold(button, index) {
+    stopChargeSound();
     const hintState = activityState.hints[index];
     if (!hintState || hintState.unlocked) return;
     if (activityState.keyBalance <= 0) {
@@ -3046,6 +3088,7 @@ function renderActivity(activity) {
     hintState.unlocked = true;
     activityState.keyBalance -= 1;
     setStoredKeyBalance(sectionId, currentGroupIndex, activityState.keyBalance);
+    playSound("keyuse");
     setHintButtonState(index, true);
     updateKeyDisplay();
     showHintContent(index);
@@ -3069,6 +3112,7 @@ function renderActivity(activity) {
     activeHintTimers.delete(button);
     button.classList.remove("hint-holding");
     button.style.setProperty("--hint-progress", "0%");
+    stopChargeSound();
   }
 
   function startHintHold(button, index, event) {
@@ -3077,6 +3121,7 @@ function renderActivity(activity) {
     if (activityState.keyBalance <= 0) return;
 
     button.classList.add("hint-holding");
+    startChargeSound();
     const startTime = performance.now();
     const timer = { rafId: null, timeoutId: null };
 
@@ -3170,6 +3215,7 @@ function renderActivity(activity) {
     const correct = answer === activity.answer;
 
     if (correct) {
+      playSound("right");
       if (window.__quizStopTimer) window.__quizStopTimer();
 
       if (!activityState.solved) {
@@ -3216,6 +3262,7 @@ function renderActivity(activity) {
         showGroupCompletionModal(groupItems, sectionId, currentGroupIndex);
       }
     } else {
+      playSound("wrong");
       registerQuestionError(activity.id);
 
       const wrongLabel = selected.closest(".quiz-option");

@@ -37,6 +37,13 @@ body {
   justify-content: center;
 }
 
+/* Sheen dourado (definido em components.css), exibido na tela inicial na
+   primeira visita após vencer o Último Challenge. */
+body.challenge-victory-glow .container-lessons {
+  position: relative;
+  z-index: 1;
+}
+
 .container-lessons__lesson__content {
   margin: 50px 20px 0px 20px;
   padding: 30px 20px 20px 20px;

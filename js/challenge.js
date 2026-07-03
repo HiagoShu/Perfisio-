@@ -1,12 +1,18 @@
 
 const CHALLENGE_SECTION_ID = "doutor";
 const CHALLENGE_GROUP_INDEX = "1";
-const CHALLENGE_TOTAL_QUESTIONS = 25;
+// O Último Challenge reúne todas as questões dos níveis anteriores
+// (Calouro, Veterano e PerFisio), não um subconjunto aleatório.
+const CHALLENGE_TOTAL_QUESTIONS = activityData.reduce(
+  (total, section) => total + section.items.length,
+  0,
+);
 const CHALLENGE_TIMER_SECONDS = 45;
 const CHALLENGE_TOTAL_HINTS = 30;
 
 const CHALLENGE_HINTS_KEY = `perfisio-challenge-hints-remaining`;
 const CHALLENGE_PROGRESS_KEY = `perfisio-challenge-progress`;
+const CHALLENGE_VICTORY_GLOW_KEY = `perfisio-challenge-victory-glow`;
 
 function getChallengeQuestions() {
   const stored = sessionStorage.getItem(CHALLENGE_PROGRESS_KEY);
@@ -31,9 +37,8 @@ function getChallengeQuestions() {
     .sort((a, b) => a.sort - b.sort)
     .map(({ item }) => item);
 
-  const selected = shuffled.slice(0, CHALLENGE_TOTAL_QUESTIONS);
-  sessionStorage.setItem(CHALLENGE_PROGRESS_KEY, JSON.stringify(selected));
-  return selected;
+  sessionStorage.setItem(CHALLENGE_PROGRESS_KEY, JSON.stringify(shuffled));
+  return shuffled;
 }
 
 function getChallengeHintsRemaining() {
@@ -319,6 +324,8 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     window.__quizApplyPenalty = applyPenalty;
 
     function onTimerExpired() {
+      playSound("timeout");
+      markQuestionTimedOut(activity.id);
       submitButton.disabled = true;
       optionInputs.forEach((i) => {
         i.disabled = true;
@@ -326,13 +333,12 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
 
       if (feedback) {
         feedback.className = "quiz-feedback visible error";
-        feedback.textContent =
-          "⏰ Tempo esgotado! Passando para a próxima questão...";
+        feedback.textContent = "⏰ Tempo esgotado! Fim de jogo.";
       }
 
       setTimeout(() => {
-        goToNextQuestion(questionIndex, allQuestions);
-      }, 1800);
+        showChallengeGameOverModal(questionIndex, allQuestions);
+      }, 1500);
     }
 
     rafId = requestAnimationFrame(updateTimer);
@@ -397,6 +403,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
   }
 
   function completeHintHold(button, index) {
+    stopChargeSound();
     const hintState = activityState.hints[index];
     if (!hintState || hintState.unlocked) return;
     if (activityState.keyBalance <= 0) {
@@ -417,6 +424,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
 
     hintState.unlocked = true;
     activityState.keyBalance = getChallengeHintsRemaining();
+    playSound("keyuse");
     setHintButtonState(index, true);
     updateKeyDisplay();
     showHintContent(index);
@@ -440,6 +448,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     activeHintTimers.delete(button);
     button.classList.remove("hint-holding");
     button.style.setProperty("--hint-progress", "0%");
+    stopChargeSound();
   }
 
   function startHintHold(button, index, event) {
@@ -448,6 +457,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     if (activityState.keyBalance <= 0) return;
 
     button.classList.add("hint-holding");
+    startChargeSound();
     const startTime = performance.now();
     const timer = { rafId: null, timeoutId: null };
 
@@ -519,6 +529,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     const correct = answer === activity.answer;
 
     if (correct) {
+      playSound("right");
       if (window.__quizStopTimer) window.__quizStopTimer();
 
       const timerRatio =
@@ -553,6 +564,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
         },
       });
     } else {
+      playSound("wrong");
       registerQuestionError(activity.id);
 
       const wrongLabel = selected.closest(".quiz-option");
@@ -634,7 +646,79 @@ function goToNextQuestion(currentIndex, allQuestions) {
   window.location.reload();
 }
 
+function showChallengeGameOverModal(questionIndex, allQuestions) {
+  const sessionScore = getSessionScore(
+    CHALLENGE_SECTION_ID,
+    CHALLENGE_GROUP_INDEX,
+  );
+
+  const { newBest, isRecord } = updateBestScore(
+    CHALLENGE_SECTION_ID,
+    CHALLENGE_GROUP_INDEX,
+    sessionScore,
+  );
+
+  clearSessionData(CHALLENGE_SECTION_ID, CHALLENGE_GROUP_INDEX);
+
+  sessionStorage.removeItem(CHALLENGE_PROGRESS_KEY);
+  sessionStorage.removeItem("challenge-current-index");
+  localStorage.setItem(CHALLENGE_HINTS_KEY, String(CHALLENGE_TOTAL_HINTS));
+
+  const newRecordBannerHtml = isRecord
+    ? `<div class="completion-new-record">
+        <span class="completion-new-record__icon">🏆</span>
+        <span class="completion-new-record__text">Novo Recorde!</span>
+      </div>`
+    : "";
+
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+  overlay.innerHTML = `
+    <div class="modal completion-modal" role="dialog" aria-modal="true">
+      <div class="completion-emoji">⏰</div>
+      <h3 class="completion-title">Fim de Jogo!</h3>
+      ${newRecordBannerHtml}
+      <p class="completion-encouragement">O tempo esgotou e o Último Challenge chegou ao fim. Tente novamente para superar sua pontuação!</p>
+
+      <div class="completion-score-section">
+        <div class="completion-total-score ${isRecord ? "completion-total-score--record" : ""}">
+          <span class="completion-total-label">🏅 Melhor pontuação do Nível Doutor</span>
+          <span class="completion-total-value">${newBest}</span>
+        </div>
+      </div>
+
+      <div class="completion-stats">
+        <div class="completion-stat">
+          <span class="completion-stat__value"><strong>${questionIndex + 1}</strong></span>
+          <span class="completion-stat__label">Questão alcançada</span>
+        </div>
+        <div class="completion-stat">
+          <span class="completion-stat__value"><strong>+${sessionScore}</strong></span>
+          <span class="completion-stat__label">Pontos nesta tentativa</span>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="modal-btn confirm completion-cta" id="challenge-game-over-home">
+          Voltar para o início
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(overlay);
+  overlay
+    .querySelector("#challenge-game-over-home")
+    .addEventListener("click", () => {
+      overlay.remove();
+      window.location.href = "home.html";
+    });
+}
+
 function showChallengeCompletionModal(allQuestions) {
+  document.body.classList.add("challenge-victory-glow");
+  localStorage.setItem(CHALLENGE_VICTORY_GLOW_KEY, "true");
+
   const total = CHALLENGE_TOTAL_QUESTIONS;
   const firstTryCorrect = allQuestions.filter(
     (item) => getQuestionErrors(item.id) === 0 && !hasTimedOut(item.id),

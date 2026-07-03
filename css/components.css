@@ -154,3 +154,65 @@
 .container-lessons__challenge__trail__button:active {
   transform: scale(0.95);
 }
+
+/* Sheen dourado exibido no fundo quando o jogador vence o Último Challenge.
+   Compartilhado entre a tela do Challenge e a tela inicial. */
+body.challenge-victory-glow::before,
+body.challenge-victory-glow::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body.challenge-victory-glow::before {
+  background: radial-gradient(
+    circle at 50% 25%,
+    rgba(255, 215, 0, 0.4) 0%,
+    rgba(255, 215, 0, 0.12) 40%,
+    transparent 70%
+  );
+  animation: challenge-victory-glow-pulse 2.2s ease-in-out infinite alternate;
+}
+
+body.challenge-victory-glow::after {
+  inset: -60%;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    rgba(255, 241, 189, 0.55) 48%,
+    rgba(255, 215, 0, 0.9) 50%,
+    rgba(255, 241, 189, 0.55) 52%,
+    transparent 58%
+  );
+  background-size: 220% 220%;
+  background-repeat: no-repeat;
+  background-position: -40% -40%;
+  animation: challenge-victory-sheen-sweep 2.6s ease-in-out 2;
+}
+
+@keyframes challenge-victory-glow-pulse {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes challenge-victory-sheen-sweep {
+  from {
+    background-position: -40% -40%;
+  }
+  to {
+    background-position: 140% 140%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.challenge-victory-glow::before,
+  body.challenge-victory-glow::after {
+    animation: none;
+  }
+}

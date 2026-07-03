@@ -6,6 +6,14 @@ body.challenge-theme .container-atividades {
   background-color: var(--dark_purple_final_level);
 }
 
+/* Sheen dourado (definido em components.css) exibido ao vencer o Último
+   Challenge; aqui só garantimos que o conteúdo desta página fique por cima. */
+body.challenge-victory-glow .container-atividades {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
 body.challenge-theme .quiz-timer-icon {
   color: var(--light_purple_final_level);
 }
