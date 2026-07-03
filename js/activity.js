@@ -286,9 +286,9 @@ const activityData = [
           "PODEM SER ANATÔMICAS OU FUNCIONAIS;",
           "PRESENÇA DE LÍQUIDO SINOVIAL;",
           "COMPOSTA POR DOIS OU MAIS OSSOS;",
-          "PODE REALIZAR MOVIMENTOS DE ROLAMENTO, DESLIZAMENTO",
+          "PODE REALIZAR MOVIMENTOS DE ROLAMENTO, DESLIZAMENTO E ROTAÇÃO.",
         ],
-        answer: "E ROTAÇÃO. Articulação",
+        answer: "Articulação",
       },
       {
         id: "calouro-85",
@@ -305,9 +305,9 @@ const activityData = [
           "REPRODUZ MOVIMENTOS NÃO FUNCIONAIS;",
           "SEU DISPOSITIVO É BASEADO EM SISTEMAS DE PRESSÃO",
           "ALTO CUSTO;",
-          "APRESENTA VARIÁVEIS COMO PICO DE TORQUE E RELAÇÃO",
+          "APRESENTA VARIÁVEIS COMO PICO DE TORQUE E RELAÇÃO AGONISTA/ANTAGONISTA.",
         ],
-        answer: "AGONISTA/ANTAGONISTA. Dinamometria Isocinética",
+        answer: "Dinamometria Isocinética",
       },
       {
         id: "calouro-86",
@@ -381,9 +381,9 @@ const activityData = [
           "É UM TIPO DE ARTICULAÇÃO;",
           "TAMBÉM CONHECIDA COMO SINOVIAL;",
           "COMPOSTA POR CÁPSULA ARTICULAR, LIGAMENTAR, CAVIDADE",
-          "TAMBÉM POSSUO CARTILAGEM ARTICULAR E LÍQUIDO",
+          "TAMBÉM POSSUO CARTILAGEM ARTICULAR E LÍQUIDO SINOVIAL.",
         ],
-        answer: "SINOVIAL. Diartrose Anatomia Palpatória",
+        answer: "Diartrose Anatomia Palpatória",
       },
       {
         id: "calouro-90",
@@ -514,10 +514,9 @@ const activityData = [
           "OS DEDOS SÃO EM PINÇA;",
           "PARA CONFIRMAR QUE ME ACHOU PODEM SER DADAS",
           "NA MINHA PALPAÇÃO SEU POLEGAR FICARÁ COLOCADO",
-          "AO SE REALIZAR O TESTE DE CONFIRMAÇÃO O PACIENTE PODE",
+          "AO SE REALIZAR O TESTE DE CONFIRMAÇÃO O PACIENTE PODE SENTIR DORMÊNCIA OU “CHOQUES”.",
         ],
-        answer:
-          "SENTIR DORMÊNCIA OU “CHOQUES”. Sulco do Nervo Ulnar Anatomia Palpatória",
+        answer: "Sulco do Nervo Ulnar Anatomia Palpatória",
       },
       {
         id: "calouro-97",
@@ -534,9 +533,9 @@ const activityData = [
           "O FISIOTERAPEUTA DEVE PALPAR NO NÍVEL DO CAPÍTULO DO",
           "ANDE UMA CASA;",
           "AO ME PALPAR DEVE-SE PERCEBER SOB OS DEDOS A INTERLINHA",
-          "PARA PALPAÇÃO O COTOVELO DO PACIENTE DEVE ESTAR EM",
+          "PARA PALPAÇÃO O COTOVELO DO PACIENTE DEVE ESTAR EM FLEXÃO DE 90°.",
         ],
-        answer: "FLEXÃO DE 90°. Cabeça do Rádio Anatomia Palpatória",
+        answer: "Cabeça do Rádio Anatomia Palpatória",
       },
       {
         id: "calouro-98",
@@ -629,9 +628,9 @@ const activityData = [
           "PERTENÇO AO COMPLEXO ARTICULAR DO OMBRO;",
           "SOU VISUALIZADA NO PLANO SAGITAL;",
           "VOCÊ RECEBERÁ AS CINCO PRIMEIRAS DICAS DE UMA SÓ VEZ;",
-          "SOU RESPONSÁVEL POR MANTER A ESCÁPULA SOB O GRADIL",
+          "SOU RESPONSÁVEL POR MANTER A ESCÁPULA SOB O GRADIL COSTAL.",
         ],
-        answer: "COSTAL. Serrátil Anterior Anatomia Palpatória",
+        answer: "Serrátil Anterior Anatomia Palpatória",
       },
       {
         id: "calouro-103",
@@ -686,10 +685,9 @@ const activityData = [
           "O PACIENTE FICA EM DECÚBITO LATERAL;",
           "A PERNA AVALIADA É LEVADA EM EXTENSÃO PELO",
           "A PERNA DO PACIENTE FICA EM ABDUÇÃO, SUSTENTADA PELA MÃO",
-          "MINHA PALPAÇÃO PODE SER RELAIZADA NUMA ABORDAGME",
+          "MINHA PALPAÇÃO PODE SER RELAIZADA NUMA ABORDAGME POSTERIOR, COM O PACIENTE EM DECÚBITO VENTRAL.",
         ],
-        answer:
-          "POSTERIOR, COM O PACIENTE EM DECÚBITO VENTRAL. Cabeça do Fêmur Anatomia Palpatória",
+        answer: "Cabeça do Fêmur Anatomia Palpatória",
       },
       {
         id: "calouro-106",
@@ -706,9 +704,9 @@ const activityData = [
           "EM ALGUNS INDIVÍDUOS ESTOU POSICIONADO MAIS",
           "O QUADRIL DO PACIENTE DEVE ESTAR EM LEVE FLEXÃO;",
           "O JOELHO DO PACIENTE DEVE ESTAR EM EXTENSÃO INCOMPLETA;",
-          "O FISIOTERAPEUTA DEVE ESTAR AO LADO DO MEMBRO",
+          "O FISIOTERAPEUTA DEVE ESTAR AO LADO DO MEMBRO AVALIADO.",
         ],
-        answer: "AVALIADO. Reto Femoral Anatomia Palpatória",
+        answer: "Reto Femoral Anatomia Palpatória",
       },
       {
         id: "calouro-107",
@@ -727,7 +725,7 @@ const activityData = [
           "A MINHA PALPAÇÃO É REALIZADA COM OS DEDOS INDICADOR E",
           "O QUADRIL DO PACIENTE FICA SEMIFLETIDO.",
         ],
-        answer: "“Pata de Ganso” Anatomia Palpatória",
+        answer: "Pata de Ganso Anatomia Palpatória",
       },
       {
         id: "calouro-108",
@@ -744,10 +742,9 @@ const activityData = [
           "MEU CORPO MUSUCULAR SEGUE AO TENDÃO, POSICIONA-SE SOBRE",
           "O COMANDO PARA MINHA PERCEPÇÃO SERÁ: “LEVANTE OS DEDOS”;",
           "PARA UMA MELHOR VISUALIZAÇÃO PODE-SE SOLICITAR AO PACIENTE",
-          "COM A FACE DIGITAL DA MÃO O FISIOTERAPEUTA RESISTIRÁ NA",
+          "COM A FACE DIGITAL DA MÃO O FISIOTERAPEUTA RESISTIRÁ NA REGIÃO ANTERIOR DO PÉ AVALIADO.",
         ],
-        answer:
-          "REGIÃO ANTERIOR DO PÉ AVALIADO. Músculo Extensor Longo dos Dedos Anatomia Palpatória",
+        answer: "Músculo Extensor Longo dos Dedos Anatomia Palpatória",
       },
       {
         id: "calouro-109",
@@ -764,9 +761,9 @@ const activityData = [
           "PARA A PALPAÇÃO O FISIOTERAPEUTA DEVE SUSTENTAR O PÉ DO",
           "AO ME ALCANÇAR, PARTINDO DO CALCANHAR, PERCEBERÁ A",
           "PERCA SUA VEZ;",
-          "O PÉ DO PACIENTE PODE TAMBÉM ESTAR SOBRE O JOELHO DO",
+          "O PÉ DO PACIENTE PODE TAMBÉM ESTAR SOBRE O JOELHO DO FISIOTERAPEUTA.",
         ],
-        answer: "FISIOTERAPEUTA. Base do Quinto Metatarso",
+        answer: "Base do Quinto Metatarso",
       },
     ],
   },
@@ -867,10 +864,9 @@ const activityData = [
           "TAMBÉM FAÇO ROTAÇÃO INTERNA;",
           "TAMBÉM REALIZO ADUÇÃO HORIZONTAL;",
           "POSSO ATUAR NO PLANO TRANSVERSAL;",
-          "INSERÇÃO PROXIMAL: ESTERNO ANTERIOR E CARTILAGEM",
+          "INSERÇÃO PROXIMAL: ESTERNO ANTERIOR E CARTILAGEM DAS 6 PRIMEIRAS COSTELAS.",
         ],
-        answer:
-          "DAS 6 PRIMEIRAS COSTELAS. Músculo Peitoral Maior Porção Esternal",
+        answer: "Músculo Peitoral Maior Porção Esternal",
       },
       {
         id: "veterano-6",
@@ -924,9 +920,9 @@ const activityData = [
           "REALIZO TAMBÉM A ROTAÇÃO INTERNA DO OMBRO;",
           "TENHO UM COMPONENTE ADUTOR DENTRE AS MINHAS AÇÕES;",
           "VOCÊ RECEBERÁ AS 5 PRIMEIRAS DICAS DE UMA SÓ VEZ;",
-          "INSIRO-ME DISTALMENTE NO ÚMERO, NA FOSSA",
+          "INSIRO-ME DISTALMENTE NO ÚMERO, NA FOSSA INTERTUBERCULAR.",
         ],
-        answer: "INTERTUBERCULAR. Músculo Latíssimo do Dorso ou Grande Dorsal",
+        answer: "Músculo Latíssimo do Dorso ou Grande Dorsal",
       },
       {
         id: "veterano-9",
@@ -943,9 +939,9 @@ const activityData = [
           "MEU NERVO TAMBÉM É O SUBSCAPULAR;",
           "POSSO ATUAR FAZENDO UMA EXTENSÃO DO OMBRO;",
           "POR TER O NOME DE “MAIOR”, REALIZO A ROTAÇÃO INTERNA;",
-          "PARA MELHOR ME VISUALIZAR, ME VEJA NA REGIÃO",
+          "PARA MELHOR ME VISUALIZAR, ME VEJA NA REGIÃO POSTERIOR DO CORPO.",
         ],
-        answer: "POSTERIOR DO CORPO. Músculo Redondo Maior",
+        answer: "Músculo Redondo Maior",
       },
       {
         id: "veterano-10",
@@ -1114,9 +1110,9 @@ const activityData = [
           "MINHA AÇÃO PRINCIPAL É CONTRÁRIA A AÇÃO DO BÍCEPS",
           "SOU UM MÚSCULO PROFUNDO;",
           "AUMENTO A ESTABILIDADE DA ARTICULAÇÃO RADIOULNAR",
-          "NSERÇÃO DISTAL: QUARTA PARTE INFERIOR DO RÁDIO",
+          "NSERÇÃO DISTAL: QUARTA PARTE INFERIOR DO RÁDIO ANTERIOR.",
         ],
-        answer: "ANTERIOR. Músculo Pronador Quadrado",
+        answer: "Músculo Pronador Quadrado",
       },
       {
         id: "veterano-19",
@@ -1133,9 +1129,9 @@ const activityData = [
           "INSERÇÃO DISTAL: OLÉCRANO LATERAL E ULNA POSTERIOR;",
           "A ARTICULAÇÃO ONDE ESTOU INSERIDO É DO TIPO GÍNGLIMO;",
           "SOZINHO EU SERIA INCAPAZ DE MOVIMENTAR MINHA",
-          "INSERÇÃO PROXIMAL: EPICÔNDILO POSTEROLATERAL DO",
+          "INSERÇÃO PROXIMAL: EPICÔNDILO POSTEROLATERAL DO ÚMERO.",
         ],
-        answer: "ÚMERO. Músculo Ancôneo",
+        answer: "Músculo Ancôneo",
       },
       {
         id: "veterano-20",
@@ -1285,10 +1281,9 @@ const activityData = [
           "SOU UM PODEROSO EXTENSOR DO QUADRIL;",
           "REALIZO ROTAÇÃO EXTERNA DO QUADRIL;",
           "PASSE SUA VEZ;",
-          "COM OS MEMBROS INFERIORES EM CADEIA CINÉTICA",
+          "COM OS MEMBROS INFERIORES EM CADEIA CINÉTICA FECHADA, EU PARTICIPO NA EXTENSÃO DO TRONCO.",
         ],
-        answer:
-          "FECHADA, EU PARTICIPO NA EXTENSÃO DO TRONCO. Músculo Glúteo Máximo",
+        answer: "Músculo Glúteo Máximo",
       },
       {
         id: "veterano-28",
@@ -1305,9 +1300,9 @@ const activityData = [
           "REALIZO ROTAÇÃO MEDIAL DO QUADRIL;",
           "SOU UM IMPORTANTE MÚSCULO NA DEAMBULAÇÃO E NA",
           "ANDE 1 (UMA) CASA;",
-          "TENHO ORIGEM NO ÍLIO, ENTRE AS LINHAS GLÚTEAS POSTERIOR E",
+          "TENHO ORIGEM NO ÍLIO, ENTRE AS LINHAS GLÚTEAS POSTERIOR E ANTERIOR.",
         ],
-        answer: "ANTERIOR. Músculo Glúteo Médio",
+        answer: "Músculo Glúteo Médio",
       },
       {
         id: "veterano-29",
@@ -1324,9 +1319,9 @@ const activityData = [
           "REALIZO ROTAÇÃO INTERNA DO QUADRIL;",
           "SOU UM IMPORTANTE MÚSCULO NA DEAMBULAÇÃO;",
           "ANDE 1 (UMA) CASA;",
-          "TENHO ORIGEM NO ÍLIO, ENTRE AS LINHAS GLÚTEAS ANTERIOR",
+          "TENHO ORIGEM NO ÍLIO, ENTRE AS LINHAS GLÚTEAS ANTERIOR E INFERIOR.",
         ],
-        answer: "E INFERIOR. Músculo Glúteo Mínimo",
+        answer: "Músculo Glúteo Mínimo",
       },
       {
         id: "veterano-30",
@@ -1381,10 +1376,9 @@ const activityData = [
           "QUANDO ATUO NA ARTICULAÇÃO DO QUADRIL EU FAÇO A SUA",
           "QUANDO ATUO NA ARTICULAÇÃO DO JOELHO EU FAÇO A SUA",
           "VOLTE 3 (TRÊS) CASAS;",
-          "AJUDO O M. GLÚTEO MÁXIMO NA EXTENSÃO DO TRONCO",
+          "AJUDO O M. GLÚTEO MÁXIMO NA EXTENSÃO DO TRONCO QUANDO O JOELHO E O QUADRIL ESTÃO FIXADOS.",
         ],
-        answer:
-          "QUANDO O JOELHO E O QUADRIL ESTÃO FIXADOS. Músculo Bíceps Femoral",
+        answer: "Músculo Bíceps Femoral",
       },
       {
         id: "veterano-33",
@@ -1401,10 +1395,9 @@ const activityData = [
           "VOLTE 2 (DUAS) CASAS;",
           "ESTOU SITUADO NA REGIÃO POSTERIOR DA COXA;",
           "QUANDO ATUO NA ARTICULAÇÃO DO QUADRIL EU FAÇO A SUA",
-          "QUANDO ATUO NA ARTICULAÇÃO DO JOELHO EU FAÇO A SUA",
+          "QUANDO ATUO NA ARTICULAÇÃO DO JOELHO EU FAÇO A SUA POSTEROMEDIAL DA TÍBIA.",
         ],
-        answer:
-          "POSTEROMEDIAL DA TÍBIA. Músculos Semitendinoso e Semimembranoso",
+        answer: "Músculos Semitendinoso e Semimembranoso",
       },
       {
         id: "veterano-34",
@@ -1421,9 +1414,9 @@ const activityData = [
           "REALIZO A DORSOFLEXÃO PLANTAR;",
           "QUEM ESTÁ LENDO ANDA AGORA 1 (UMA) CASA;",
           "REALIZO A INVERSÃO DO PÉ;",
-          "MEU TENDÃO DE INSERÇÃO, AO NÍVEL DO TORNOZELO,",
+          "MEU TENDÃO DE INSERÇÃO, AO NÍVEL DO TORNOZELO, DESVIA-SE MEDIALMENTE.",
         ],
-        answer: "DESVIA-SE MEDIALMENTE. Músculo Tibial Anterior",
+        answer: "Músculo Tibial Anterior",
       },
       {
         id: "veterano-35",
@@ -1440,9 +1433,9 @@ const activityData = [
           "CRUZO, POSTERIORMENTE, A ARTICULAÇÃO DO JOELHO;",
           "POSSO ATUAR NA ARTICULAÇÃO DO JOELHO REALIZANDO A SUA",
           "MINHA INSERÇÃO É NO TENDÃO CALCANEAR QUE SE FIXA NA",
-          "JUNTAMENTE COM O M. SÓLEO EU COMPONHO O TRÍCEPS",
+          "JUNTAMENTE COM O M. SÓLEO EU COMPONHO O TRÍCEPS SURAL.",
         ],
-        answer: "SURAL. Músculo Gastrocnêmio",
+        answer: "Músculo Gastrocnêmio",
       },
       {
         id: "veterano-36",
@@ -1582,9 +1575,9 @@ const activityData = [
           "DEZESSEIS MÚSCULOS ESTÃO ENVOLVIDOS NO COMPLEXO",
           "VOLTE 1 (UMA) CASA;",
           "CINCO OUTRAS ARTICULAÇÕES ESTÃO ENVOLVIDAS NO",
-          "REALIZO ROTAÇÕES INTERNA E EXTERNA UTILIZANDO",
+          "REALIZO ROTAÇÕES INTERNA E EXTERNA UTILIZANDO “MÚSCULOS REDONDOS”.",
         ],
-        answer: "“MÚSCULOS REDONDOS”. Articulação do Ombro",
+        answer: "Articulação do Ombro",
       },
       {
         id: "perfisio-43",
@@ -1639,10 +1632,9 @@ const activityData = [
           "PASSE SUA VEZ;",
           "FACILITO A REALIZAÇÃO DE MOVIMENTOS POR MEIO DO",
           "VOLTE 1 (UMA) CASA;",
-          "PARTICIPO DA ESTABILIZAÇÃO DO OMBRO E NO",
+          "PARTICIPO DA ESTABILIZAÇÃO DO OMBRO E NO POSICIONAMENTO DE UMA DE SUAS OUTRAS ARTICULAÇÕES.",
         ],
-        answer:
-          "POSICIONAMENTO DE UMA DE SUAS OUTRAS ARTICULAÇÕES. Articulação Escapulotorácica",
+        answer: "Articulação Escapulotorácica",
       },
       {
         id: "perfisio-46",
@@ -1659,9 +1651,9 @@ const activityData = [
           "O TAMANHO DAS REGIÕES CÔNCAVA E CONVEXA DA MINHA",
           "A DESPROPORÇÃO ENTRE REGIÕES CÔNCAVA E CONVEXA DA",
           "VOLTE 2 (DUAS) CASAS;",
-          "A SUPERFÍCIE ARTICULAR É OTIMIZADA POR UMA ESTRUTURA",
+          "A SUPERFÍCIE ARTICULAR É OTIMIZADA POR UMA ESTRUTURA QUE PODE SER CHAMADA DE “LABRUM”.",
         ],
-        answer: "QUE PODE SER CHAMADA DE “LABRUM”. Articulação Glenoumeral",
+        answer: "Articulação Glenoumeral",
       },
       {
         id: "perfisio-47",
@@ -1678,10 +1670,9 @@ const activityData = [
           "APRESENTO UM ÂNGULO DE CARREGAMENTO;",
           "2 (DOIS) DOS 3 (TRÊS) OSSOS ENVOLVIDOS NA ARTICULAÇÃO SÃO",
           "O MOVIMENTO DE FLEXÃO DE UMA DAS MINHAS ARTICULAÇÕES",
-          "TENISTAS COSTUMAM SOFRER COM UM ACOMETIMENTO",
+          "TENISTAS COSTUMAM SOFRER COM UM ACOMETIMENTO DENTRO DA MINHA ESTRUTURA CHAMADO DE “EPICONDILITE LATERAL.”",
         ],
-        answer:
-          "DENTRO DA MINHA ESTRUTURA CHAMADO DE “EPICONDILITE LATERAL.” Articulação do Cotovelo",
+        answer: "Articulação do Cotovelo",
       },
       {
         id: "perfisio-48",
@@ -1696,12 +1687,11 @@ const activityData = [
           "AS ARTICULAÇÕES DO MEU COMPLEXO SÃO FORMADAS POR",
           "PASSE A SUA VEZ;",
           "VOLTE 2 (DUAS) CASAS;",
-          "TEM GRANDE PROXIMIDADE A UM RETINÁCULO DE MÚSCULOS",
+          "TEM GRANDE PROXIMIDADE A UM RETINÁCULO DE MÚSCULOS FLEXORES.",
           "SOLICITE MAIS 1 (UMA) DICA;",
-          "POSSUO UM DOS MENORES OSSOS DO CORPO HUMANO, QUE",
+          "POSSUO UM DOS MENORES OSSOS DO CORPO HUMANO, QUE SE ARTICULA SOMENTE COM OUTRO, TAMBÉM PEQUENO.",
         ],
-        answer:
-          "FLEXORES. SE ARTICULA SOMENTE COM OUTRO, TAMBÉM PEQUENO. Articulação do Punho",
+        answer: "Articulação do Punho",
       },
       {
         id: "perfisio-49",
@@ -1737,9 +1727,9 @@ const activityData = [
           "SOU UMA ARTICULAÇÃO TRIAXIAL;",
           "VOLTE 1 (UMA) CASA;",
           "SOU UMA ARTICULAÇÃO PROXIMAL DO MEMBRO INFERIOR;",
-          "OS LIGAMENTOS QUE ESTÃO ANTERIORMENTE A MIM ESTÃO",
+          "OS LIGAMENTOS QUE ESTÃO ANTERIORMENTE A MIM ESTÃO DISPOSTOS EM “Z”.",
         ],
-        answer: "DISPOSTOS EM “Z”. Articulação Femoroacetabular",
+        answer: "Articulação Femoroacetabular",
       },
       {
         id: "perfisio-51",
@@ -1756,9 +1746,9 @@ const activityData = [
           "DOIS LIGAMENTOS ME “CRUZAM” (ANTERIOR E POSTERIOR);",
           "SOU UMA ARTICULAÇÃO SINOVIAL DO TIPO CONDILAR;",
           "DOIS LIGAMENTOS COLATERAIS PASSAM AO MEU LADO;",
-          "UM DOS MEUS COMPONENTES PODE SER CONSIDERADO",
+          "UM DOS MEUS COMPONENTES PODE SER CONSIDERADO COMO UM “TRONCO DE CONE DEITADO”.",
         ],
-        answer: "COMO UM “TRONCO DE CONE DEITADO”. Articulação Femorotibial",
+        answer: "Articulação Femorotibial",
       },
       {
         id: "perfisio-52",
@@ -1851,9 +1841,9 @@ const activityData = [
           "SOU FORMADA PELA BASE DOS METATARSAIS E PELA",
           "O 1° METATARSAL ARTICULA-SE COM O CUNEIFORME MEDIAL;",
           "TENHO 15 LETRAS;",
-          "O 3° METATARSAL ARTICULA-SE COM O CUNEIFORME",
+          "O 3° METATARSAL ARTICULA-SE COM O CUNEIFORME LATERAL.",
         ],
-        answer: "LATERAL. Articulação Tarsometatarsal",
+        answer: "Articulação Tarsometatarsal",
       },
       {
         id: "perfisio-57",
@@ -1946,9 +1936,9 @@ const activityData = [
           "PASSE SUA VEZ;",
           "POSSO LIMITAR A INCLINAÇÃO LATERAL SE ESTIVER AO NÍVEL",
           "PERTENÇO AO ESQUELETO AXIAL;",
-          "ALGUMAS DE MIM BLOQUEIAM A ROTAÇÃO AXIAL A NÍVEL",
+          "ALGUMAS DE MIM BLOQUEIAM A ROTAÇÃO AXIAL A NÍVEL LOMBAR.",
         ],
-        answer: "LOMBAR. Articulação Zigoapofisária ou Interfacetária",
+        answer: "Articulação Zigoapofisária ou Interfacetária",
       },
       {
         id: "perfisio-62",
@@ -1984,9 +1974,9 @@ const activityData = [
           "O MÚSCULO SUBOCCIPITAL OBLÍQUO INFERIOR DA CABEÇA SE",
           "A FORMA MAIS COMUM DE FRATURA QUE UM DE MEUS",
           "NO MOVIMENTO DE RETRAÇÃO DA CABEÇA, ME ENCONTRO",
-          "OS LIGAMENTOS ATLANTOAXIAL POSTERIOR E ATLANTOAXIAL",
+          "OS LIGAMENTOS ATLANTOAXIAL POSTERIOR E ATLANTOAXIAL ANTERIOS ME ESTABILIZAM.",
         ],
-        answer: "ANTERIOS ME ESTABILIZAM. Articulação Atlanto-axial Mediana",
+        answer: "Articulação Atlanto-axial Mediana",
       },
       {
         id: "perfisio-64",
@@ -2003,9 +1993,9 @@ const activityData = [
           "OS ADUTORES DO QUADRIL SE INSEREM PRÓXIMO A MIM;",
           "LIGO DOIS OSSOS IDÊNTICOS;",
           "ESTOU ANTERIORMENTE À BEXIGA URINÁRIA;",
-          "O MÚSCULO RETO ABDOMINAL TEM EM MIM UMA DE SUAS",
+          "O MÚSCULO RETO ABDOMINAL TEM EM MIM UMA DE SUAS INSERÇÕES.",
         ],
-        answer: "INSERÇÕES. Articulação Sínfise Púbica",
+        answer: "Articulação Sínfise Púbica",
       },
       {
         id: "perfisio-65",
@@ -2079,9 +2069,9 @@ const activityData = [
           "AGORA VOCÊ PODERÁ DAR ATÉ DOIS PALPITES;",
           "SOU UMA ARTICULAÇÃO SINOVIAL DO ESQUELETO AXIAL;",
           "QUEM ESTÁ LENDO ANDA AGORA UMA CASA;",
-          "ARTICULO DOIS OSSOS, SENDO UM DELES LIMITADOR DOS",
+          "ARTICULO DOIS OSSOS, SENDO UM DELES LIMITADOR DOS MOVIMENTOS DO TRONCO.",
         ],
-        answer: "MOVIMENTOS DO TRONCO. Articulação Costotransversal",
+        answer: "Articulação Costotransversal",
       },
       {
         id: "perfisio-69",
@@ -2098,9 +2088,9 @@ const activityData = [
           "ASSOCIADA A OUTRA ARTICULAÇÃO, POSSUO UM EIXO QUASE",
           "UM DE MEUS COMPONENTES LIMITA OS MOVIMENTOS DO",
           "SOU UMA ARTICULAÇÃO SINOVIAL DO ESQUELETO AXIAL;",
-          "PARTICIPO DOS MECANISMOS DE ALÇA DE BALDE E BRAÇO DE",
+          "PARTICIPO DOS MECANISMOS DE ALÇA DE BALDE E BRAÇO DE BOMBA.",
         ],
-        answer: "BOMBA. Articulação Costovertebral",
+        answer: "Articulação Costovertebral",
       },
     ],
   },
@@ -2170,6 +2160,66 @@ function getActivityById(id) {
 
 function getLessonSections() {
   return activityData;
+}
+
+const CARDS_DATA_PATH = "../cards_2.json";
+
+function indexCardsByAnswer(cards) {
+  const index = new Map();
+  cards.forEach((card) => {
+    const key = (card.answer || "").trim();
+    if (!key) return;
+    if (index.has(key)) {
+      console.error(
+        `cards_2.json: resposta duplicada "${key}" — mantendo a primeira ocorrência e ignorando as demais.`,
+      );
+      return;
+    }
+    index.set(key, card);
+  });
+  return index;
+}
+
+function applyCardsData(cardsIndex) {
+  activityData.forEach((section) => {
+    section.items.forEach((item) => {
+      const card = cardsIndex.get(item.answer.trim());
+      if (!card) {
+        console.error(
+          `cards_2.json: nenhuma carta encontrada para a resposta "${item.answer}" (id: ${item.id}). Usando as dicas originais como fallback.`,
+        );
+        return;
+      }
+      item.hintPool = card.hints;
+    });
+  });
+}
+
+// Carrega cards_2.json uma única vez e aplica as dicas correspondentes aos
+// itens de activityData (casados pelo campo "answer"), sem duplicar os dados
+// do JSON dentro deste arquivo.
+const cardDataReady = fetch(CARDS_DATA_PATH)
+  .then((response) => {
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    return response.json();
+  })
+  .then((cards) => applyCardsData(indexCardsByAnswer(cards)))
+  .catch((error) => {
+    console.error(
+      "cards_2.json: falha ao carregar dados das cartas. As dicas originais serão usadas como fallback.",
+      error,
+    );
+  });
+
+function getHintPool(activity) {
+  const pool = activity.hintPool;
+  return pool && pool.length ? pool : activity.hints || [];
+}
+
+function pickRandomHints(pool, count = 4) {
+  if (!Array.isArray(pool) || pool.length === 0) return [];
+  if (pool.length <= count) return [...pool];
+  return shuffleArray(pool).slice(0, count);
 }
 
 function getQueryParam(name) {
@@ -2617,7 +2667,7 @@ function renderActivity(activity) {
     return;
   }
 
-  const hints = (activity.hints || []).slice(0, 4);
+  const hints = pickRandomHints(getHintPool(activity), 4);
   const options = getQuizOptions(activity);
 
   const sectionId = activity.sectionId;
@@ -3199,7 +3249,7 @@ function renderActivity(activity) {
 
       showInfoModal(
         "Resposta incorreta",
-        `Tente novamente! Dica: ${activity.hints[0]}`,
+        `Tente novamente! Dica: ${hints[0]}`,
       );
 
       // showFeedback(false, 0);
@@ -3288,7 +3338,9 @@ function renderGroup(group) {
   `;
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
+  await cardDataReady;
+
   const activityId = getQueryParam("id");
   const sectionId = getQueryParam("section");
   const groupIndex = getQueryParam("group");

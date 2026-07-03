@@ -88,7 +88,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     return;
   }
 
-  const hints = (activity.hints || []).slice(0, 4);
+  const hints = pickRandomHints(getHintPool(activity), 4);
   const options = getChallengeOptions(activity);
   const hintsRemaining = getChallengeHintsRemaining();
   const sessionScore = getSessionScore(
@@ -583,7 +583,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
 
       showInfoModal(
         "Resposta incorreta",
-        `Tente novamente! Dica: ${activity.hints[0]}`,
+        `Tente novamente! Dica: ${hints[0]}`,
       );
       // showFeedbackMsg(false);
     }
@@ -744,7 +744,9 @@ function showChallengeCompletionModal(allQuestions) {
 }
 
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
+  await cardDataReady;
+
   if (!isLevelUnlocked(CHALLENGE_SECTION_ID)) {
     window.location.href = "home.html";
     return;
