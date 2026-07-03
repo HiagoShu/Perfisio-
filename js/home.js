@@ -51,26 +51,20 @@ function isGroupCompleted(sectionId, groupIndex) {
   return localStorage.getItem(`perfisio-group-completed-${sectionId}-${groupIndex}`) === "true";
 }
 
-function isGroupUnlocked(sectionId, groupIndex) {
-  return true;
-}
-
-function buildActivityButton(section, groupIndex, groupItems) {
-  console.log({
-  level: section.level,
-  levelKey: getLevelKey(section.level),
-  colorClass: LEVEL_BTN_CLASS[getLevelKey(section.level)]
-});
-
+function buildActivityButton(section, groupIndex, groupItems, levelUnlockStatus) {
   const buttonIndex   = groupIndex + 1;
   const activityTitle = `Atividade ${buttonIndex} — ${section.moduleTitle}`;
   const levelKey      = getLevelKey(section.level);
 
   const completed = isGroupCompleted(section.sectionId, buttonIndex);
-  const unlocked  = isGroupUnlocked(section.sectionId, buttonIndex);
+  const unlocked  = levelUnlockStatus.unlocked;
 
   const icon  = completed ? "✅" : !unlocked ? "🔒" : (LEVEL_ICONS[levelKey] || "📚");
-  const label = completed ? "Concluída" : !unlocked ? "Bloqueada" : `${groupItems.length} perguntas`;
+  const label = completed
+    ? "Concluída"
+    : !unlocked
+    ? `${levelUnlockStatus.currentScore} / ${levelUnlockStatus.requiredScore}`
+    : `${groupItems.length} perguntas`;
 
   const colorClass = completed
     ? "btn-completed"
@@ -126,8 +120,14 @@ function buildActivityButton(section, groupIndex, groupItems) {
 function buildLessonSection(section) {
   const levelKey = getLevelKey(section.level);
 
+  const levelUnlockStatus = typeof getLevelUnlockStatus === "function"
+    ? getLevelUnlockStatus(section.sectionId)
+    : { unlocked: true, currentScore: 0, requiredScore: 0 };
+
   const groups  = splitIntoNGroups(section.items, 4);
-  const buttons = groups.map((g, i) => buildActivityButton(section, i, g)).join("");
+  const buttons = groups
+    .map((g, i) => buildActivityButton(section, i, g, levelUnlockStatus))
+    .join("");
 
   return `
     <div class="container-lessons__lesson__content level-${levelKey}">
@@ -163,21 +163,39 @@ function buildLessonSection(section) {
 }
 
 function buildChallengeSection() {
+  const unlockStatus = typeof getLevelUnlockStatus === "function"
+    ? getLevelUnlockStatus("doutor")
+    : { unlocked: true, currentScore: 0, requiredScore: 0 };
+  const unlocked = unlockStatus.unlocked;
+
+  const icon  = unlocked ? "👑" : "🔒";
+  const label = unlocked ? "Desafiar" : `${unlockStatus.currentScore} / ${unlockStatus.requiredScore}`;
+
+  const btnInner = `
+    <div class="shadow"></div>
+    <div class="face">
+      <span class="icon">${icon}</span>
+      <span class="btn-label">${label}</span>
+    </div>
+  `;
+
+  const buttonHtml = unlocked
+    ? `<a href="challenge.html">
+        <button class="duo-btn btn-doutor" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
+          ${btnInner}
+        </button>
+      </a>`
+    : `<button class="duo-btn btn-doutor btn-locked" disabled aria-label="Último Challenge (bloqueado)">
+        ${btnInner}
+      </button>`;
+
   return `
     <div class="container-lessons__lesson__content__challenge">
       <h5 class="container-lessons__lesson__content__difficult__challenge">-Nível Doutor-</h5>
       <h3 class="container-lessons__lesson__content__title__challenge">O Último<br/>Challenge</h3>
     </div>
     <div class="container-lessons__challenge__trail">
-      <a href="challenge.html">
-        <button class="duo-btn btn-doutor" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
-          <div class="shadow"></div>
-          <div class="face">
-            <span class="icon">👑</span>
-            <span class="btn-label">Desafiar</span>
-          </div>
-        </button>
-      </a>
+      ${buttonHtml}
       <p class="container-lessons__challenge__trail__paragraph">
         Desafie-se no Último Challenge<br/>respondendo perguntas<br/>de todos os assuntos vistos,<br/>com menos tempo e menos dicas.
       </p>
@@ -192,7 +210,15 @@ function handleBtnClick(btn, label) {
   btn.classList.add("clicked");
 }
 
+function renderTotalScore() {
+  const valueEl = document.getElementById("total-score-value");
+  if (!valueEl) return;
+  valueEl.textContent = typeof getTotalScore === "function" ? getTotalScore() : 0;
+}
+
 function renderHome() {
+  renderTotalScore();
+
   const lessonList = document.getElementById("lesson-list");
   if (!lessonList) return;
 

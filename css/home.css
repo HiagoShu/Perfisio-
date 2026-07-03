@@ -3,6 +3,33 @@ body {
   min-height: 100vh;
 }
 
+.total-score-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  background: rgba(2, 43, 27, 0.92);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.total-score-bar__label {
+  color: var(--yellow_text_cards);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.total-score-bar__value {
+  color: var(--white_perfisio);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
 .container-lessons {
   margin-top: 24px;
   padding-bottom: 80px;
@@ -242,6 +269,10 @@ body {
   );
 
   animation: titanGlow 2.2s linear infinite;
+}
+
+.btn-doutor.btn-locked .face::after {
+  display: none;
 }
 
 @keyframes titanGlow {

@@ -2383,6 +2383,74 @@ function updateBestScore(sectionId, groupIndex, sessionScore) {
   return { newBest: previous, isRecord: false };
 }
 
+function getTotalScore() {
+  let total = 0;
+  activityData.forEach((section) => {
+    const groups = splitIntoNGroups(section.items, 4);
+    groups.forEach((_, index) => {
+      total += getBestScore(section.sectionId, index + 1);
+    });
+  });
+  total += getBestScore(
+    typeof CHALLENGE_SECTION_ID !== "undefined" ? CHALLENGE_SECTION_ID : "doutor",
+    typeof CHALLENGE_GROUP_INDEX !== "undefined" ? CHALLENGE_GROUP_INDEX : "1",
+  );
+  return total;
+}
+
+const REQUIRED_SCORE_MULTIPLIER = 1.5;
+
+const LEVEL_SCORE_REQUIREMENTS = {
+  perfisio: 4000,
+  doutor: 6000,
+};
+
+function getLevelOrder() {
+  return [...activityData.map((section) => section.sectionId), "doutor"];
+}
+
+function getPreviousSectionId(sectionId) {
+  const order = getLevelOrder();
+  const index = order.indexOf(sectionId);
+  if (index <= 0) return null;
+  return order[index - 1];
+}
+
+function isLevelCompleted(sectionId) {
+  const section = getLessonSection(sectionId);
+  if (!section) return false;
+  const groups = splitIntoNGroups(section.items, 4);
+  return groups.every((_, index) => isGroupCompleted(sectionId, index + 1));
+}
+
+function getRequiredScoreToUnlock(sectionId, previousSectionId) {
+  if (Object.prototype.hasOwnProperty.call(LEVEL_SCORE_REQUIREMENTS, sectionId)) {
+    return LEVEL_SCORE_REQUIREMENTS[sectionId];
+  }
+  const previousSection = getLessonSection(previousSectionId);
+  const questionCount = previousSection ? previousSection.items.length : 0;
+  return Math.round(questionCount * SCORE_BASE * REQUIRED_SCORE_MULTIPLIER);
+}
+
+function getLevelUnlockStatus(sectionId) {
+  const previousSectionId = getPreviousSectionId(sectionId);
+  const currentScore = getTotalScore();
+
+  if (!previousSectionId) {
+    return { unlocked: true, currentScore, requiredScore: 0 };
+  }
+
+  const requiredScore = getRequiredScoreToUnlock(sectionId, previousSectionId);
+  const unlocked =
+    isLevelCompleted(previousSectionId) && currentScore >= requiredScore;
+
+  return { unlocked, currentScore, requiredScore };
+}
+
+function isLevelUnlocked(sectionId) {
+  return getLevelUnlockStatus(sectionId).unlocked;
+}
+
 function getSessionScore(sectionId, groupIndex) {
   const key = `perfisio-session-score-${sectionId}-${groupIndex}`;
   return Number(localStorage.getItem(key) || 0);
@@ -3227,8 +3295,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (activityId) {
     const activity = getActivityById(activityId);
+    if (activity && !isLevelUnlocked(activity.sectionId)) {
+      window.location.href = "home.html";
+      return;
+    }
     renderActivity(activity);
   } else if (sectionId && groupIndex) {
+    if (!isLevelUnlocked(sectionId)) {
+      window.location.href = "home.html";
+      return;
+    }
     const group = getGroupBySection(sectionId, groupIndex);
     renderGroup(group);
   } else {

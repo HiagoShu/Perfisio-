@@ -745,6 +745,11 @@ function showChallengeCompletionModal(allQuestions) {
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  if (!isLevelUnlocked(CHALLENGE_SECTION_ID)) {
+    window.location.href = "home.html";
+    return;
+  }
+
   const allQuestions = getChallengeQuestions();
   const storedIndex = sessionStorage.getItem("challenge-current-index");
   const questionIndex = storedIndex !== null ? Number(storedIndex) : 0;
