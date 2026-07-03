@@ -8,7 +8,10 @@ const CHALLENGE_TOTAL_QUESTIONS = activityData.reduce(
   0,
 );
 const CHALLENGE_TIMER_SECONDS = 45;
-const CHALLENGE_TOTAL_HINTS = 30;
+// Toda atividade (incluindo o Último Challenge) começa com 20 chaves.
+const CHALLENGE_TOTAL_HINTS = 20;
+const CHALLENGE_BONUS_KEYS_INTERVAL = 10;
+const CHALLENGE_BONUS_KEYS_AMOUNT = 10;
 
 const CHALLENGE_HINTS_KEY = `perfisio-challenge-hints-remaining`;
 const CHALLENGE_PROGRESS_KEY = `perfisio-challenge-progress`;
@@ -56,6 +59,24 @@ function consumeChallengeHint() {
   const current = getChallengeHintsRemaining();
   if (current <= 0) return false;
   setChallengeHintsRemaining(current - 1);
+  return true;
+}
+
+/**
+ * A cada CHALLENGE_BONUS_KEYS_INTERVAL respostas corretas, concede
+ * CHALLENGE_BONUS_KEYS_AMOUNT chaves extras. Retorna true se o bônus foi
+ * concedido nesta chamada.
+ */
+function maybeAwardChallengeBonusKeys(correctAnswerCount) {
+  if (
+    correctAnswerCount <= 0 ||
+    correctAnswerCount % CHALLENGE_BONUS_KEYS_INTERVAL !== 0
+  ) {
+    return false;
+  }
+  setChallengeHintsRemaining(
+    getChallengeHintsRemaining() + CHALLENGE_BONUS_KEYS_AMOUNT,
+  );
   return true;
 }
 
@@ -555,9 +576,15 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
         input.disabled = true;
       });
 
+      const correctAnswerCount = questionIndex + 1;
+      const bonusAwarded = maybeAwardChallengeBonusKeys(correctAnswerCount);
+      const bonusMessage = bonusAwarded
+        ? ` 🔑 Bônus de ${CHALLENGE_BONUS_KEYS_AMOUNT} chaves por ${correctAnswerCount} acertos!`
+        : "";
+
       createModal({
         title: "🎉 Parabéns!",
-        message: `Resposta correta! Questão ${questionIndex + 1} de ${CHALLENGE_TOTAL_QUESTIONS}.`,
+        message: `Resposta correta! Questão ${questionIndex + 1} de ${CHALLENGE_TOTAL_QUESTIONS}.${bonusMessage}`,
         confirmText: "Próxima questão",
         onConfirm: () => {
           goToNextQuestion(questionIndex, allQuestions);
@@ -835,6 +862,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     window.location.href = "home.html";
     return;
   }
+
+  playBackgroundMusic("challenge");
 
   const allQuestions = getChallengeQuestions();
   const storedIndex = sessionStorage.getItem("challenge-current-index");

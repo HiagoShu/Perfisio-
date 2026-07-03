@@ -2267,6 +2267,35 @@ function stopChargeSound() {
   activeChargeAudio = null;
 }
 
+const MUSIC_FILES = {
+  activity: "../som/Red_Doors.mp3",
+  challenge: "../som/Orbital_Colossus.mp3",
+};
+
+let activeBackgroundMusic = null;
+
+function playBackgroundMusic(name) {
+  const src = MUSIC_FILES[name];
+  if (!src) return;
+  stopBackgroundMusic();
+  try {
+    const audio = new Audio(src);
+    audio.loop = true;
+    audio.volume = 0.4;
+    audio.play().catch(() => {});
+    activeBackgroundMusic = audio;
+  } catch (error) {
+    // Reprodução de áudio pode ser bloqueada pelo navegador; ignora silenciosamente.
+  }
+}
+
+function stopBackgroundMusic() {
+  if (!activeBackgroundMusic) return;
+  activeBackgroundMusic.pause();
+  activeBackgroundMusic.currentTime = 0;
+  activeBackgroundMusic = null;
+}
+
 function escapeHtml(text) {
   if (typeof text !== "string") return "";
   return text
@@ -3398,12 +3427,14 @@ window.addEventListener("DOMContentLoaded", async () => {
       window.location.href = "home.html";
       return;
     }
+    playBackgroundMusic("activity");
     renderActivity(activity);
   } else if (sectionId && groupIndex) {
     if (!isLevelUnlocked(sectionId)) {
       window.location.href = "home.html";
       return;
     }
+    playBackgroundMusic("activity");
     const group = getGroupBySection(sectionId, groupIndex);
     renderGroup(group);
   } else {
