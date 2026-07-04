@@ -2,11 +2,11 @@
 const CHALLENGE_SECTION_ID = "doutor";
 const CHALLENGE_GROUP_INDEX = "1";
 // O Último Challenge reúne todas as questões dos níveis anteriores
-// (Calouro, Veterano e PerFisio), não um subconjunto aleatório.
-const CHALLENGE_TOTAL_QUESTIONS = activityData.reduce(
-  (total, section) => total + section.items.length,
-  0,
-);
+// (Calouro, Veterano e PerFisio), não um subconjunto aleatório. activityData
+// só é preenchido depois que cards_2.json carrega (ver cardDataReady em
+// activity.js), então este total é calculado no DOMContentLoaded, após
+// `await cardDataReady`.
+let CHALLENGE_TOTAL_QUESTIONS = 0;
 const CHALLENGE_TIMER_SECONDS = 45;
 // Toda atividade (incluindo o Último Challenge) começa com 20 chaves.
 const CHALLENGE_TOTAL_HINTS = 20;
@@ -123,7 +123,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     return;
   }
 
-  const hints = pickRandomHints(getHintPool(activity), 4);
+  const hints = pickRandomHints(activity.hints, 4);
   const options = getChallengeOptions(activity);
   const hintsRemaining = getChallengeHintsRemaining();
   const sessionScore = getSessionScore(
@@ -862,6 +862,11 @@ function showChallengeCompletionModal(allQuestions) {
 
 window.addEventListener("DOMContentLoaded", async () => {
   await cardDataReady;
+
+  CHALLENGE_TOTAL_QUESTIONS = activityData.reduce(
+    (total, section) => total + section.items.length,
+    0,
+  );
 
   if (!isLevelUnlocked(CHALLENGE_SECTION_ID)) {
     window.location.href = "home.html";

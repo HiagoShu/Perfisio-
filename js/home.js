@@ -249,4 +249,7 @@ function renderHome() {
   lessonList.innerHTML = sections.map(buildLessonSection).join("") + buildChallengeSection();
 }
 
-window.addEventListener("DOMContentLoaded", renderHome);
+window.addEventListener("DOMContentLoaded", async () => {
+  if (typeof cardDataReady !== "undefined") await cardDataReady;
+  renderHome();
+});
