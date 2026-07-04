@@ -2163,27 +2163,63 @@ function getLessonSections() {
 }
 
 const CARDS_DATA_PATH = "../cards_2.json";
+const ANATOMIA_PALPATORIA_SUFFIX = " Anatomia Palpatória";
+
+// cards_2.json usa uma categoria própria "Anatomia Palpatória" e guarda a
+// resposta sem esse sufixo (ex.: "Cabeça do Rádio"), enquanto activityData
+// guarda o sufixo embutido na própria resposta (ex.: "Cabeça do Rádio
+// Anatomia Palpatória"). normalizeAnswerKey só remove espaços duplicados;
+// o sufixo é tratado à parte em findCardForAnswer.
+function normalizeAnswerKey(text) {
+  return (text || "").replace(/\s+/g, " ").trim();
+}
 
 function indexCardsByAnswer(cards) {
   const index = new Map();
   cards.forEach((card) => {
-    const key = (card.answer || "").trim();
+    const key = normalizeAnswerKey(card.answer);
     if (!key) return;
-    if (index.has(key)) {
-      console.error(
-        `cards_2.json: resposta duplicada "${key}" — mantendo a primeira ocorrência e ignorando as demais.`,
-      );
-      return;
-    }
-    index.set(key, card);
+    if (!index.has(key)) index.set(key, []);
+    index.get(key).push(card);
   });
   return index;
+}
+
+function pickCardCandidate(candidates, preferAnatomiaPalpatoria) {
+  if (candidates.length === 1) return candidates[0];
+  const preferred = candidates.find((card) =>
+    preferAnatomiaPalpatoria
+      ? card.category === "Anatomia Palpatória"
+      : card.category !== "Anatomia Palpatória",
+  );
+  return preferred || candidates[0];
+}
+
+function findCardForAnswer(cardsIndex, rawAnswer) {
+  const answer = normalizeAnswerKey(rawAnswer);
+
+  if (answer.endsWith(ANATOMIA_PALPATORIA_SUFFIX)) {
+    const stripped = answer
+      .slice(0, -ANATOMIA_PALPATORIA_SUFFIX.length)
+      .trim();
+    const candidates = cardsIndex.get(stripped);
+    if (candidates && candidates.length) {
+      return pickCardCandidate(candidates, true);
+    }
+  }
+
+  const candidates = cardsIndex.get(answer);
+  if (candidates && candidates.length) {
+    return pickCardCandidate(candidates, false);
+  }
+
+  return null;
 }
 
 function applyCardsData(cardsIndex) {
   activityData.forEach((section) => {
     section.items.forEach((item) => {
-      const card = cardsIndex.get(item.answer.trim());
+      const card = findCardForAnswer(cardsIndex, item.answer);
       if (!card) {
         console.error(
           `cards_2.json: nenhuma carta encontrada para a resposta "${item.answer}" (id: ${item.id}). Usando as dicas originais como fallback.`,
@@ -2272,18 +2308,45 @@ const MUSIC_FILES = {
   challenge: "../som/Orbital_Colossus.mp3",
 };
 
+const MUSIC_RESUME_TRACK_KEY = "perfisio-music-track";
+const MUSIC_RESUME_TIME_KEY = "perfisio-music-time";
+
 let activeBackgroundMusic = null;
+let activeBackgroundMusicName = null;
+
+// Cada questão/tela é uma navegação de página nova, o que destruiria o
+// <audio> anterior. Para a música tocar continuamente entre elas (em vez de
+// reiniciar do zero a cada resposta certa ou timeout), salvamos o ponto em
+// que ela estava antes de sair da página e retomamos dali na próxima.
+window.addEventListener("beforeunload", () => {
+  if (!activeBackgroundMusic || !activeBackgroundMusicName) return;
+  sessionStorage.setItem(MUSIC_RESUME_TRACK_KEY, activeBackgroundMusicName);
+  sessionStorage.setItem(
+    MUSIC_RESUME_TIME_KEY,
+    String(activeBackgroundMusic.currentTime),
+  );
+});
 
 function playBackgroundMusic(name) {
   const src = MUSIC_FILES[name];
   if (!src) return;
+
+  const resumeTrack = sessionStorage.getItem(MUSIC_RESUME_TRACK_KEY);
+  const resumeTime = Number(sessionStorage.getItem(MUSIC_RESUME_TIME_KEY));
+  sessionStorage.removeItem(MUSIC_RESUME_TRACK_KEY);
+  sessionStorage.removeItem(MUSIC_RESUME_TIME_KEY);
+
   stopBackgroundMusic();
   try {
     const audio = new Audio(src);
     audio.loop = true;
     audio.volume = 0.4;
+    if (resumeTrack === name && Number.isFinite(resumeTime) && resumeTime > 0) {
+      audio.currentTime = resumeTime;
+    }
     audio.play().catch(() => {});
     activeBackgroundMusic = audio;
+    activeBackgroundMusicName = name;
   } catch (error) {
     // Reprodução de áudio pode ser bloqueada pelo navegador; ignora silenciosamente.
   }
@@ -2294,6 +2357,7 @@ function stopBackgroundMusic() {
   activeBackgroundMusic.pause();
   activeBackgroundMusic.currentTime = 0;
   activeBackgroundMusic = null;
+  activeBackgroundMusicName = null;
 }
 
 function escapeHtml(text) {
@@ -3322,11 +3386,6 @@ function renderActivity(activity) {
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 2200);
       })();
-
-      showInfoModal(
-        "Resposta incorreta",
-        `Tente novamente! Dica: ${hints[0]}`,
-      );
 
       // showFeedback(false, 0);
     }

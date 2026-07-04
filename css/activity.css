@@ -553,6 +553,8 @@ body {
 
 .quiz-hint-modal {
   width: 100%;
+  height: auto;
+  max-height: none;
   box-sizing: border-box;
   background-color: #fff8e1;
   border: 1.5px solid var(--dark_yellow_text_cards);
@@ -564,6 +566,7 @@ body {
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: anywhere;
+  overflow: visible;
   display: none;
 }
 
@@ -1252,6 +1255,9 @@ body {
     padding: 8px 10px;
     border-radius: 8px;
     line-height: 1.4;
+    height: auto;
+    max-height: none;
+    overflow: visible;
   }
 
   .quiz-options {

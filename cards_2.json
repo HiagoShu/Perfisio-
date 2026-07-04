@@ -47,7 +47,7 @@
   },
   {
     "category": "Sistema Muscular",
-    "answer": "Clavicular",
+    "answer": "Músculo Peitoral Maior Porção Clavicular",
     "hints": [
       "A PORÇÃO ONDE ESTOU INSERIDO FAZ PARTE DO CÍNGULO ESCAPULAR;",
       "O NERVO PEITORAL LATERAL É QUEM ME INVERVA;",
@@ -57,12 +57,12 @@
       "INSERÇÃO PROXIMAL: DOIS TERÇOS MEDIAIS DA CLAVÍCULA;",
       "TAMBÉM REALIZO ADUÇÃO HORIZONTAL;",
       "POSSO ATUAR NO PLANO TRANSVERSAL;",
-      "TAMBÉM FAÇO ROTAÇÃO INTERNA. Músculo Peitoral Maior Porção"
+      "TAMBÉM FAÇO ROTAÇÃO INTERNA."
     ]
   },
   {
     "category": "Sistema Muscular",
-    "answer": "Esternal",
+    "answer": "Músculo Peitoral Maior Porção Esternal",
     "hints": [
       "FAÇO TAMBÉM ADUÇÃO;",
       "A PORÇÃO ONDE ESTOU INSERIDO FAZ PARTE DO ESQUELETO AXIAL;",
@@ -73,7 +73,7 @@
       "TAMBÉM FAÇO ROTAÇÃO INTERNA;",
       "TAMBÉM REALIZO ADUÇÃO HORIZONTAL;",
       "POSSO ATUAR NO PLANO TRANSVERSAL;",
-      "INSERÇÃO PROXIMAL: ESTERNO ANTERIOR E CARTILAGEM DAS 6 PRIMEIRAS COSTELAS. Músculo Peitoral Maior Porção"
+      "INSERÇÃO PROXIMAL: ESTERNO ANTERIOR E CARTILAGEM DAS 6 PRIMEIRAS COSTELAS."
     ]
   },
   {
@@ -1085,7 +1085,7 @@
   },
   {
     "category": "Conceitos",
-    "answer": "Desenvolver Tensão",
+    "answer": "Irritabilidade e Capacidade de Desenvolver Tensão",
     "hints": [
       "UM DOS TERMOS É DEFINIDO COMO A CAPACIDADE DE RESPONDER A ESTÍMULOS;",
       "UM DOS TERMOS É UMA CARACTERÍSITCA COMPORTAMENTAL ESPECÍFICA DO TECIDO MUSCULAR;",
@@ -1096,7 +1096,7 @@
       "O 1° TERMO TEM 14 LETRAS;",
       "UM DOS TERMOS PODE SER DEFINIDO COMO CONTRAÇÃO;",
       "O SEGUNDO TERMO TEM 32 LETRAS, POIS SÃO 4 PALAVRAS;",
-      "UM DOS TERMOS SE REFARE A RESPOSTA A UM ESTÍMULO. Irritabilidade e Capacidade de"
+      "UM DOS TERMOS SE REFARE A RESPOSTA A UM ESTÍMULO."
     ]
   },
   {
@@ -1565,7 +1565,7 @@
   },
   {
     "category": "Anatomia Palpatória",
-    "answer": "“Pata de Ganso”",
+    "answer": "Pata de Ganso",
     "hints": [
       "O TENDÃO DO M. SEMITENDINOO É O MAIS BAIXO E É BEM PERCEPTÍVEL SOB O INDICADOR;",
       "OS DEDOS DO FISIOTERAPEUTA SÃO POSTOS NA EXTREMIDADE SUPERIOR DA MARGEM MEDIAL DA TÍBIA;",

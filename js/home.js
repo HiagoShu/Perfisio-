@@ -224,7 +224,16 @@ function applyChallengeVictoryGlow() {
   localStorage.removeItem(CHALLENGE_VICTORY_GLOW_KEY);
 }
 
+function stopBackgroundMusicContinuity() {
+  // A música de atividade/challenge só deve tocar continuamente entre
+  // questões; ao voltar para o início, a "corrente" é quebrada.
+  sessionStorage.removeItem("perfisio-music-track");
+  sessionStorage.removeItem("perfisio-music-time");
+  if (typeof stopBackgroundMusic === "function") stopBackgroundMusic();
+}
+
 function renderHome() {
+  stopBackgroundMusicContinuity();
   applyChallengeVictoryGlow();
   renderTotalScore();
 

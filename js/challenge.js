@@ -18,15 +18,23 @@ const CHALLENGE_PROGRESS_KEY = `perfisio-challenge-progress`;
 const CHALLENGE_VICTORY_GLOW_KEY = `perfisio-challenge-victory-glow`;
 
 function getChallengeQuestions() {
+  // Guardamos apenas a ORDEM sorteada (id + sectionId) na sessionStorage, não
+  // as perguntas inteiras. Assim, cada carta é sempre reidratada a partir de
+  // activityData/cards_2.json na hora, e uma sessão de Challenge já em
+  // andamento nunca fica presa a dicas antigas/incompletas caso os dados
+  // sejam corrigidos entre uma resposta e outra.
   const stored = sessionStorage.getItem(CHALLENGE_PROGRESS_KEY);
   if (stored) {
     try {
-      const parsed = JSON.parse(stored);
+      const storedOrder = JSON.parse(stored);
       if (
-        Array.isArray(parsed) &&
-        parsed.length === CHALLENGE_TOTAL_QUESTIONS
+        Array.isArray(storedOrder) &&
+        storedOrder.length === CHALLENGE_TOTAL_QUESTIONS
       ) {
-        return parsed;
+        const rehydrated = storedOrder
+          .map((entry) => getActivityById(entry.id))
+          .filter(Boolean);
+        if (rehydrated.length === CHALLENGE_TOTAL_QUESTIONS) return rehydrated;
       }
     } catch (_) {}
   }
@@ -40,7 +48,8 @@ function getChallengeQuestions() {
     .sort((a, b) => a.sort - b.sort)
     .map(({ item }) => item);
 
-  sessionStorage.setItem(CHALLENGE_PROGRESS_KEY, JSON.stringify(shuffled));
+  const order = shuffled.map((item) => ({ id: item.id }));
+  sessionStorage.setItem(CHALLENGE_PROGRESS_KEY, JSON.stringify(order));
   return shuffled;
 }
 
@@ -620,10 +629,6 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
         setTimeout(() => toast.remove(), 2200);
       })();
 
-      showInfoModal(
-        "Resposta incorreta",
-        `Tente novamente! Dica: ${hints[0]}`,
-      );
       // showFeedbackMsg(false);
     }
   }
