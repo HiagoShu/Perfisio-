@@ -537,14 +537,19 @@ function getLevelUnlockStatus(sectionId) {
   const currentScore = getTotalScore();
 
   if (!previousSectionId) {
-    return { unlocked: true, currentScore, requiredScore: 0 };
+    return {
+      unlocked: true,
+      currentScore,
+      requiredScore: 0,
+      previousCompleted: true,
+    };
   }
 
   const requiredScore = getRequiredScoreToUnlock(sectionId, previousSectionId);
-  const unlocked =
-    isLevelCompleted(previousSectionId) && currentScore >= requiredScore;
+  const previousCompleted = isLevelCompleted(previousSectionId);
+  const unlocked = previousCompleted && currentScore >= requiredScore;
 
-  return { unlocked, currentScore, requiredScore };
+  return { unlocked, currentScore, requiredScore, previousCompleted };
 }
 
 function isLevelUnlocked(sectionId) {

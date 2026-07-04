@@ -58,12 +58,15 @@ function buildActivityButton(section, groupIndex, groupItems, levelUnlockStatus)
 
   const completed = isGroupCompleted(section.sectionId, buttonIndex);
   const unlocked  = levelUnlockStatus.unlocked;
+  const scoreMet  = levelUnlockStatus.currentScore >= levelUnlockStatus.requiredScore;
 
   const icon  = completed ? "✅" : !unlocked ? "🔒" : (LEVEL_ICONS[levelKey] || "📚");
   const label = completed
     ? "Concluída"
     : !unlocked
-    ? `${levelUnlockStatus.currentScore} / ${levelUnlockStatus.requiredScore}`
+    ? (scoreMet && !levelUnlockStatus.previousCompleted
+        ? "Complete o nível anterior"
+        : `${levelUnlockStatus.currentScore} / ${levelUnlockStatus.requiredScore}`)
     : `${groupItems.length} perguntas`;
 
   const colorClass = completed
@@ -165,11 +168,16 @@ function buildLessonSection(section) {
 function buildChallengeSection() {
   const unlockStatus = typeof getLevelUnlockStatus === "function"
     ? getLevelUnlockStatus("doutor")
-    : { unlocked: true, currentScore: 0, requiredScore: 0 };
+    : { unlocked: true, currentScore: 0, requiredScore: 0, previousCompleted: true };
   const unlocked = unlockStatus.unlocked;
+  const scoreMet = unlockStatus.currentScore >= unlockStatus.requiredScore;
 
   const icon  = unlocked ? "👑" : "🔒";
-  const label = unlocked ? "Desafiar" : `${unlockStatus.currentScore} / ${unlockStatus.requiredScore}`;
+  const label = unlocked
+    ? "Desafiar"
+    : scoreMet && !unlockStatus.previousCompleted
+    ? "Complete o nível anterior"
+    : `${unlockStatus.currentScore} / ${unlockStatus.requiredScore}`;
 
   const btnInner = `
     <div class="shadow"></div>
