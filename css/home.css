@@ -3,6 +3,111 @@ body {
   min-height: 100vh;
 }
 
+.settings-button {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 30;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(2, 43, 27, 0.92);
+  color: var(--white_perfisio);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.settings-button:hover {
+  transform: scale(1.08);
+  background: rgba(2, 43, 27, 1);
+}
+
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+}
+
+.settings-overlay[hidden] {
+  display: none;
+}
+
+.settings-panel {
+  position: relative;
+  width: min(100%, 360px);
+  background: var(--white_perfisio);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.settings-panel__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--green_dark_background);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.settings-panel__close:hover {
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.settings-panel__title {
+  color: var(--green_dark_background);
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.settings-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.settings-row:last-child {
+  margin-bottom: 0;
+}
+
+.settings-row__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--dark_yellow_text_cards);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.settings-row__icon {
+  font-size: 16px;
+}
+
+.settings-row__slider {
+  width: 100%;
+  accent-color: var(--lighter_green__buttons);
+  cursor: pointer;
+}
+
 .total-score-bar {
   position: sticky;
   top: 0;

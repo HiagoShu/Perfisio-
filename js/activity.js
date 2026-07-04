@@ -145,6 +145,35 @@ function getQueryParam(name) {
   return params.get(name);
 }
 
+const MUSIC_VOLUME_KEY = "perfisio-music-volume";
+const SFX_VOLUME_KEY = "perfisio-sfx-volume";
+const DEFAULT_MUSIC_VOLUME = 0.4;
+const DEFAULT_SFX_VOLUME = 1;
+
+function clampVolume(value) {
+  return Math.min(1, Math.max(0, Number(value)));
+}
+
+function getMusicVolume() {
+  const stored = localStorage.getItem(MUSIC_VOLUME_KEY);
+  return stored !== null ? clampVolume(stored) : DEFAULT_MUSIC_VOLUME;
+}
+
+function setMusicVolume(value) {
+  const clamped = clampVolume(value);
+  localStorage.setItem(MUSIC_VOLUME_KEY, String(clamped));
+  if (activeBackgroundMusic) activeBackgroundMusic.volume = clamped;
+}
+
+function getSfxVolume() {
+  const stored = localStorage.getItem(SFX_VOLUME_KEY);
+  return stored !== null ? clampVolume(stored) : DEFAULT_SFX_VOLUME;
+}
+
+function setSfxVolume(value) {
+  localStorage.setItem(SFX_VOLUME_KEY, String(clampVolume(value)));
+}
+
 const SOUND_FILES = {
   keyuse: "../som/keyuse.m4a",
   right: "../som/right.ogg",
@@ -158,6 +187,7 @@ function playSound(name) {
   if (!src) return;
   try {
     const audio = new Audio(src);
+    audio.volume = getSfxVolume();
     audio.play().catch(() => {});
   } catch (error) {
     // Reprodução de áudio pode ser bloqueada pelo navegador; ignora silenciosamente.
@@ -171,6 +201,7 @@ function startChargeSound() {
   try {
     const audio = new Audio(SOUND_FILES.charge);
     audio.loop = true;
+    audio.volume = getSfxVolume();
     audio.play().catch(() => {});
     activeChargeAudio = audio;
   } catch (error) {
@@ -222,7 +253,7 @@ function playBackgroundMusic(name) {
   try {
     const audio = new Audio(src);
     audio.loop = true;
-    audio.volume = 0.4;
+    audio.volume = getMusicVolume();
     if (resumeTrack === name && Number.isFinite(resumeTime) && resumeTime > 0) {
       audio.currentTime = resumeTime;
     }
@@ -294,17 +325,21 @@ function getQuizOptions(activity) {
   return shuffleArray(options);
 }
 
-function getStoredKeyBalance(sectionId, groupIndex) {
-  const storageKey = `perfisio-keys-${sectionId}-${groupIndex}`;
-  const stored = localStorage.getItem(storageKey);
-  if (stored !== null) return Number(stored);
-  localStorage.setItem(storageKey, "20");
-  return 20;
+const HINT_CURRENCY_KEY = "perfisio-hint-currency";
+const HINT_CURRENCY_START = 20;
+
+// Moeda única de dicas, compartilhada por todas as atividades (não por
+// grupo/seção). Persiste enquanto o jogador navega entre questões e só é
+// reiniciada para 20 quando ele volta para a tela inicial (ver home.js).
+function getHintCurrency() {
+  const stored = localStorage.getItem(HINT_CURRENCY_KEY);
+  if (stored !== null) return Math.max(0, Number(stored));
+  localStorage.setItem(HINT_CURRENCY_KEY, String(HINT_CURRENCY_START));
+  return HINT_CURRENCY_START;
 }
 
-function setStoredKeyBalance(sectionId, groupIndex, balance) {
-  const storageKey = `perfisio-keys-${sectionId}-${groupIndex}`;
-  localStorage.setItem(storageKey, String(Math.max(0, balance)));
+function setHintCurrency(balance) {
+  localStorage.setItem(HINT_CURRENCY_KEY, String(Math.max(0, balance)));
 }
 
 function hasSolvedQuestion(activityId) {
@@ -688,7 +723,7 @@ function renderActivity(activity) {
   const sectionId = activity.sectionId;
 
   const activityState = {
-    keyBalance: getStoredKeyBalance(sectionId, currentGroupIndex),
+    keyBalance: getHintCurrency(),
     hints: hints.map((hint, index) => ({
       text: hint,
       unlocked: index === 0,
@@ -809,7 +844,7 @@ function renderActivity(activity) {
     </div>
   `;
 
-  const keyBadge = root.querySelector("#key-badge");
+  const keyBadge = root.querySelector("#key-balance");
   const keyBadgeContainer = root.querySelector(".quiz-badge");
   const keyWarningState = { active: false, timeoutId: null };
   const hintModal = root.querySelector("#hint-modal");
@@ -1062,7 +1097,7 @@ function renderActivity(activity) {
 
     hintState.unlocked = true;
     activityState.keyBalance -= 1;
-    setStoredKeyBalance(sectionId, currentGroupIndex, activityState.keyBalance);
+    setHintCurrency(activityState.keyBalance);
     playSound("keyuse");
     setHintButtonState(index, true);
     updateKeyDisplay();

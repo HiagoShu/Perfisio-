@@ -232,9 +232,62 @@ function stopBackgroundMusicContinuity() {
   if (typeof stopBackgroundMusic === "function") stopBackgroundMusic();
 }
 
+function resetHintCurrency() {
+  // A moeda de dicas (das atividades normais e do Último Challenge) sempre
+  // volta a 20 ao chegar na tela inicial, não importa como o jogador saiu
+  // da atividade/challenge anterior.
+  localStorage.setItem("perfisio-hint-currency", "20");
+  localStorage.setItem("perfisio-challenge-hints-remaining", "20");
+}
+
+function setupSettingsPanel() {
+  const button = document.getElementById("settings-button");
+  const overlay = document.getElementById("settings-overlay");
+  const closeButton = document.getElementById("settings-close");
+  const musicSlider = document.getElementById("music-volume-slider");
+  const sfxSlider = document.getElementById("sfx-volume-slider");
+  if (!button || !overlay || !musicSlider || !sfxSlider) return;
+
+  const toPercent = (volume) => Math.round(volume * 100);
+
+  musicSlider.value = String(
+    toPercent(typeof getMusicVolume === "function" ? getMusicVolume() : 0.4),
+  );
+  sfxSlider.value = String(
+    toPercent(typeof getSfxVolume === "function" ? getSfxVolume() : 1),
+  );
+
+  const openPanel = () => {
+    overlay.hidden = false;
+  };
+  const closePanel = () => {
+    overlay.hidden = true;
+  };
+
+  button.addEventListener("click", openPanel);
+  closeButton.addEventListener("click", closePanel);
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) closePanel();
+  });
+
+  musicSlider.addEventListener("input", () => {
+    if (typeof setMusicVolume === "function") {
+      setMusicVolume(Number(musicSlider.value) / 100);
+    }
+  });
+
+  sfxSlider.addEventListener("input", () => {
+    if (typeof setSfxVolume === "function") {
+      setSfxVolume(Number(sfxSlider.value) / 100);
+    }
+  });
+}
+
 function renderHome() {
   stopBackgroundMusicContinuity();
+  resetHintCurrency();
   applyChallengeVictoryGlow();
+  setupSettingsPanel();
   renderTotalScore();
 
   const lessonList = document.getElementById("lesson-list");

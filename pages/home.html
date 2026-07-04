@@ -9,6 +9,53 @@
     <link rel="stylesheet" href="../css/components.css" />
   </head>
   <body>
+    <button
+      type="button"
+      class="settings-button"
+      id="settings-button"
+      aria-label="Configurações"
+      aria-haspopup="dialog"
+    >
+      ⚙️
+    </button>
+
+    <div class="settings-overlay" id="settings-overlay" hidden>
+      <div class="settings-panel" role="dialog" aria-modal="true" aria-label="Configurações">
+        <button type="button" class="settings-panel__close" id="settings-close" aria-label="Fechar">×</button>
+        <h3 class="settings-panel__title">Configurações</h3>
+
+        <div class="settings-row">
+          <label class="settings-row__label" for="music-volume-slider">
+            <span class="settings-row__icon">🎵</span>
+            <span>Música</span>
+          </label>
+          <input
+            type="range"
+            id="music-volume-slider"
+            class="settings-row__slider"
+            min="0"
+            max="100"
+            step="1"
+          />
+        </div>
+
+        <div class="settings-row">
+          <label class="settings-row__label" for="sfx-volume-slider">
+            <span class="settings-row__icon">🔊</span>
+            <span>Efeitos sonoros</span>
+          </label>
+          <input
+            type="range"
+            id="sfx-volume-slider"
+            class="settings-row__slider"
+            min="0"
+            max="100"
+            step="1"
+          />
+        </div>
+      </div>
+    </div>
+
     <div class="total-score-bar" id="total-score-bar">
       <span class="total-score-bar__label">Score Perfisio⭐:</span>
       <span class="total-score-bar__value" id="total-score-value">0</span>
