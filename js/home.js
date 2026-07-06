@@ -56,17 +56,24 @@ function buildActivityButton(section, groupIndex, groupItems, levelUnlockStatus)
   const activityTitle = `Atividade ${buttonIndex} — ${section.moduleTitle}`;
   const levelKey      = getLevelKey(section.level);
 
-  const completed = isGroupCompleted(section.sectionId, buttonIndex);
-  const unlocked  = levelUnlockStatus.unlocked;
-  const scoreMet  = levelUnlockStatus.currentScore >= levelUnlockStatus.requiredScore;
+  const completed     = isGroupCompleted(section.sectionId, buttonIndex);
+  const levelUnlocked = levelUnlockStatus.unlocked;
+  const groupUnlocked =
+    typeof isGroupUnlocked === "function"
+      ? isGroupUnlocked(section.sectionId, buttonIndex)
+      : true;
+  const unlocked = levelUnlocked && groupUnlocked;
+  const scoreMet = levelUnlockStatus.currentScore >= levelUnlockStatus.requiredScore;
 
   const icon  = completed ? "✅" : !unlocked ? "🔒" : (LEVEL_ICONS[levelKey] || "📚");
   const label = completed
     ? "Concluída"
-    : !unlocked
+    : !levelUnlocked
     ? (scoreMet && !levelUnlockStatus.previousCompleted
         ? "Complete o nível anterior"
         : `${levelUnlockStatus.currentScore} / ${levelUnlockStatus.requiredScore}`)
+    : !groupUnlocked
+    ? "Complete a atividade anterior"
     : `${groupItems.length} perguntas`;
 
   const colorClass = completed

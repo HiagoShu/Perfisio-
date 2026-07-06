@@ -14,6 +14,10 @@ body.challenge-victory-glow .container-atividades {
   background-color: transparent;
 }
 
+body.challenge-theme .quiz-timer-wrapper {
+  background: var(--dark_purple_final_level);
+}
+
 body.challenge-theme .quiz-timer-icon {
   color: var(--light_purple_final_level);
 }

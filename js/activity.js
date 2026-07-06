@@ -429,9 +429,9 @@ function isGroupCompleted(sectionId, groupIndex) {
 }
 
 function isGroupUnlocked(sectionId, groupIndex) {
-  if (Number(groupIndex) === 1) return true;
-  const key = `perfisio-group-unlocked-${sectionId}-${groupIndex}`;
-  return localStorage.getItem(key) === "true";
+  const index = Number(groupIndex);
+  if (index <= 1) return true;
+  return isGroupCompleted(sectionId, index - 1);
 }
 
 function countGroupCorrect(groupItems) {
@@ -1468,10 +1468,24 @@ window.addEventListener("DOMContentLoaded", async () => {
       window.location.href = "home.html";
       return;
     }
+    if (activity) {
+      const activityGroupIndex = groupIndex || getActivityGroupIndex(activity);
+      if (
+        activityGroupIndex &&
+        !isGroupUnlocked(activity.sectionId, activityGroupIndex)
+      ) {
+        window.location.href = "home.html";
+        return;
+      }
+    }
     playBackgroundMusic("activity");
     renderActivity(activity);
   } else if (sectionId && groupIndex) {
     if (!isLevelUnlocked(sectionId)) {
+      window.location.href = "home.html";
+      return;
+    }
+    if (!isGroupUnlocked(sectionId, groupIndex)) {
       window.location.href = "home.html";
       return;
     }

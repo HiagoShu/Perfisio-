@@ -29,7 +29,12 @@ body {
   align-items: center;
   gap: 10px;
   margin-bottom: 16px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--green_dark_background);
+  padding: 10px 16px;
+  border-radius: 0 0 16px 16px;
 }
 
 @keyframes timer-penalty-flash {
