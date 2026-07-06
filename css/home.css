@@ -4,17 +4,18 @@ body {
 }
 
 .settings-button {
-  position: fixed;
-  top: 12px;
-  right: 12px;
-  z-index: 30;
-  width: 40px;
-  height: 40px;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  z-index: 11;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(2, 43, 27, 0.92);
   color: var(--white_perfisio);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1;
   cursor: pointer;
   display: flex;
@@ -24,7 +25,7 @@ body {
 }
 
 .settings-button:hover {
-  transform: scale(1.08);
+  transform: translateY(-50%) scale(1.08);
   background: rgba(2, 43, 27, 1);
 }
 

@@ -9,16 +9,6 @@
     <link rel="stylesheet" href="../css/components.css" />
   </head>
   <body>
-    <button
-      type="button"
-      class="settings-button"
-      id="settings-button"
-      aria-label="Configurações"
-      aria-haspopup="dialog"
-    >
-      ⚙️
-    </button>
-
     <div class="settings-overlay" id="settings-overlay" hidden>
       <div class="settings-panel" role="dialog" aria-modal="true" aria-label="Configurações">
         <button type="button" class="settings-panel__close" id="settings-close" aria-label="Fechar">×</button>
@@ -59,6 +49,15 @@
     <div class="total-score-bar" id="total-score-bar">
       <span class="total-score-bar__label">Score Perfisio⭐:</span>
       <span class="total-score-bar__value" id="total-score-value">0</span>
+      <button
+        type="button"
+        class="settings-button"
+        id="settings-button"
+        aria-label="Configurações"
+        aria-haspopup="dialog"
+      >
+        ⚙️
+      </button>
     </div>
     <section class="container-lessons">
       <div id="lesson-list"></div>
