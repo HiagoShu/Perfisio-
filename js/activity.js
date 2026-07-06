@@ -34,7 +34,7 @@ function buildActivityDataFromCards(cards) {
       .filter((card) => definition.categories.includes(card.category))
       .map((card, index) => ({
         id: `${definition.sectionId}-${index + 1}`,
-        title: "Use as dicas abaixo para advinhar a resposta!",
+        title: "Use as dicas abaixo para adivinhar a resposta!",
         description: `Categoria: ${card.category}`,
         content: "Use as dicas abaixo para adivinhar a resposta.",
         hints: card.hints,
