@@ -1446,7 +1446,7 @@ function renderGroup(group) {
       <p class="activity-level">${group.level}</p>
       <h2 class="activity-title">${group.moduleTitle} — Grupo ${group.groupIndex}</h2>
       <p class="activity-description">${group.description}</p>
-      <p class="activity-group-count">${group.itemCount} perguntas neste grupo</p>
+      <p class="activity-group-count">${group.itemCount} identificação de termos neste grupo</p>
       <div class="activity-group-list">
         ${itemsHtml}
       </div>

@@ -74,7 +74,7 @@ function buildActivityButton(section, groupIndex, groupItems, levelUnlockStatus)
         : `${levelUnlockStatus.currentScore} / ${levelUnlockStatus.requiredScore}`)
     : !groupUnlocked
     ? "Complete a atividade anterior"
-    : `${groupItems.length} perguntas`;
+    : `${groupItems.length} identificação de termos`;
 
   const colorClass = completed
     ? "btn-completed"
@@ -212,7 +212,7 @@ function buildChallengeSection() {
     <div class="container-lessons__challenge__trail">
       ${buttonHtml}
       <p class="container-lessons__challenge__trail__paragraph">
-        Desafie-se no Último Challenge<br/>respondendo perguntas<br/>de todos os assuntos vistos,<br/>com menos tempo e menos dicas.
+        Desafie-se no Último Challenge<br/>respondendo identificação de termos<br/>de todos os assuntos vistos,<br/>com menos tempo e menos dicas.
       </p>
     </div>
   `;
