@@ -21,3 +21,132 @@ body {
 .welcome-section__phrase__bold {
     font-weight: 600;
 }
+
+.welcome-section__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.welcome-section__button--secondary {
+    background-color: transparent;
+    color: var(--white_perfisio);
+    border: 2px solid var(--white_perfisio);
+}
+
+.welcome-section__button--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.tutorial-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
+.tutorial-overlay[hidden] {
+    display: none;
+}
+
+.tutorial-panel {
+    position: relative;
+    width: min(100%, 400px);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--white_perfisio);
+    border-radius: 20px;
+    padding: 28px 24px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.tutorial-panel__close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.08);
+    color: var(--green_dark_background);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.tutorial-panel__close:hover {
+    background: rgba(0, 0, 0, 0.16);
+}
+
+.tutorial-panel__image-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    background-color: var(--gray_content_difficult);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.tutorial-panel__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.tutorial-panel__title {
+    color: var(--green_dark_background);
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.tutorial-panel__text {
+    color: var(--dark_yellow_text_cards);
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.tutorial-panel__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.tutorial-nav-button {
+    border: none;
+    background-color: var(--lighter_green__buttons);
+    color: var(--green_dark_background);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 10px 16px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.tutorial-nav-button:hover:not(:disabled) {
+    transform: scale(1.04);
+}
+
+.tutorial-nav-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.tutorial-panel__counter {
+    color: var(--green_dark_background);
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.7;
+}

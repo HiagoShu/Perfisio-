@@ -14,8 +14,30 @@
     </header>
     <section class="welcome-section">
         <h3 class="welcome-section__phrase">Olá<br>Bem-vindo(a)<br>ao <strong class="welcome-section__phrase__bold">Perfisio</strong></h3>
-        <a href="/pages/home"><button class="welcome-section__button">Continuar</button></a>
+        <div class="welcome-section__actions">
+            <a href="/pages/home"><button class="welcome-section__button">Continuar</button></a>
+            <button type="button" class="welcome-section__button welcome-section__button--secondary" id="tutorial-open-button">Como jogar</button>
+        </div>
     </section>
+
+    <div class="tutorial-overlay" id="tutorial-overlay" hidden>
+        <div class="tutorial-panel" role="dialog" aria-modal="true" aria-label="Tutorial do Perfisio">
+            <button type="button" class="tutorial-panel__close" id="tutorial-close-button" aria-label="Fechar tutorial">×</button>
+
+            <div class="tutorial-panel__image-wrap">
+                <img src="" alt="" class="tutorial-panel__image" id="tutorial-image" onerror="this.style.display='none'">
+            </div>
+
+            <h4 class="tutorial-panel__title" id="tutorial-title"></h4>
+            <p class="tutorial-panel__text" id="tutorial-text"></p>
+
+            <div class="tutorial-panel__footer">
+                <button type="button" class="tutorial-nav-button" id="tutorial-prev-button">‹ Anterior</button>
+                <span class="tutorial-panel__counter" id="tutorial-counter"></span>
+                <button type="button" class="tutorial-nav-button" id="tutorial-next-button">Próximo ›</button>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="../js/welcome.js"></script>
 </html>
