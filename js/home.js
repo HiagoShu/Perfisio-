@@ -178,9 +178,14 @@ function buildChallengeSection() {
     : { unlocked: true, currentScore: 0, requiredScore: 0, previousCompleted: true };
   const unlocked = unlockStatus.unlocked;
   const scoreMet = unlockStatus.currentScore >= unlockStatus.requiredScore;
+  const challengeCompleted = typeof isGroupCompleted === "function"
+    ? isGroupCompleted("doutor", 1)
+    : false;
 
-  const icon  = unlocked ? "👑" : "🔒";
-  const label = unlocked
+  const icon  = challengeCompleted ? "✅" : unlocked ? "👑" : "🔒";
+  const label = challengeCompleted
+    ? "Concluído"
+    : unlocked
     ? "Desafiar"
     : scoreMet && !unlockStatus.previousCompleted
     ? "Complete o nível anterior"
@@ -194,9 +199,9 @@ function buildChallengeSection() {
     </div>
   `;
 
-  const buttonHtml = unlocked
+  const buttonHtml = unlocked || challengeCompleted
     ? `<a href="challenge.html">
-        <button class="duo-btn btn-doutor" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
+        <button class="duo-btn ${challengeCompleted ? "btn-completed" : "btn-doutor"}" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
           ${btnInner}
         </button>
       </a>`
@@ -338,6 +343,12 @@ function renderHome() {
 
   lessonList.innerHTML = sections.map(buildLessonSection).join("") + buildChallengeSection();
 }
+
+window.addEventListener("perfisio-cheat-applied", () => {
+  if (typeof renderHome === "function") {
+    renderHome();
+  }
+});
 
 window.addEventListener("DOMContentLoaded", async () => {
   if (typeof cardDataReady !== "undefined") await cardDataReady;

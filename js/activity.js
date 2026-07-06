@@ -149,6 +149,21 @@ const MUSIC_VOLUME_KEY = "perfisio-music-volume";
 const SFX_VOLUME_KEY = "perfisio-sfx-volume";
 const DEFAULT_MUSIC_VOLUME = 0.4;
 const DEFAULT_SFX_VOLUME = 1;
+const CHEAT_SCORE_TARGET = 999999;
+const KONAMI_SEQUENCE = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "KeyB",
+  "KeyA",
+  "Enter",
+];
+let konamiProgress = 0;
 
 function clampVolume(value) {
   return Math.min(1, Math.max(0, Number(value)));
@@ -414,6 +429,94 @@ function showInfoModal(title, message) {
     message,
     cancelText: "Fechar",
   });
+}
+
+function normalizeKonamiInput(event) {
+  const key = event.key || "";
+  const code = event.code || "";
+
+  if (code === "ArrowUp" || key === "ArrowUp" || key === "Up") return "ArrowUp";
+  if (code === "ArrowDown" || key === "ArrowDown" || key === "Down") return "ArrowDown";
+  if (code === "ArrowLeft" || key === "ArrowLeft" || key === "Left") return "ArrowLeft";
+  if (code === "ArrowRight" || key === "ArrowRight" || key === "Right") return "ArrowRight";
+  if (code === "KeyB" || key.toLowerCase() === "b") return "KeyB";
+  if (code === "KeyA" || key.toLowerCase() === "a") return "KeyA";
+  if (code === "Enter" || key === "Enter") return "Enter";
+
+  return null;
+}
+
+function applyCheatCodeUnlock() {
+  const sections = getLessonSections();
+  if (!sections.length) {
+    if (typeof cardDataReady !== "undefined") {
+      cardDataReady.then(() => applyCheatCodeUnlock());
+    }
+    return;
+  }
+
+  document.body.classList.add("challenge-victory-glow");
+  localStorage.setItem("perfisio-challenge-victory-glow", "true");
+  localStorage.setItem("perfisio-cheat-activated", "true");
+
+  sections.forEach((section) => {
+    const groups = splitIntoNGroups(section.items, 4);
+    groups.forEach((groupItems, index) => {
+      const groupIndex = index + 1;
+      markGroupCompleted(section.sectionId, groupIndex, groupItems);
+      saveBestScore(section.sectionId, groupIndex, CHEAT_SCORE_TARGET);
+    });
+  });
+
+  const challengeSectionId =
+    typeof CHALLENGE_SECTION_ID !== "undefined" ? CHALLENGE_SECTION_ID : "doutor";
+  const challengeGroupIndex = Number(
+    typeof CHALLENGE_GROUP_INDEX !== "undefined" ? CHALLENGE_GROUP_INDEX : "1",
+  );
+
+  localStorage.setItem(
+    `perfisio-group-completed-${challengeSectionId}-${challengeGroupIndex}`,
+    "true",
+  );
+  saveBestScore(challengeSectionId, challengeGroupIndex, CHEAT_SCORE_TARGET);
+
+  const currentSectionId = getQueryParam("section");
+  const currentGroupIndex = getQueryParam("group");
+  if (currentSectionId && currentGroupIndex) {
+    localStorage.setItem(
+      `perfisio-session-score-${currentSectionId}-${currentGroupIndex}`,
+      String(CHEAT_SCORE_TARGET),
+    );
+  } else {
+    localStorage.setItem(
+      `perfisio-session-score-${challengeSectionId}-${challengeGroupIndex}`,
+      String(CHEAT_SCORE_TARGET),
+    );
+  }
+
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("perfisio-cheat-applied"));
+  }
+}
+
+function handleKonamiCode(event) {
+  if (event.repeat) return;
+
+  const input = normalizeKonamiInput(event);
+  if (!input) return;
+
+  event.preventDefault();
+
+  if (input !== KONAMI_SEQUENCE[konamiProgress]) {
+    konamiProgress = input === KONAMI_SEQUENCE[0] ? 1 : 0;
+    return;
+  }
+
+  konamiProgress += 1;
+  if (konamiProgress === KONAMI_SEQUENCE.length) {
+    applyCheatCodeUnlock();
+    konamiProgress = 0;
+  }
 }
 
 function markGroupCompleted(sectionId, groupIndex, groupItems) {
@@ -1454,6 +1557,8 @@ function renderGroup(group) {
     </div>
   `;
 }
+
+window.addEventListener("keydown", handleKonamiCode);
 
 window.addEventListener("DOMContentLoaded", async () => {
   await cardDataReady;
