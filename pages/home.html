@@ -18,6 +18,7 @@
           <label class="settings-row__label" for="music-volume-slider">
             <span class="settings-row__icon">🎵</span>
             <span>Música</span>
+            <button type="button" class="settings-row__attribution-link" id="music-attribution-button">(Atribuição)</button>
           </label>
           <input
             type="range"
@@ -43,6 +44,28 @@
             step="1"
           />
         </div>
+      </div>
+    </div>
+
+    <div class="attribution-overlay" id="attribution-overlay" hidden>
+      <div class="attribution-panel" role="dialog" aria-modal="true" aria-label="Atribuição de trilhas sonoras">
+        <button type="button" class="settings-panel__close" id="attribution-close" aria-label="Fechar">×</button>
+        <h3 class="settings-panel__title">Atribuição de trilhas sonoras</h3>
+        <p class="attribution-panel__text">
+          As trilhas sonoras deste aplicativo são utilizadas sob a licença
+          Creative Commons Atribuição 3.0 (CC BY 3.0), de autoria de
+          <strong>Matthew Pablo</strong>:
+        </p>
+        <ul class="attribution-panel__list">
+          <li>
+            <span class="attribution-panel__track">Red Doors</span>
+            <a href="https://opengameart.org/content/red-doors-v20" target="_blank" rel="noopener noreferrer">opengameart.org/content/red-doors-v20</a>
+          </li>
+          <li>
+            <span class="attribution-panel__track">Space Boss Battle Theme</span>
+            <a href="https://opengameart.org/content/space-boss-battle-theme" target="_blank" rel="noopener noreferrer">opengameart.org/content/space-boss-battle-theme</a>
+          </li>
+        </ul>
       </div>
     </div>
 

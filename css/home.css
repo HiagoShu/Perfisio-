@@ -103,6 +103,74 @@ body {
   font-size: 16px;
 }
 
+.settings-row__attribution-link {
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: 2px;
+  color: #999;
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.settings-row__attribution-link:hover {
+  color: #666;
+}
+
+.attribution-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+}
+
+.attribution-overlay[hidden] {
+  display: none;
+}
+
+.attribution-panel {
+  position: relative;
+  width: min(100%, 380px);
+  background: var(--white_perfisio);
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.attribution-panel__text {
+  color: var(--dark_yellow_text_cards);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.attribution-panel__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.attribution-panel__track {
+  display: block;
+  color: var(--green_dark_background);
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.attribution-panel__list a {
+  color: var(--lighter_green__buttons);
+  font-size: 12px;
+  word-break: break-all;
+}
+
 .settings-row__slider {
   width: 100%;
   accent-color: var(--lighter_green__buttons);

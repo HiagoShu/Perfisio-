@@ -296,6 +296,28 @@ function setupSettingsPanel() {
       setSfxVolume(Number(sfxSlider.value) / 100);
     }
   });
+
+  setupAttributionPopup();
+}
+
+function setupAttributionPopup() {
+  const attributionButton = document.getElementById("music-attribution-button");
+  const attributionOverlay = document.getElementById("attribution-overlay");
+  const attributionClose = document.getElementById("attribution-close");
+  if (!attributionButton || !attributionOverlay || !attributionClose) return;
+
+  const openAttribution = () => {
+    attributionOverlay.hidden = false;
+  };
+  const closeAttribution = () => {
+    attributionOverlay.hidden = true;
+  };
+
+  attributionButton.addEventListener("click", openAttribution);
+  attributionClose.addEventListener("click", closeAttribution);
+  attributionOverlay.addEventListener("click", (event) => {
+    if (event.target === attributionOverlay) closeAttribution();
+  });
 }
 
 function renderHome() {
