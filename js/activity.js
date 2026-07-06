@@ -845,7 +845,9 @@ function renderActivity(activity) {
         <div class="quiz-feedback" id="feedback"></div>
       </div>
 
-      <a class="activity-back-link" href="home.html">Voltar para o início</a>
+      <button type="button" class="activity-back-link" id="back-home-button" aria-label="Segure para voltar para o início">
+        <span class="activity-back-link__label">Voltar para o início</span>
+      </button>
     </div>
   `;
 
@@ -1130,6 +1132,53 @@ function renderActivity(activity) {
     stopChargeSound();
   }
 
+  // Segurar para confirmar a saída, assim como se segura para comprar uma
+  // dica, evita que o jogador saia da atividade sem querer com um toque.
+  let backHoldTimer = null;
+
+  function cancelBackHold(button) {
+    if (!backHoldTimer) return;
+    cancelAnimationFrame(backHoldTimer.rafId);
+    clearTimeout(backHoldTimer.timeoutId);
+    backHoldTimer = null;
+    button.classList.remove("back-holding");
+    button.style.setProperty("--back-progress", "0%");
+  }
+
+  function startBackHold(button, event) {
+    if (backHoldTimer) return;
+    button.classList.add("back-holding");
+    const startTime = performance.now();
+    const timer = { rafId: null, timeoutId: null };
+
+    function animate(progressTime) {
+      const elapsed = progressTime - startTime;
+      const progress = Math.min(elapsed / HINT_HOLD_DURATION, 1);
+      button.style.setProperty("--back-progress", `${progress * 100}%`);
+      if (progress < 1) timer.rafId = requestAnimationFrame(animate);
+    }
+
+    timer.rafId = requestAnimationFrame(animate);
+    timer.timeoutId = window.setTimeout(() => {
+      backHoldTimer = null;
+      window.location.href = "home.html";
+    }, HINT_HOLD_DURATION);
+
+    backHoldTimer = timer;
+    if (event && event.pointerId !== undefined) {
+      button.setPointerCapture(event.pointerId);
+    }
+  }
+
+  function handleBackPointerDown(event) {
+    event.preventDefault();
+    startBackHold(event.currentTarget, event);
+  }
+
+  function handleBackPointerUp(event) {
+    cancelBackHold(event.currentTarget);
+  }
+
   function startHintHold(button, index, event) {
     const hintState = activityState.hints[index];
     if (!hintState || hintState.unlocked) return;
@@ -1335,6 +1384,17 @@ function renderActivity(activity) {
     button.addEventListener("pointerleave", handleHintPointerUp);
     button.addEventListener("click", handleHintClick);
   });
+
+  const backHomeButton = root.querySelector("#back-home-button");
+  if (backHomeButton) {
+    backHomeButton.addEventListener("mousedown", (event) =>
+      event.preventDefault(),
+    );
+    backHomeButton.addEventListener("pointerdown", handleBackPointerDown);
+    backHomeButton.addEventListener("pointerup", handleBackPointerUp);
+    backHomeButton.addEventListener("pointercancel", handleBackPointerUp);
+    backHomeButton.addEventListener("pointerleave", handleBackPointerUp);
+  }
 
   submitButton.addEventListener("click", handleSubmit);
   updateKeyDisplay();

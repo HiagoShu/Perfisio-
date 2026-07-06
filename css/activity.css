@@ -14,6 +14,11 @@ body {
   background-color: var(--green_dark_background);
   border-radius: 0;
   min-height: calc(100vh - 145px);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .quiz-timer-wrapper {
@@ -714,7 +719,6 @@ body {
   background-color: #d32f2f;
   color: var(--white_perfisio);
   border: 2px solid #d32f2f;
-  margin-top: 32px;
 }
 
 .activity-question-link:hover,
@@ -724,6 +728,40 @@ body {
 
 .activity-question-link:active,
 .activity-back-link:active {
+  transform: scale(0.97);
+}
+
+/* Botão de voltar da tela de atividade: menor, mais abaixo, e exige
+   segurar (como as dicas) para não ser acionado sem querer. */
+button.activity-back-link {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 18px;
+  margin-top: 56px;
+  opacity: 0.75;
+}
+
+button.activity-back-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  top: auto;
+  height: var(--back-progress, 0%);
+  background: rgba(255, 255, 255, 0.4);
+  transition: height 0.1s linear;
+  pointer-events: none;
+}
+
+button.activity-back-link .activity-back-link__label {
+  position: relative;
+  z-index: 1;
+}
+
+button.activity-back-link.back-holding {
+  opacity: 1;
   transform: scale(0.97);
 }
 
