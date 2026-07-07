@@ -41,13 +41,13 @@ const TUTORIAL_SLIDES = [
   },
   {
     image: "../assets/images/tutorial9.png",
-    title: "O Último Challenge",
-    text: "O Último Challenge é o desafio final: toda a identificação de termos de todos os níveis, embaralhada, com menos tempo e menos dicas por questão. A cada 10 acertos seguidos, você ganha um bônus de 10 chaves extras. Se o tempo acabar em qualquer questão, é fim de jogo — e você volta para o início.",
+    title: "O Último Desafio",
+    text: "O Último Desafio é o desafio final: toda a identificação de termos de todos os níveis, embaralhada, com menos tempo e menos dicas por questão. A cada 10 acertos seguidos, você ganha um bônus de 10 chaves extras. Se o tempo acabar em qualquer questão, é fim de jogo — e você volta para o início.",
   },
   {
     image: "../assets/images/tutorial10.png",
     title: "Vencendo o jogo",
-    text: "Complete toda a identificação de termos do Último Challenge sem deixar o tempo acabar, e você vence o Perfisio! Um brilho dourado especial vai aparecer na tela — e vai te seguir até a tela inicial, como um troféu da sua conquista.",
+    text: "Complete toda a identificação de termos do Último Desafio sem deixar o tempo acabar, e você vence o Perfisio! Um brilho dourado especial vai aparecer na tela — e vai te seguir até a tela inicial, como um troféu da sua conquista.",
   },
   {
     image: "../assets/images/tutorial11.png",

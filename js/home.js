@@ -201,23 +201,23 @@ function buildChallengeSection() {
 
   const buttonHtml = unlocked || challengeCompleted
     ? `<a href="challenge.html">
-        <button class="duo-btn ${challengeCompleted ? "btn-completed" : "btn-doutor"}" onclick="handleBtnClick(this,'Último Challenge')" aria-label="Ir para o Último Challenge">
+        <button class="duo-btn ${challengeCompleted ? "btn-completed" : "btn-doutor"}" onclick="handleBtnClick(this,'Último Desafio')" aria-label="Ir para o Último Desafio">
           ${btnInner}
         </button>
       </a>`
-    : `<button class="duo-btn btn-doutor btn-locked" disabled aria-label="Último Challenge (bloqueado)">
+    : `<button class="duo-btn btn-doutor btn-locked" disabled aria-label="Último Desafio (bloqueado)">
         ${btnInner}
       </button>`;
 
   return `
     <div class="container-lessons__lesson__content__challenge">
       <h5 class="container-lessons__lesson__content__difficult__challenge">-Nível Doutor-</h5>
-      <h3 class="container-lessons__lesson__content__title__challenge">O Último<br/>Challenge</h3>
+      <h3 class="container-lessons__lesson__content__title__challenge">O Último<br/>Desafio</h3>
     </div>
     <div class="container-lessons__challenge__trail">
       ${buttonHtml}
       <p class="container-lessons__challenge__trail__paragraph">
-        Desafie-se no Último Challenge<br/>respondendo identificação de termos<br/>de todos os assuntos vistos,<br/>com menos tempo e menos dicas.
+        Desafie-se no Último Desafio<br/>respondendo identificação de termos<br/>de todos os assuntos vistos,<br/>com menos tempo e menos dicas.
       </p>
     </div>
   `;

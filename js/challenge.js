@@ -204,7 +204,7 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     <div class="quiz-keys-container">
       <div class="quiz-badge" id="key-badge-container">
         <span class="quiz-badge-icon">💡</span>
-        <span class="quiz-badge-label">Dicas restantes no Challenge:</span>
+        <span class="quiz-badge-label">Dicas restantes no Último Desafio:</span>
         <span class="quiz-badge-value" id="key-balance">${hintsRemaining}</span>
       </div>
     </div>
@@ -710,7 +710,7 @@ function showChallengeGameOverModal(questionIndex, allQuestions) {
       <div class="completion-emoji">⏰</div>
       <h3 class="completion-title">Fim de Jogo!</h3>
       ${newRecordBannerHtml}
-      <p class="completion-encouragement">O tempo esgotou e o Último Challenge chegou ao fim. Tente novamente para superar sua pontuação!</p>
+      <p class="completion-encouragement">O tempo esgotou e o Último Desafio chegou ao fim. Tente novamente para superar sua pontuação!</p>
 
       <div class="completion-score-section">
         <div class="completion-total-score ${isRecord ? "completion-total-score--record" : ""}">
@@ -788,7 +788,7 @@ function showChallengeCompletionModal(allQuestions) {
   else if (avgMultiplier >= 1.5) multiplierClass = "multiplier-mid";
 
   const encouragements = [
-    "Você completou o Último Challenge! Isso não é pra qualquer um. 👑",
+    "Você completou o Último Desafio! Isso não é pra qualquer um. 👑",
     "Nível Doutor conquistado! O conhecimento é sua melhor arma. 🏆",
     "Impressionante! Você domina a fisioterapia de ponta a ponta. 🚀",
     "Desafio máximo vencido! Continue evoluindo. ⚡",
@@ -808,7 +808,7 @@ function showChallengeCompletionModal(allQuestions) {
   overlay.innerHTML = `
     <div class="modal completion-modal" role="dialog" aria-modal="true">
       <div class="completion-emoji">👑</div>
-      <h3 class="completion-title">Challenge Concluído!</h3>
+      <h3 class="completion-title">Desafio Concluído!</h3>
       ${newRecordBannerHtml}
       <p class="completion-encouragement">${escapeHtml(message)}</p>
 
