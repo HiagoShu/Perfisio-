@@ -413,6 +413,10 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
     if (!hintState) return;
     hintModal.textContent = hintState.text;
     hintModal.classList.add("visible");
+    hintButtons.forEach((button) => {
+      const buttonIndex = Number(button.dataset.hintIndex);
+      button.classList.toggle("selected", buttonIndex === index);
+    });
   }
 
   function hideHintContent() {
@@ -663,6 +667,12 @@ function renderChallengeActivity(activity, questionIndex, allQuestions) {
   });
   submitButton.addEventListener("click", handleSubmit);
   updateKeyDisplay();
+
+  // A primeira dica já vem desbloqueada; mostra o conteúdo dela
+  // selecionado por padrão, sem precisar de um toque extra.
+  if (activityState.hints[0] && activityState.hints[0].unlocked) {
+    showHintContent(0);
+  }
 }
 
 function goToNextQuestion(currentIndex, allQuestions) {

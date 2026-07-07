@@ -74,7 +74,7 @@ function buildActivityButton(section, groupIndex, groupItems, levelUnlockStatus)
         : `${levelUnlockStatus.currentScore} / ${levelUnlockStatus.requiredScore}`)
     : !groupUnlocked
     ? "Complete a atividade anterior"
-    : `${groupItems.length} identificação de termos`;
+    : `${groupItems.length} desafios`;
 
   const colorClass = completed
     ? "btn-completed"

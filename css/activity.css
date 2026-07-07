@@ -550,6 +550,11 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.quiz-hint-btn.selected {
+  border-color: var(--green_dark_background);
+  box-shadow: 0 0 0 2px var(--green_dark_background);
+}
+
 .quiz-hint-btn.locked {
   background-color: #f0ede8;
   color: #999;
