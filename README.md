@@ -103,12 +103,12 @@ cd Perfisio
 
 O Perfisio foi construído pelo time **MOVITECH**:
 
-* **Hiago Gabriel Fernandes (582780)** – Desenvolvimento de software e design de interface.
-* **João Pedro Gusmão Seabra (579059)** – Game design, desenvolvimento de software e design de interface.
-* **José Haniel Pereira dos Santos (580636)** – Gestão do projeto.
-* **Luís Henrique Sousa Ribeiro (583173)** – Desenvolvimento de software, design de interface e prototipação.
-* **Natanael Lopes Mariano (580686)** – Design visual.
-* **Vinicius Borges Oliveira (579247)** – Desenvolvimento de software.
+* **Hiago Gabriel Fernandes(@HiagoShu)** – Desenvolvimento de software e design de interface.
+* **João Pedro Gusmão Seabra(@JPedro-1024)** – Game design, desenvolvimento de software e design de interface.
+* **José Haniel Pereira dos Santos** – Gestão do projeto.
+* **Luís Henrique Sousa Ribeiro(@louuispy)** – Desenvolvimento de software, design de interface e prototipação.
+* **Natanael Lopes Mariano** – Design visual.
+* **Vinicius Borges Oliveira** – Desenvolvimento de software.
 
 ---
 
