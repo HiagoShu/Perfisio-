@@ -108,7 +108,7 @@ O Perfisio foi construído pelo time **MOVITECH**:
 * **José Haniel Pereira dos Santos** – Gestão do projeto.
 * **Luís Henrique Sousa Ribeiro(@louuispy)** – Desenvolvimento de software, design de interface e prototipação.
 * **Natanael Lopes Mariano** – Design visual.
-* **Vinicius Borges Oliveira** – Desenvolvimento de software.
+* **Vinicius Borges Oliveira(@Vinicoffelover)** – Desenvolvimento de software.
 
 ---
 
